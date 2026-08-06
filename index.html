@@ -298,6 +298,18 @@
   .galleryItem:hover{border-color:var(--cyan); transform:translateY(-3px);}
   .galleryItem .ic{font-size:34px; opacity:.7;}
 
+  .galleryFeatured{position:relative; border-radius:16px; overflow:hidden; border:1px solid var(--border); margin-bottom:20px;
+    box-shadow:0 0 50px rgba(0,246,255,.18);}
+  .galleryFeatured video{width:100%; max-height:560px; display:block; background:#000; object-fit:cover;}
+  .galleryFeatured .featBadge{position:absolute; top:16px; left:16px; z-index:2;
+    background:linear-gradient(120deg,var(--gold),var(--cyan)); color:#050014; font-family:'Chakra Petch',sans-serif; font-weight:700;
+    text-transform:uppercase; letter-spacing:1px; font-size:12px; padding:7px 16px; border-radius:2px;
+    box-shadow:0 4px 14px rgba(234,255,43,.4);}
+  .galleryMedia{border-radius:16px; overflow:hidden; border:1px solid var(--border); aspect-ratio:4/3; background:#000;
+    transition:transform .25s ease, border-color .25s ease;}
+  .galleryMedia:hover{transform:translateY(-3px); border-color:var(--cyan);}
+  .galleryMedia video, .galleryMedia img{width:100%; height:100%; object-fit:cover; display:block;}
+
   /* ---------- INCLUSO ---------- */
   .inclList{display:grid; grid-template-columns:1fr; gap:18px;}
   @media(min-width:760px){ .inclList{grid-template-columns:repeat(4,1fr);} }
@@ -609,13 +621,27 @@
       <h2>Foto, video e serate vere</h2>
       <p>Uno sguardo a Il Capone in azione: locali, eventi, pubblico in gara.</p>
     </div>
+    <div class="galleryFeatured">
+      <span class="featBadge">▶ Guarda il promo</span>
+      <video controls preload="metadata" playsinline>
+        <source src="promo.mp4" type="video/mp4">
+        Il tuo browser non supporta la riproduzione video.
+      </video>
+    </div>
     <div class="galleryGrid">
-      <div class="galleryItem"><span class="ic">📸</span><span>Foto in arrivo</span></div>
-      <div class="galleryItem"><span class="ic">📸</span><span>Foto in arrivo</span></div>
-      <div class="galleryItem"><span class="ic">🎥</span><span>Video in arrivo</span></div>
-      <div class="galleryItem"><span class="ic">📸</span><span>Foto in arrivo</span></div>
-      <div class="galleryItem"><span class="ic">🎥</span><span>Video in arrivo</span></div>
-      <div class="galleryItem"><span class="ic">📸</span><span>Foto in arrivo</span></div>
+      <div class="galleryMedia">
+        <video controls preload="metadata" playsinline>
+          <source src="serata-video-1.mp4" type="video/mp4">
+        </video>
+      </div>
+      <div class="galleryMedia">
+        <video controls preload="metadata" playsinline>
+          <source src="serata-video-2.mp4" type="video/mp4">
+        </video>
+      </div>
+      <div class="galleryMedia">
+        <img src="serata-foto-1.jpg" alt="Pubblico in gara a Il Capone Quiz durante una serata" loading="lazy">
+      </div>
     </div>
   </div>
 </section>

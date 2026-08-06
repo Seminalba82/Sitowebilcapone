@@ -44,12 +44,16 @@
       url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.3'/%3E%3C/svg%3E");
     background-blend-mode:normal, normal, normal, overlay;
     background-size:auto, auto, auto, 160px 160px;
+    transform:translateZ(0) scale(1.06); transform-origin:center;
     animation:auroraShift 18s ease-in-out infinite alternate;
+    will-change:transform, opacity;
   }
   body::after{
-    content:""; position:fixed; inset:0; z-index:-1; pointer-events:none; opacity:.22; mix-blend-mode:overlay;
+    content:""; position:fixed; top:-8px; left:0; right:0; bottom:0; z-index:-1; pointer-events:none; opacity:.22; mix-blend-mode:overlay;
     background:repeating-linear-gradient(0deg, rgba(0,246,255,.1) 0px, rgba(0,246,255,.1) 1px, transparent 1px, transparent 3px);
-    background-size:100% 4px; animation:scanlineMove 7s linear infinite;
+    background-size:100% 4px;
+    animation:scanlineMove 7s linear infinite;
+    will-change:transform;
   }
   a{color:inherit;}
   .wrap{max-width:1100px; margin:0 auto; padding:0 24px;}
@@ -171,8 +175,8 @@
   @keyframes tickerScroll{ from{transform:translateX(0);} to{transform:translateX(-50%);} }
   @keyframes numFlicker{ 0%,100%{text-shadow:0 0 30px rgba(0,246,255,.6);} 50%{text-shadow:0 0 45px rgba(0,246,255,.9), 0 0 70px rgba(139,42,255,.4);} }
   @keyframes pulseGold{ 0%,100%{box-shadow:0 0 0 0 rgba(234,255,43,.35);} 50%{box-shadow:0 0 40px 6px rgba(234,255,43,.3);} }
-  @keyframes auroraShift{ 0%{background-position:0% 0%, 0% 0%, 0% 0%, 0% 0%, 0 0, 0 0, 0 0;} 100%{background-position:6% 4%, -5% 3%, 4% -3%, -4% -4%, 0 0, 0 0, 30px 20px;} }
-  @keyframes scanlineMove{ from{background-position:0 0;} to{background-position:0 8px;} }
+  @keyframes auroraShift{ 0%{transform:translateZ(0) scale(1.06) rotate(0deg); opacity:.88;} 100%{transform:translateZ(0) scale(1.1) rotate(1deg); opacity:1;} }
+  @keyframes scanlineMove{ from{transform:translateY(0);} to{transform:translateY(8px);} }
   @keyframes btnGoldShift{ from{background-position:0% 0;} to{background-position:300% 0;} }
   @keyframes ctaPulse{ 0%,100%{box-shadow:0 0 0 1px rgba(255,255,255,.25) inset, 0 0 22px rgba(234,255,43,.45), 0 10px 24px rgba(0,246,255,.2);}
     50%{box-shadow:0 0 0 1px rgba(255,255,255,.3) inset, 0 0 36px rgba(234,255,43,.7), 0 0 26px rgba(255,31,201,.4), 0 10px 24px rgba(0,246,255,.25);} }
@@ -299,8 +303,9 @@
   .galleryItem .ic{font-size:34px; opacity:.7;}
 
   .galleryFeatured{position:relative; border-radius:16px; overflow:hidden; border:1px solid var(--border); margin:0 auto 20px;
-    box-shadow:0 0 50px rgba(0,246,255,.18); display:flex; justify-content:center; background:#000; max-width:560px;}
-  .galleryFeatured video{width:100%; aspect-ratio:1/1; max-height:560px; display:block; background:#000; object-fit:contain;}
+    box-shadow:0 0 50px rgba(0,246,255,.18); display:flex; justify-content:center; background:#000; max-width:560px;
+    contain:layout paint; transform:translateZ(0); isolation:isolate;}
+  .galleryFeatured video{width:100%; aspect-ratio:1/1; max-height:560px; display:block; background:#000; object-fit:contain; transform:translateZ(0);}
   .galleryFeatured .featBadge{position:absolute; top:16px; left:16px; z-index:2;
     background:linear-gradient(120deg,var(--gold),var(--cyan)); color:#050014; font-family:'Chakra Petch',sans-serif; font-weight:700;
     text-transform:uppercase; letter-spacing:1px; font-size:12px; padding:7px 16px; border-radius:2px;

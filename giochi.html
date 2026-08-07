@@ -4,17 +4,17 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Catalogo minigiochi — Squadre, sfide, premi | Il Capone Quiz 3.0</title>
-<meta name="description" content="Scopri alcuni dei 40+ minigiochi di Il Capone Quiz: giochi a squadre, sfide individuali, giochi a premi e le sorprese ancora da scoprire.">
+<meta name="description" content="Il catalogo completo dei minigiochi di Il Capone Quiz: giochi a squadre, sfide individuali, giochi a premi e format speciali.">
 <link rel="canonical" href="https://ilcaponequiz.win/giochi.html">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://ilcaponequiz.win/giochi.html">
 <meta property="og:title" content="Catalogo minigiochi — Squadre, sfide, premi | Il Capone Quiz 3.0">
-<meta property="og:description" content="Scopri alcuni dei 40+ minigiochi di Il Capone Quiz: giochi a squadre, sfide individuali, giochi a premi e le sorprese ancora da scoprire.">
+<meta property="og:description" content="Il catalogo completo dei minigiochi di Il Capone Quiz: giochi a squadre, sfide individuali, giochi a premi e format speciali.">
 <meta property="og:image" content="https://ilcaponequiz.win/og-image.jpg">
 <meta property="og:locale" content="it_IT">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="Catalogo minigiochi — Squadre, sfide, premi | Il Capone Quiz 3.0">
-<meta name="twitter:description" content="Scopri alcuni dei 40+ minigiochi di Il Capone Quiz: giochi a squadre, sfide individuali, giochi a premi e le sorprese ancora da scoprire.">
+<meta name="twitter:description" content="Il catalogo completo dei minigiochi di Il Capone Quiz: giochi a squadre, sfide individuali, giochi a premi e format speciali.">
 <meta name="twitter:image" content="https://ilcaponequiz.win/og-image.jpg">
 <link rel="icon" type="image/png" sizes="512x512" href="/favicon.png">
 <link rel="apple-touch-icon" href="/favicon.png">
@@ -229,11 +229,17 @@
   .mgCount{font-family:'Orbitron',sans-serif; font-weight:900; font-size:clamp(50px,10vw,90px); color:var(--cyan); text-shadow:0 0 30px rgba(0,246,255,.6); line-height:1;
     animation:numFlicker 2.2s ease-in-out infinite;}
   .mgCats{display:flex; flex-wrap:wrap; gap:12px; justify-content:center; margin-top:26px;}
-  .mgCat{background:rgba(255,255,255,.04); border:1px dashed var(--border); border-radius:14px; padding:14px 20px; font-weight:700; font-size:14px; color:var(--muted); min-width:150px;
-    text-decoration:none; display:block; cursor:pointer; transition:transform .2s ease, border-color .2s ease, background .2s ease;}
-  .mgCat:hover{transform:translateY(-3px); border-color:var(--cyan); background:rgba(0,246,255,.06);}
+  .mgCat{background:rgba(255,255,255,.04); border:1px solid rgba(0,246,255,.3); border-radius:14px; padding:14px 20px; font-weight:700; font-size:14px; color:var(--muted); min-width:150px;
+    text-decoration:none; display:block; cursor:pointer; position:relative;
+    box-shadow:0 0 0 1px rgba(0,246,255,.05) inset, 0 4px 14px rgba(0,0,0,.3);
+    transition:transform .2s ease, border-color .2s ease, background .2s ease, box-shadow .2s ease;}
+  .mgCat:hover{transform:translateY(-4px); border-color:var(--cyan); background:rgba(0,246,255,.08);
+    box-shadow:0 0 0 1px rgba(0,246,255,.12) inset, 0 12px 26px rgba(0,246,255,.22);}
   .mgCat b{display:block; color:var(--white); font-size:15px; margin-bottom:4px;}
-  .mystery{opacity:.55; font-style:italic;}
+  .mgCatCta{display:block; margin-top:10px; font-family:'Chakra Petch',sans-serif; font-size:11px; font-weight:800;
+    letter-spacing:.8px; text-transform:uppercase; color:var(--cyan);}
+  .mystery{opacity:.75; font-style:italic;}
+  .mystery .mgCatCta{color:var(--magenta);}
 
   /* ---------- PRODOTTI (Tombola / Asta) ---------- */
   .prodCard{border:1px solid transparent; border-radius:4px;
@@ -399,8 +405,8 @@
   <div class="wrap">
     <div class="sectionHead">
       <div class="tag">Il catalogo</div>
-      <h2>Oltre 40 minigiochi, divisi per categoria</h2>
-      <p>Ecco alcuni esempi per ogni categoria. Il resto lo scopri live, serata dopo serata: fa parte del divertimento, e continuiamo ad aggiungerne di nuovi.</p>
+      <h2>40 minigiochi, divisi per categoria</h2>
+      <p>Ecco il catalogo completo, categoria per categoria. Il catalogo cresce nel tempo: nuovi minigiochi si aggiungono serata dopo serata.</p>
     </div>
     <div style="text-align:center; margin-bottom:10px;">
       <a class="btn btnGhost btnSmall" href="index.html">← Torna al sito</a>
@@ -417,24 +423,54 @@
     </div>
     <div class="grid3">
       <div class="card">
-        <div class="ic">🏁</div>
-        <h3>Staffetta dei Sì</h3>
-        <p>Le squadre rispondono a turno il più velocemente possibile: al primo errore si passa la mano alla squadra successiva.</p>
+        <div class="ic">🧩</div>
+        <h3>Puzzle</h3>
+        <p>Le squadre ricompongono l'immagine a pezzi: vince chi completa il puzzle per prima.</p>
       </div>
       <div class="card">
-        <div class="ic">🤐</div>
-        <h3>Muro dei Segnali</h3>
-        <p>Un membro della squadra mima, gli altri indovinano: punti doppi se la risposta arriva entro 10 secondi.</p>
+        <div class="ic">🔤</div>
+        <h3>Trova la Parola</h3>
+        <p>Caccia alle parole nascoste nella griglia: la squadra più veloce fa più punti.</p>
       </div>
       <div class="card">
-        <div class="ic">🔗</div>
-        <h3>Catena di Parole</h3>
-        <p>Ogni squadra costruisce una catena a tema, una parola alla volta: chi si blocca perde il turno.</p>
+        <div class="ic">🎱</div>
+        <h3>Tombola</h3>
+        <p>Il classico gioco delle cartelle, in versione digitale per tutta la sala.</p>
       </div>
       <div class="card">
-        <div class="ic">⚡</div>
-        <h3>Sfida a Distanza</h3>
-        <p>Due squadre rispondono in contemporanea su schermi separati: vince chi è più rapido e preciso.</p>
+        <div class="ic">🗳️</div>
+        <h3>La Maggioranza Vince</h3>
+        <p>La squadra deve indovinare la risposta più votata dal pubblico.</p>
+      </div>
+      <div class="card">
+        <div class="ic">🥁</div>
+        <h3>I Tamburini</h3>
+        <p>Ritmo e sincronia: la squadra che segue meglio la sequenza vince il round.</p>
+      </div>
+      <div class="card">
+        <div class="ic">📣</div>
+        <h3>Mercatista per un Giorno</h3>
+        <p>Trattative a squadre per convincere e concludere il miglior affare.</p>
+      </div>
+      <div class="card">
+        <div class="ic">🔍</div>
+        <h3>Trova le Differenze</h3>
+        <p>Due immagini quasi identiche: la squadra più attenta trova tutti gli errori.</p>
+      </div>
+      <div class="card">
+        <div class="ic">👁</div>
+        <h3>Occhio alle Forme</h3>
+        <p>Riconosci la forma giusta tra tante distrazioni, il più in fretta possibile.</p>
+      </div>
+      <div class="card">
+        <div class="ic">📦</div>
+        <h3>Il Gioco dei Pacchi</h3>
+        <p>La squadra sceglie un pacco: tenerlo o cambiarlo? La suspense è assicurata.</p>
+      </div>
+      <div class="card">
+        <div class="ic">❌⭕</div>
+        <h3>XOX</h3>
+        <p>Il classico tris, ma a squadre: strategia e velocità per allineare tre simboli.</p>
       </div>
     </div>
   </div>
@@ -449,24 +485,59 @@
     </div>
     <div class="grid3">
       <div class="card">
-        <div class="ic">🔔</div>
-        <h3>Buzzer d'Oro</h3>
-        <p>Il primo che preme il buzzer virtuale ha diritto a rispondere: sbagliare costa punti a favore degli altri.</p>
+        <div class="ic">👆</div>
+        <h3>Tap Tap</h3>
+        <p>Chi tocca lo schermo più volte nel tempo stabilito vince il round.</p>
       </div>
       <div class="card">
-        <div class="ic">⏱️</div>
-        <h3>Countdown Lampo</h3>
-        <p>Rispondi prima che scada il countdown sullo schermo: ogni secondo guadagnato vale punti extra.</p>
+        <div class="ic">⌚</div>
+        <h3>Precisione Svizzera</h3>
+        <p>Ferma il tempo esattamente al momento giusto: vince chi è più preciso.</p>
       </div>
       <div class="card">
-        <div class="ic">🕵️</div>
-        <h3>Indovina l'Intruso</h3>
-        <p>Tra quattro opzioni, individua quella sbagliata nel minor tempo possibile.</p>
+        <div class="ic">🎨</div>
+        <h3>Simon</h3>
+        <p>Ripeti la sequenza di colori: un errore e sei fuori.</p>
       </div>
       <div class="card">
         <div class="ic">🎯</div>
-        <h3>Precisione Assoluta</h3>
-        <p>Domande a risposta numerica: vince chi si avvicina di più al valore esatto.</p>
+        <h3>Mastermind</h3>
+        <p>Indovina la combinazione segreta nel minor numero di tentativi.</p>
+      </div>
+      <div class="card">
+        <div class="ic">🎲</div>
+        <h3>Pari o Dispari</h3>
+        <p>Scegli pari o dispari e affida il resto alla sorte.</p>
+      </div>
+      <div class="card">
+        <div class="ic">🪙</div>
+        <h3>Testa o Croce</h3>
+        <p>La sfida più semplice e diretta: testa o croce?</p>
+      </div>
+      <div class="card">
+        <div class="ic">🔤➰</div>
+        <h3>Anagramma</h3>
+        <p>Riordina le lettere e trova la parola nel minor tempo possibile.</p>
+      </div>
+      <div class="card">
+        <div class="ic">💣</div>
+        <h3>Bomba a Orologeria</h3>
+        <p>Passatela prima che scoppi: chi la tiene in mano quando suona è fuori.</p>
+      </div>
+      <div class="card">
+        <div class="ic">✊✋✌️</div>
+        <h3>Morra Cinese</h3>
+        <p>Sfida diretta uno contro uno, con il pubblico che tifa.</p>
+      </div>
+      <div class="card">
+        <div class="ic">🔍</div>
+        <h3>Trova la Carta</h3>
+        <p>Segui la carta con gli occhi: dov'è finita dopo i mescolamenti?</p>
+      </div>
+      <div class="card">
+        <div class="ic">🃏</div>
+        <h3>Carta Alta, Carta Bassa</h3>
+        <p>Scommetti se la prossima carta sarà più alta o più bassa.</p>
       </div>
     </div>
   </div>
@@ -482,23 +553,63 @@
     <div class="grid3">
       <div class="card">
         <div class="ic">🎡</div>
-        <h3>La Ruota dei Premi</h3>
-        <p>Gira la ruota virtuale e scopri il premio in palio per il round in corso.</p>
+        <h3>La Ruota Gira per Tutti</h3>
+        <p>Gira la ruota e scopri il premio in palio per il round.</p>
+      </div>
+      <div class="card">
+        <div class="ic">🎡</div>
+        <h3>Le Ruote della Fortuna</h3>
+        <p>Due ruote incrociate decidono chi vince e cosa vince.</p>
       </div>
       <div class="card">
         <div class="ic">🔨</div>
-        <h3>Asta Lampo</h3>
-        <p>Rilanci in tempo reale dal telefono per aggiudicarsi il premio messo in palio.</p>
+        <h3>Asta</h3>
+        <p>Rilanci in tempo reale dal telefono per aggiudicarsi il premio in palio.</p>
       </div>
       <div class="card">
-        <div class="ic">🎟️</div>
-        <h3>Estrazione a Sorpresa</h3>
-        <p>Numeri estratti in diretta tra i partecipanti che hanno totalizzato più punti.</p>
+        <div class="ic">🤠</div>
+        <h3>Roulette Russa</h3>
+        <p>Versione scherzosa e a premi, tra tensione e risate.</p>
+      </div>
+      <div class="card">
+        <div class="ic">🎰</div>
+        <h3>Roulette (Casinò)</h3>
+        <p>La roulette classica, con puntate e numeri fortunati.</p>
+      </div>
+      <div class="card">
+        <div class="ic">🎫</div>
+        <h3>Il Biglietto d'Oro</h3>
+        <p>Un biglietto vincente nascosto tra tanti: chi lo trova porta a casa il premio.</p>
+      </div>
+      <div class="card">
+        <div class="ic">🌾</div>
+        <h3>La Pagliuzza</h3>
+        <p>Chi pesca la pagliuzza giusta si aggiudica il premio del round.</p>
+      </div>
+      <div class="card">
+        <div class="ic">🎰</div>
+        <h3>SUPERTRIS</h3>
+        <p>Le slot si fermano sui simboli: allinea la combinazione giusta per vincere.</p>
+      </div>
+      <div class="card">
+        <div class="ic">🃏</div>
+        <h3>Il Seme Vincente</h3>
+        <p>Indovina il seme della carta e porta a casa il premio.</p>
+      </div>
+      <div class="card">
+        <div class="ic">🎴</div>
+        <h3>Carta Rossa, Carta Nera</h3>
+        <p>Rossa o nera? Un'intuizione può valere un premio.</p>
+      </div>
+      <div class="card">
+        <div class="ic">🥃</div>
+        <h3>Bussolotti</h3>
+        <p>Sotto quale bussolotto si nasconde il premio? Segui bene con lo sguardo.</p>
       </div>
       <div class="card">
         <div class="ic">🎲</div>
-        <h3>Doppio o Niente</h3>
-        <p>Rischia il punteggio accumulato per raddoppiarlo... o perderlo tutto.</p>
+        <h3>Il Dado del Destino</h3>
+        <p>Un lancio di dado decide chi si aggiudica il premio del round.</p>
       </div>
     </div>
   </div>
@@ -508,24 +619,44 @@
   <div class="wrap">
     <div class="sectionHead">
       <div class="tag mystery">❓ E molto altro</div>
-      <h2>Si sblocca giocando</h2>
-      <p>Alcune sorprese le teniamo segrete apposta: ecco solo un assaggio di cosa può succedere durante una serata.</p>
+      <h2>Format speciali e a sorpresa</h2>
+      <p>Round particolari, a tema o fuori dagli schemi: quelli che fanno ricordare la serata.</p>
     </div>
     <div class="grid3">
       <div class="card">
-        <div class="ic">🔓</div>
-        <h3>Modalità Segrete</h3>
-        <p>Format speciali che si sbloccano solo durante determinate serate o eventi a tema.</p>
+        <div class="ic">🃏</div>
+        <h3>Memo le Coppie</h3>
+        <p>Trova tutte le coppie di carte uguali, allenando la memoria.</p>
       </div>
       <div class="card">
-        <div class="ic">🌀</div>
-        <h3>Round a Sorpresa</h3>
-        <p>Regole che cambiano all'ultimo momento per tenere alta la tensione in sala.</p>
+        <div class="ic">🐎</div>
+        <h3>Pubbliche Offese</h3>
+        <p>Corsa di cavalli scherzosa, tra pronostici e colpi di scena.</p>
       </div>
       <div class="card">
-        <div class="ic">🎁</div>
-        <h3>Missione Bonus</h3>
-        <p>Una sfida extra facoltativa che regala punti bonus a chi la completa.</p>
+        <div class="ic">💶</div>
+        <h3>Sei Troppo Fiscale!</h3>
+        <p>Format a tema economico, tra bilanci e battute al fulmicotone.</p>
+      </div>
+      <div class="card">
+        <div class="ic">👠</div>
+        <h3>Cenerentola</h3>
+        <p>Trova la scarpetta giusta in questo format a tema fiabesco.</p>
+      </div>
+      <div class="card">
+        <div class="ic">🧮</div>
+        <h3>La Resa dei Conti</h3>
+        <p>Il momento in cui i punti si sommano e i giochi si fanno seri.</p>
+      </div>
+      <div class="card">
+        <div class="ic">🏁</div>
+        <h3>Il Punto della Situazione</h3>
+        <p>Una pausa nel format per fare il punto su classifica e sfide.</p>
+      </div>
+      <div class="card">
+        <div class="ic">🔧</div>
+        <h3>L'Idraulico</h3>
+        <p>Format a tema riparazioni, tra ingegno e improvvisazione.</p>
       </div>
     </div>
   </div>

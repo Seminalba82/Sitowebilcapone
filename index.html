@@ -28,12 +28,13 @@
     --white:#f3f6ff; --muted:#93a3c9; --border:rgba(0,246,255,.14);
   }
   *{box-sizing:border-box; margin:0; padding:0;}
-  html{scroll-behavior:smooth;}
+  html{scroll-behavior:smooth; overscroll-behavior-y:none;}
   body{
     font-family:'Outfit',sans-serif; color:var(--white); background:var(--bg);
     line-height:1.55;
     overflow-x:hidden;
     position:relative;
+    overscroll-behavior-y:none;
   }
   body::before{
     content:""; position:fixed; inset:0; z-index:-2; pointer-events:none;

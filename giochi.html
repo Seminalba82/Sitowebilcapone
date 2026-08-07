@@ -18,12 +18,13 @@
     --white:#f3f6ff; --muted:#93a3c9; --border:rgba(0,246,255,.14);
   }
   *{box-sizing:border-box; margin:0; padding:0;}
-  html{scroll-behavior:smooth;}
+  html{scroll-behavior:smooth; overscroll-behavior-y:none;}
   body{
     font-family:'Outfit',sans-serif; color:var(--white); background:var(--bg);
     line-height:1.55;
     overflow-x:hidden;
     position:relative;
+    overscroll-behavior-y:none;
   }
   body::before{
     content:""; position:fixed; inset:0; z-index:-2; pointer-events:none;
@@ -220,17 +221,9 @@
   .mgCount{font-family:'Orbitron',sans-serif; font-weight:900; font-size:clamp(50px,10vw,90px); color:var(--cyan); text-shadow:0 0 30px rgba(0,246,255,.6); line-height:1;
     animation:numFlicker 2.2s ease-in-out infinite;}
   .mgCats{display:flex; flex-wrap:wrap; gap:12px; justify-content:center; margin-top:26px;}
-  .mgCat{background:rgba(255,255,255,.04); border:1px solid rgba(0,246,255,.3); border-radius:14px; padding:14px 20px; font-weight:700; font-size:14px; color:var(--muted); min-width:150px;
-    text-decoration:none; display:block; cursor:pointer; position:relative;
-    box-shadow:0 0 0 1px rgba(0,246,255,.05) inset, 0 4px 14px rgba(0,0,0,.3);
-    transition:transform .2s ease, border-color .2s ease, background .2s ease, box-shadow .2s ease;}
-  .mgCat:hover{transform:translateY(-4px); border-color:var(--cyan); background:rgba(0,246,255,.08);
-    box-shadow:0 0 0 1px rgba(0,246,255,.12) inset, 0 12px 26px rgba(0,246,255,.22);}
+  .mgCat{background:rgba(255,255,255,.04); border:1px dashed var(--border); border-radius:14px; padding:14px 20px; font-weight:700; font-size:14px; color:var(--muted); min-width:150px;}
   .mgCat b{display:block; color:var(--white); font-size:15px; margin-bottom:4px;}
-  .mgCatCta{display:block; margin-top:10px; font-family:'Chakra Petch',sans-serif; font-size:11px; font-weight:800;
-    letter-spacing:.8px; text-transform:uppercase; color:var(--cyan);}
-  .mystery{opacity:.75; font-style:italic;}
-  .mystery .mgCatCta{color:var(--magenta);}
+  .mystery{opacity:.55; font-style:italic;}
 
   /* ---------- PRODOTTI (Tombola / Asta) ---------- */
   .prodCard{border:1px solid transparent; border-radius:4px;

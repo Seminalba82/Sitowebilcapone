@@ -315,7 +315,8 @@
   .galleryMedia{border-radius:16px; overflow:hidden; border:1px solid var(--border); aspect-ratio:4/3; background:#000;
     transition:transform .25s ease, border-color .25s ease;}
   .galleryMedia:hover{transform:translateY(-3px); border-color:var(--cyan);}
-  .galleryMedia video, .galleryMedia img{width:100%; height:100%; object-fit:cover; display:block;}
+  .galleryMedia img{width:100%; height:100%; object-fit:cover; display:block;}
+  .galleryMedia video{width:100%; height:100%; object-fit:contain; display:block; background:#000;}
 
   /* ---------- INCLUSO ---------- */
   .inclList{display:grid; grid-template-columns:1fr; gap:18px;}

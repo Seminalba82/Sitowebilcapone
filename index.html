@@ -66,7 +66,7 @@
   /* ---------- HEADER ---------- */
   header{position:sticky; top:0; z-index:50; backdrop-filter:blur(14px); background:rgba(4,3,9,.7); border-bottom:1px solid rgba(0,246,255,.12);
     box-shadow:0 10px 40px rgba(0,0,0,.5);}
-  .navRow{display:flex; align-items:center; justify-content:space-between; padding:14px 0;}
+  .navRow{display:flex; align-items:center; justify-content:space-between; padding:14px 0; flex-wrap:wrap; row-gap:10px;}
   .logo{font-family:'Fredoka',sans-serif; font-weight:700; font-size:clamp(16px,2.6vw,22px); text-transform:uppercase; letter-spacing:.3px;
     background:linear-gradient(180deg, #ffe38a 0%, var(--gold) 55%, #ff8a1f 100%);
     -webkit-background-clip:text; background-clip:text; color:transparent;}
@@ -391,11 +391,14 @@
       <a href="#cose">Cos'è</a>
       <a href="#minigiochi">Minigiochi</a>
       <a href="#prodotti">Altri prodotti Il Capone</a>
-      <a href="#ingiro">Il Capone in giro</a>
+      <a href="#ingiro">Foto e Video</a>
       <a href="#prezzi">Prezzi</a>
       <a href="#contatti">Contatti</a>
     </nav>
-    <a class="btn btnGold btnSmall" href="https://wa.me/393295428123?text=Ciao%21%20Vorrei%20avere%20informazioni%20su%20Il%20Capone%20Quiz%203.0" target="_blank" rel="noopener">📱 Richiedi info</a>
+    <div style="display:flex; gap:10px; align-items:center;">
+      <a class="btn btnGold btnSmall" href="in-giro-per-i-locali.html">🗺️ In giro per i locali</a>
+      <a class="btn btnGold btnSmall" href="https://wa.me/393295428123?text=Ciao%21%20Vorrei%20avere%20informazioni%20su%20Il%20Capone%20Quiz%203.0" target="_blank" rel="noopener">📱 Richiedi info</a>
+    </div>
   </div>
 </header>
 
@@ -629,9 +632,8 @@
         Il tuo browser non supporta la riproduzione video.
       </video>
     </div>
-    <div style="text-align:center; margin-top:24px; display:flex; flex-wrap:wrap; gap:16px; justify-content:center;">
+    <div style="text-align:center; margin-top:24px;">
       <a class="btn btnGhost" href="galleria.html">🎥 Guarda altri video e foto</a>
-      <a class="btn btnGold" href="in-giro-per-i-locali.html">🗺️ Il Capone Quiz in giro per i locali</a>
     </div>
   </div>
 </section>

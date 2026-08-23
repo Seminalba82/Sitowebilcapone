@@ -317,6 +317,10 @@
   .galleryMedia:hover{transform:translateY(-3px); border-color:var(--cyan);}
   .galleryMedia img{width:100%; height:100%; object-fit:cover; display:block;}
   .galleryMedia video{width:100%; height:100%; object-fit:contain; display:block; background:#000;}
+  .galleryMedia.portrait{aspect-ratio:9/16;}
+  .galleryCard{display:flex; flex-direction:column; gap:10px;}
+  .galleryCaption{text-align:center; font-family:'Chakra Petch',sans-serif; font-weight:700; text-transform:uppercase;
+    letter-spacing:.6px; font-size:13px; color:var(--gold);}
 
   /* ---------- INCLUSO ---------- */
   .inclList{display:grid; grid-template-columns:1fr; gap:18px;}
@@ -404,6 +408,62 @@
       <p>Pubblico in gara, locali, eventi live: uno sguardo a Il Capone Quiz in azione. Questa pagina si aggiorna con nuovo materiale dopo ogni serata.</p>
     </div>
     <div class="galleryGrid">
+      <div class="galleryCard">
+        <div class="galleryMedia portrait">
+          <video controls preload="metadata" playsinline>
+            <source src="evento-1.mp4" type="video/mp4">
+          </video>
+        </div>
+        <div class="galleryCaption">QR Iscrizione</div>
+      </div>
+      <div class="galleryCard">
+        <div class="galleryMedia portrait">
+          <video controls preload="metadata" playsinline>
+            <source src="evento-2.mp4" type="video/mp4">
+          </video>
+        </div>
+        <div class="galleryCaption">Gioco Abilità Tap Tap</div>
+      </div>
+      <div class="galleryCard">
+        <div class="galleryMedia portrait">
+          <video controls preload="metadata" playsinline>
+            <source src="evento-3.mp4" type="video/mp4">
+          </video>
+        </div>
+        <div class="galleryCaption">Gioco Fortuna Supertris</div>
+      </div>
+      <div class="galleryCard">
+        <div class="galleryMedia portrait">
+          <video controls preload="metadata" playsinline>
+            <source src="evento-4.mp4" type="video/mp4">
+          </video>
+        </div>
+        <div class="galleryCaption">Si grida con Mercatista per un giorno!</div>
+      </div>
+      <div class="galleryCard">
+        <div class="galleryMedia portrait">
+          <video controls preload="metadata" playsinline>
+            <source src="evento-5.mp4" type="video/mp4">
+          </video>
+        </div>
+        <div class="galleryCaption">Domanda Quiz Siciliano</div>
+      </div>
+      <div class="galleryCard">
+        <div class="galleryMedia portrait">
+          <video controls preload="metadata" playsinline>
+            <source src="evento-6.mp4" type="video/mp4">
+          </video>
+        </div>
+        <div class="galleryCaption">Iscrizioni</div>
+      </div>
+      <div class="galleryCard">
+        <div class="galleryMedia portrait">
+          <video controls preload="metadata" playsinline>
+            <source src="evento-7.mp4" type="video/mp4">
+          </video>
+        </div>
+        <div class="galleryCaption">Gioco dei Bussolotti</div>
+      </div>
       <div class="galleryMedia">
         <video controls preload="metadata" playsinline>
           <source src="serata-video-1.mp4" type="video/mp4">

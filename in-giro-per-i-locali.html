@@ -392,6 +392,8 @@
   .venueCard:hover{transform:translateY(-5px); border-color:rgba(0,246,255,.35);}
   .venueCard .logoBox{height:96px; display:flex; align-items:center; justify-content:center; margin-bottom:16px;}
   .venueCard .logoBox img{max-height:96px; max-width:100%; object-fit:contain; filter:drop-shadow(0 0 14px rgba(0,246,255,.15));}
+  .venueCard .posterBox{margin:-26px -22px 16px; border-radius:4px 4px 0 0; overflow:hidden; aspect-ratio:3/4;}
+  .venueCard .posterBox img{width:100%; height:100%; object-fit:cover; display:block;}
   .venueCard h3{font-family:'Chakra Petch',sans-serif; font-size:16px; color:var(--white); margin-bottom:10px; text-transform:uppercase; letter-spacing:.4px;}
   .venueCard .dateChip{display:inline-block; font-family:'Chakra Petch',sans-serif; font-size:12.5px; font-weight:700; letter-spacing:.6px;
     color:#050014; background:linear-gradient(120deg,var(--cyan),var(--gold)); padding:6px 16px; border-radius:999px; text-transform:uppercase;}
@@ -447,9 +449,10 @@
       ============================================================
       Copia l'intero blocco <div class="venueCard">...</div> qui sotto,
       incollalo e modifica:
-        - src dell'immagine: metti il logo del locale in assets/loghi/
-          (es. assets/loghi/lido-bahia.png) e aggiorna il percorso
-        - alt="Nome Locale": nome del locale
+        - src dell'immagine: carica la locandina del locale nella
+          stessa cartella di questo file (root del sito) e scrivi
+          il nome del file, es. src="nome-locale.jpg"
+        - alt="Locandina Nome Locale": nome del locale
         - <h3>Nome Locale</h3>: nome visualizzato
         - la data dentro <span class="dateChip">
       Per RIMUOVERE una data passata, cancella l'intero blocco.
@@ -458,25 +461,25 @@
     <div class="venueGrid">
 
       <div class="venueCard">
-        <div class="logoBox"><img src="assets/loghi/oceanomare.png" alt="Oceanomare San Leone" onerror="this.style.display='none'"></div>
+        <div class="posterBox"><img src="oceanomare.jpg" alt="Locandina Oceanomare San Leone"></div>
         <h3>Oceanomare — San Leone</h3>
         <span class="dateChip">📅 Martedì 25 Agosto</span>
       </div>
 
       <div class="venueCard">
-        <div class="logoBox"><img src="assets/loghi/naselli-pub.png" alt="Naselli Pub Aragona" onerror="this.style.display='none'"></div>
+        <div class="posterBox"><img src="naselli-pub.jpg" alt="Locandina Naselli Aragona"></div>
         <h3>Naselli Pub — Aragona</h3>
         <span class="dateChip">📅 Mercoledì 26 Agosto</span>
       </div>
 
       <div class="venueCard">
-        <div class="logoBox"><img src="assets/loghi/gabbia-di-matti.png" alt="La Gabbia di Matti Montaperto" onerror="this.style.display='none'"></div>
+        <div class="posterBox"><img src="gabbia-di-matti.jpg" alt="Locandina Gabbia di Matti Montaperto"></div>
         <h3>La Gabbia di Matti — Montaperto</h3>
         <span class="dateChip">📅 Giovedì 27 Agosto</span>
       </div>
 
       <div class="venueCard">
-        <div class="logoBox"><img src="assets/loghi/melamangio-da-paolo.png" alt="Melamangio da Paolo Favara" onerror="this.style.display='none'"></div>
+        <div class="posterBox"><img src="melamangio-da-paolo.jpg" alt="Locandina Melamangio da Paolo Favara"></div>
         <h3>Da Settembre tutti i Venerdì</h3>
         <p style="color:var(--muted); font-size:12.5px; margin:-4px 0 12px;">Melamangio da Paolo (Favara)</p>
         <span class="dateChip">📅 Ogni Venerdì</span>

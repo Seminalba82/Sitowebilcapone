@@ -3,20 +3,20 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>IL CAPONE QUIZ 3.0 — Noleggio quiz, tombola e asta per eventi live</title>
-<meta name="description" content="Quiz interattivo, tombola live e asta live per feste, locali ed eventi. Noleggio a giorno, mese o anno con chiave di licenza. Assistenza h24 inclusa.">
-<link rel="canonical" href="https://ilcaponequiz.win/">
+<title>Come funziona — Manuale Il Capone Quiz 3.0</title>
+<meta name="description" content="Manuale d'uso generale de Il Capone Quiz 3.0: come funziona la regia, il proiettore, i telefoni dei giocatori, i minigiochi e i moduli disponibili.">
+<link rel="canonical" href="https://ilcaponequiz.win/manuale.html">
 <link rel="icon" type="image/png" sizes="512x512" href="/favicon.png">
 <link rel="apple-touch-icon" href="/favicon.png">
 <meta property="og:type" content="website">
-<meta property="og:url" content="https://ilcaponequiz.win/">
-<meta property="og:title" content="IL CAPONE QUIZ 3.0 — Noleggio quiz, tombola e asta per eventi live">
-<meta property="og:description" content="Quiz interattivo, tombola live e asta live per feste, locali ed eventi. Noleggio a giorno, mese o anno con chiave di licenza. Assistenza h24 inclusa.">
+<meta property="og:url" content="https://ilcaponequiz.win/manuale.html">
+<meta property="og:title" content="Come funziona — Manuale Il Capone Quiz 3.0">
+<meta property="og:description" content="Manuale d'uso generale de Il Capone Quiz 3.0: come funziona la regia, il proiettore, i telefoni dei giocatori, i minigiochi e i moduli disponibili.">
 <meta property="og:image" content="https://ilcaponequiz.win/og-image.jpg">
 <meta property="og:locale" content="it_IT">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="IL CAPONE QUIZ 3.0 — Noleggio quiz, tombola e asta per eventi live">
-<meta name="twitter:description" content="Quiz interattivo, tombola live e asta live per feste, locali ed eventi. Noleggio a giorno, mese o anno con chiave di licenza. Assistenza h24 inclusa.">
+<meta name="twitter:title" content="Come funziona — Manuale Il Capone Quiz 3.0">
+<meta name="twitter:description" content="Manuale d'uso generale de Il Capone Quiz 3.0: come funziona regia, proiettore, telefoni, minigiochi e moduli.">
 <meta name="twitter:image" content="https://ilcaponequiz.win/og-image.jpg">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -376,6 +376,45 @@
     background:linear-gradient(90deg, var(--magenta), var(--cyan), var(--lime), var(--gold), var(--viola));}
   footer a{color:var(--gold); text-decoration:none;}
 
+  /* ---------- MANUALE ---------- */
+  .manHero{padding:60px 0 10px; text-align:center;}
+  .manHero .kicker{margin-bottom:18px;}
+  .manHero h1{font-family:'Fredoka',sans-serif; font-weight:700; text-transform:uppercase; letter-spacing:.3px;
+    font-size:clamp(26px,5vw,42px); color:var(--white); max-width:800px; margin:0 auto;}
+  .manHero h1 span{color:var(--gold); text-shadow:0 0 22px rgba(234,255,43,.4);}
+  .manHero p.lead{max-width:620px; margin:16px auto 0; color:var(--muted); font-size:15.5px;}
+  .manVersion{display:inline-flex; align-items:center; gap:8px; margin-top:20px; font-family:'Chakra Petch',sans-serif;
+    font-size:12.5px; font-weight:700; letter-spacing:.6px; color:#050014; background:linear-gradient(120deg,var(--cyan),var(--gold));
+    padding:7px 18px; border-radius:999px; text-transform:uppercase;}
+  .manToc{display:flex; flex-wrap:wrap; gap:10px; justify-content:center; max-width:900px; margin:34px auto 0;}
+  .manToc a{font-family:'Chakra Petch',sans-serif; font-size:12.5px; font-weight:600; letter-spacing:.4px;
+    color:var(--muted); text-decoration:none; border:1px solid var(--border); padding:8px 16px; border-radius:999px;
+    transition:border-color .2s ease, color .2s ease;}
+  .manToc a:hover{border-color:var(--cyan); color:var(--cyan);}
+  .manSection{padding:54px 0; border-top:1px solid var(--border);}
+  .manSection .sectionHead{text-align:left; margin-bottom:26px;}
+  .manSection .sectionHead h2{font-size:clamp(21px,3.4vw,30px); text-align:left; margin:8px 0 0;}
+  .manSubhead{font-family:'Chakra Petch',sans-serif; font-size:16px; font-weight:700; color:var(--cyan);
+    text-transform:uppercase; letter-spacing:.4px; margin:26px 0 10px;}
+  .manSubhead:first-child{margin-top:0;}
+  .manText{color:var(--muted); font-size:15px; line-height:1.75; max-width:760px;}
+  .manList{list-style:none; max-width:760px; margin:14px 0 0;}
+  .manList li{position:relative; padding-left:26px; margin-bottom:12px; color:var(--muted); font-size:15px; line-height:1.7;}
+  .manList li::before{content:"▸"; position:absolute; left:0; top:0; color:var(--cyan);}
+  .manTriad{display:grid; grid-template-columns:1fr; gap:16px; margin-top:24px;}
+  @media(min-width:760px){ .manTriad{grid-template-columns:repeat(3,1fr);} }
+  .manTriad .card{padding:22px;}
+  .manTriad .card h3{font-size:15px;}
+  .manTriad .card p{color:var(--muted); font-size:13.5px; line-height:1.6;}
+  .manModTable{width:100%; max-width:520px; border-collapse:collapse; margin-top:18px; font-family:'Chakra Petch',sans-serif;}
+  .manModTable td{padding:12px 16px; border-bottom:1px solid var(--border); font-size:14.5px; color:var(--white);}
+  .manModTable tr:last-child td{border-bottom:none;}
+  .manModTable td.num{color:var(--cyan); font-weight:700; width:36px;}
+  .manNewsBox{background:linear-gradient(135deg, rgba(0,246,255,.12), rgba(234,255,43,.1)); border:1px solid rgba(0,246,255,.3);
+    border-radius:4px; clip-path:polygon(18px 0,100% 0,100% calc(100% - 18px),calc(100% - 18px) 100%,0 100%,0 18px);
+    padding:26px 24px; margin-top:16px; max-width:760px;}
+  .manNewsBox b{color:var(--gold);}
+
   @media (prefers-reduced-motion: reduce){
     *, *::before, *::after{animation-duration:.001ms !important; animation-iteration-count:1 !important; transition-duration:.001ms !important;}
   }
@@ -385,386 +424,212 @@
 
 <header>
   <div class="wrap navRow">
-    <div class="logo brandFont">IL CAPONE <span>QUIZ 3.0</span></div>
+    <a href="index.html" class="logo brandFont">IL CAPONE <span>QUIZ 3.0</span></a>
     <nav>
-      <a href="#novita">Novità</a>
-      <a href="#cose">Cos'è</a>
-      <a href="#minigiochi">Minigiochi</a>
-      <a href="#prodotti">Altri prodotti Il Capone</a>
-      <a href="#ingiro">Foto e Video</a>
-      <a href="#prezzi">Prezzi</a>
-      <a href="#contatti">Contatti</a>
+      <a href="index.html#novita">Novità</a>
+      <a href="index.html#cose">Cos'è</a>
+      <a href="index.html#minigiochi">Minigiochi</a>
+      <a href="index.html#prodotti">Altri prodotti Il Capone</a>
+      <a href="index.html#ingiro">Foto e Video</a>
+      <a href="index.html#prezzi">Prezzi</a>
+      <a href="index.html#contatti">Contatti</a>
     </nav>
     <div style="display:flex; gap:10px; align-items:center; flex-wrap:wrap;">
       <a class="btn btnGhost btnSmall" href="in-giro-per-i-locali.html">🗺️ In giro per i locali</a>
       <a class="btn btnGhost btnSmall" href="in-giro-per-i-locali.html#storico">📍 Il Capone è stato anche qui</a>
-      <a class="btn btnGold btnSmall" href="#prezzi">💰 Vedi i prezzi</a>
+      <a class="btn btnGold btnSmall" href="index.html#prezzi">💰 Vedi i prezzi</a>
       <a class="btn btnGold btnSmall" href="https://wa.me/393295428123?text=Ciao%21%20Vorrei%20avere%20informazioni%20su%20Il%20Capone%20Quiz%203.0" target="_blank" rel="noopener">📱 Richiedi info</a>
     </div>
   </div>
 </header>
 
-<div class="tickerBar">
-  <div class="tickerTrack">
-    <span><span class="dot"></span>QUIZ · TOMBOLA · ASTA · RUOTA · FANTACALCIO</span>
-    <span><b>🔥 NOLEGGIO SUBITO DISPONIBILE 🔥</b></span>
-    <span><span class="dot"></span>ASSISTENZA H24</span>
-    <span><span class="dot"></span>50+ MINIGIOCHI NEL CATALOGO</span>
-    <span><span class="dot"></span>QUIZ · TOMBOLA · ASTA · RUOTA · FANTACALCIO</span>
-    <span><b>🔥 NOLEGGIO SUBITO DISPONIBILE 🔥</b></span>
-    <span><span class="dot"></span>ASSISTENZA H24</span>
-    <span><span class="dot"></span>50+ MINIGIOCHI NEL CATALOGO</span>
-  </div>
-</div>
-
-<section class="hero">
-  <span class="floatIcon fi1"><svg width="36" height="36" viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg" style="display:block">
-<defs><linearGradient id="diceGradh1" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#ffffff"/><stop offset="100%" stop-color="#cfd2e0"/></linearGradient></defs>
-<rect x="6" y="6" width="52" height="52" rx="13" fill="url(#diceGradh1)" stroke="#1a1a2e" stroke-width="2.5"/>
-<circle cx="20" cy="20" r="5" fill="#1a1a2e"/><circle cx="44" cy="20" r="5" fill="#1a1a2e"/>
-<circle cx="32" cy="32" r="5" fill="#1a1a2e"/>
-<circle cx="20" cy="44" r="5" fill="#1a1a2e"/><circle cx="44" cy="44" r="5" fill="#1a1a2e"/>
-</svg></span>
-  <span class="floatIcon fi2"><svg width="44" height="44" viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg" style="display:block">
-<rect x="9" y="3" width="46" height="58" rx="7" fill="#fff" stroke="#1a1a2e" stroke-width="2.5" transform="rotate(-8 32 32)"/>
-<g transform="rotate(-8 32 32)">
-<path d="M32 15 L36 25 L47 25 L38 32 L41 43 L32 36 L23 43 L26 32 L17 25 L28 25 Z" fill="#ff1fc9"/>
-<text x="14" y="18" font-size="10" font-family="Georgia,serif" font-weight="700" fill="#1a1a2e">J</text>
-</g>
-</svg></span>
-  <span class="floatIcon fi3"><svg width="30" height="30" viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg" style="display:block">
-<circle cx="32" cy="32" r="27" fill="#fff" stroke="#1a1a2e" stroke-width="2"/>
-<circle cx="32" cy="32" r="20" fill="#ff2b4d"/>
-<circle cx="32" cy="32" r="13" fill="#fff"/>
-<circle cx="32" cy="32" r="6" fill="#ff2b4d"/>
-</svg></span>
-  <span class="floatIcon fi4"><svg width="38" height="38" viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg" style="display:block">
-<circle cx="32" cy="32" r="27" fill="#1a1a2e" stroke="#00f6ff" stroke-width="2.5"/>
-<text x="32" y="43" font-size="32" font-family="'Chakra Petch',sans-serif" font-weight="700" fill="#00f6ff" text-anchor="middle">?</text>
-</svg></span>
-  <span class="floatIcon fi5"><svg width="26" height="26" viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg" style="display:block">
-<defs><linearGradient id="goldGradh5" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#fff3b0"/><stop offset="55%" stop-color="#eaff2b"/><stop offset="100%" stop-color="#c99400"/></linearGradient></defs>
-<path d="M22 8h20v13c0 8-4.5 14-10 14s-10-6-10-14V8z" fill="url(#goldGradh5)" stroke="#8a6d00" stroke-width="1.5"/>
-<path d="M22 12h-8c0 7 3.5 12 8 13" fill="none" stroke="url(#goldGradh5)" stroke-width="3"/>
-<path d="M42 12h8c0 7-3.5 12-8 13" fill="none" stroke="url(#goldGradh5)" stroke-width="3"/>
-<rect x="29" y="35" width="6" height="9" fill="url(#goldGradh5)"/>
-<rect x="21" y="44" width="22" height="6" rx="2" fill="url(#goldGradh5)" stroke="#8a6d00" stroke-width="1"/>
-<path d="M32 15l1.8 3.6 4 .5-2.9 2.8.7 4-3.6-1.9-3.6 1.9.7-4-2.9-2.8 4-.5z" fill="#fffbe0"/>
-</svg></span>
-  <div class="gridFloor"></div>
+<section class="manHero">
   <div class="wrap">
-    <span class="kicker">Noleggio con chiave di licenza · Nessuna installazione</span>
-    <div class="heroMascotWrap">
-      <img class="heroMascot" src="assets/img/logo-mascotte-telefono.webp" alt="Il Capone Quiz 3.0 — mascotte">
-    </div>
-    <h1 class="brandFont">IL CAPONE<br><span class="accent" data-text="QUIZ 3.0">QUIZ 3.0</span></h1>
-    <p class="lead">Il quiz show interattivo che trasforma qualsiasi serata in un evento: pubblico in gara dal proprio smartphone, classifica dal vivo, proiettore acceso e tanta adrenalina. Pronto a noleggio, pronto in 5 minuti.</p>
-    <div class="heroCtas">
-      <a class="btn btnGold" href="https://wa.me/393295428123?text=Ciao%21%20Vorrei%20avere%20informazioni%20su%20Il%20Capone%20Quiz%203.0" target="_blank" rel="noopener">📱 Scrivimi su WhatsApp</a>
-    </div>
-    <div class="heroStrip">
-      <div class="chip">🎮 <b>50+</b> minigiochi</div>
-      <div class="chip">📱 Funziona su <b>qualsiasi smartphone</b></div>
-      <div class="chip">🔑 Attivazione <b>a chiave</b></div>
-      <div class="chip">🛠️ Assistenza <b>h24</b></div>
+    <span class="kicker">📘 Manuale d'uso</span>
+    <h1>Come funziona <span>Il Capone Quiz 3.0</span></h1>
+    <p class="lead">Tutto quello che serve per condurre una serata: come si avvia una partita, come funzionano regia, proiettore e telefoni, e come gestire punteggi e classifiche.</p>
+    <div class="manVersion">🔖 Versione documentata: v13.40</div>
+    <div class="manToc">
+      <a href="#cose-e">Cos'è</a>
+      <a href="#iniziare">Come iniziare</a>
+      <a href="#menu">I menu</a>
+      <a href="#meccaniche">Meccaniche</a>
+      <a href="#giocatori">Gestione giocatori</a>
+      <a href="#classifiche">Classifiche e podio</a>
+      <a href="#controlli">Pulsanti comuni</a>
+      <a href="#moduli">Moduli disponibili</a>
+      <a href="#novita">Novità versione</a>
+      <a href="#contatti-man">Contatti</a>
     </div>
   </div>
 </section>
 
-<section id="novita">
-  <div class="wrap">
-    <div class="highlightBox">
-      <span class="highlightBadge">🚀 Novità assoluta</span>
-      <h2>Si gioca anche <span class="accentCyan">senza proiettore, casse e microfoni</span></h2>
-      <p class="lead2">Con Il Capone Quiz tutto — non solo l'immagine — arriva direttamente sullo smartphone di ogni ospite. Anche chi non ha trovato posto davanti allo schermo resta protagonista al 100%, con la stessa esperienza di chi è in prima fila. E la regia? La conduci comodamente da dove vuoi.</p>
-      <div class="highlightGrid">
-        <div class="highlightItem">
-          <div class="ic">📱</div>
-          <b>Zero impianto necessario</b>
-          <span>Niente proiettore, casse o microfoni sono obbligatori: ogni domanda, ogni immagine e ogni punteggio compaiono direttamente sullo smartphone di ognuno.</span>
-        </div>
-        <div class="highlightItem">
-          <div class="ic">🌍</div>
-          <b>Si gioca da ovunque</b>
-          <span>Puoi far partecipare anche chi si trova dall'altra parte del mondo, comodamente seduto a casa propria: basta il link, non serve essere in sala.</span>
-        </div>
-        <div class="highlightItem">
-          <div class="ic">🎛️</div>
-          <b>Regia libera da vincoli</b>
-          <span>Conduci l'intera serata da PC, smartphone o tablet: nessuna postazione fissa, nessun cavo, massima libertà di movimento.</span>
-        </div>
-      </div>
-      <a class="btn btnGold" href="https://wa.me/393295428123?text=Ciao%21%20Ho%20letto%20che%20si%20puo%20giocare%20anche%20senza%20proiettore%2C%20casse%20o%20microfoni%3A%20vorrei%20saperne%20di%20piu" target="_blank" rel="noopener">📱 Scopri come funziona</a>
-    </div>
-  </div>
-</section>
-
-<section id="cose">
+<section class="manSection" id="cose-e">
   <div class="wrap">
     <div class="sectionHead">
       <div class="tag">Cos'è</div>
-      <h2>Un quiz show vero, non un'app da scaricare</h2>
-      <p>Basta un browser. Il presentatore apre la regia, il pubblico inquadra un QR code dal proprio telefono o riceve il link tramite WhatsApp o messaggio ed è già in gara! — nessuna app, nessuna registrazione.</p>
+      <h2>Cos'è Il Capone Quiz</h2>
     </div>
-    <div class="grid3">
+    <p class="manText">Il Capone Quiz 3.0 è un quiz interattivo per feste, eventi ed intrattenimento serale, pensato per essere condotto dal vivo da un animatore (la "regia") davanti a un pubblico che partecipa dal proprio smartphone, con le domande e i giochi proiettati su un grande schermo.</p>
+    <p class="manText" style="margin-top:14px;">Il sistema funziona su tre schermi che lavorano insieme in tempo reale:</p>
+    <div class="manTriad">
       <div class="card">
-        <div class="ic">📲</div>
-        <h3>Si entra con un QR o un link</h3>
-        <p>Ogni partecipante si unisce in pochi secondi dal proprio smartphone, inquadrando un QR o aprendo un link di invito condiviso sui social — senza installare nulla.</p>
-      </div>
-      <div class="card">
-        <div class="ic">🏆</div>
-        <h3>Classifica live e podio</h3>
-        <p>Punteggi aggiornati in tempo reale, podio finale con effetti speciali sul proiettore.</p>
+        <div class="ic">🎛️</div>
+        <h3>La Regia</h3>
+        <p>Lo schermo di chi conduce la serata (di solito un computer o un tablet), da cui si scelgono le domande, si avviano i minigiochi, si impostano tempi e punteggi, e si tiene sotto controllo tutta la partita.</p>
       </div>
       <div class="card">
-        <div class="ic">🖥️</div>
-        <h3>Vista regia + proiettore</h3>
-        <p>Il presentatore controlla tutto da un pannello dedicato, il pubblico segue su schermo grande.</p>
+        <div class="ic">📽️</div>
+        <h3>Il Proiettore</h3>
+        <p>Lo schermo grande visto da tutto il pubblico, che mostra domande, classifiche, grafiche dei giochi e risultati.</p>
       </div>
       <div class="card">
-        <div class="ic">🎨</div>
-        <h3>Personalizzabile</h3>
-        <p>Titolo, grafica e contenuti adattabili al tipo di evento: locale, matrimonio, festa aziendale, compleanno.</p>
-      </div>
-      <div class="card">
-        <div class="ic">🔑</div>
-        <h3>Licenza a chiave</h3>
-        <p>Ogni noleggio ha un codice personale legato al tuo dispositivo, semplice da attivare e rinnovare.</p>
-      </div>
-      <div class="card">
-        <div class="ic">🚀</div>
-        <h3>In continua crescita</h3>
-        <p>Nuovi contenuti aggiunti nel tempo: chi noleggia oggi, gioca meglio domani.</p>
+        <div class="ic">📱</div>
+        <h3>I Telefoni dei Giocatori</h3>
+        <p>Ogni partecipante entra inquadrando un QR code e gioca dal proprio smartphone, senza bisogno di installare nulla.</p>
       </div>
     </div>
-    <div style="text-align:center; margin-top:36px;">
-      <a class="btn btnGold" href="manuale.html">📘 Come funziona — leggi il manuale completo</a>
-    </div>
+    <p class="manText" style="margin-top:24px;">Tutti e tre gli schermi restano sincronizzati automaticamente: quando la regia avvia una domanda o un gioco, il proiettore e i telefoni si aggiornano da soli, in tempo reale.</p>
   </div>
 </section>
 
-<section id="minigiochi">
+<section class="manSection" id="iniziare">
   <div class="wrap">
     <div class="sectionHead">
-      <div class="tag">La sorpresa</div>
-      <h2>Oltre 50 minigiochi. Te ne sveliamo solo alcuni.</h2>
-      <p>Il resto lo scopri live, serata dopo serata: fa parte del divertimento, e continuiamo ad aggiungerne di nuovi.</p>
+      <div class="tag">Si parte</div>
+      <h2>Come iniziare una serata</h2>
     </div>
-    <div class="mgWrap">
-      <span class="floatIcon fi3"><svg width="30" height="30" viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg" style="display:block">
-<defs><linearGradient id="diceGradm3" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#ffffff"/><stop offset="100%" stop-color="#cfd2e0"/></linearGradient></defs>
-<rect x="6" y="6" width="52" height="52" rx="13" fill="url(#diceGradm3)" stroke="#1a1a2e" stroke-width="2.5"/>
-<circle cx="20" cy="20" r="5" fill="#1a1a2e"/><circle cx="44" cy="20" r="5" fill="#1a1a2e"/>
-<circle cx="32" cy="32" r="5" fill="#1a1a2e"/>
-<circle cx="20" cy="44" r="5" fill="#1a1a2e"/><circle cx="44" cy="44" r="5" fill="#1a1a2e"/>
-</svg></span>
-      <span class="floatIcon fi6"><svg width="28" height="28" viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg" style="display:block">
-<rect x="9" y="3" width="46" height="58" rx="7" fill="#fff" stroke="#1a1a2e" stroke-width="2.5" transform="rotate(-8 32 32)"/>
-<g transform="rotate(-8 32 32)">
-<path d="M32 15 L36 25 L47 25 L38 32 L41 43 L32 36 L23 43 L26 32 L17 25 L28 25 Z" fill="#ff1fc9"/>
-<text x="14" y="18" font-size="10" font-family="Georgia,serif" font-weight="700" fill="#1a1a2e">J</text>
-</g>
-</svg></span>
-      <span class="floatIcon fi7"><svg width="24" height="24" viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg" style="display:block">
-<circle cx="32" cy="32" r="27" fill="#1a1a2e" stroke="#00f6ff" stroke-width="2.5"/>
-<text x="32" y="43" font-size="32" font-family="'Chakra Petch',sans-serif" font-weight="700" fill="#00f6ff" text-anchor="middle">?</text>
-</svg></span>
-      <div class="mgCount">50+</div>
-      <div style="font-weight:700; color:var(--muted); margin-top:6px;">minigiochi già pronti nel catalogo</div>
-      <div class="mgCats">
-        <div class="mgCat"><b>🕹️ Giochi d'abilità</b>collaborazione e velocità</div>
-        <div class="mgCat"><b>🎯 Giochi di fortuna</b>riflessi e precisione</div>
-        <div class="mgCat"><b>🎁 Giochi a premi</b>aste, ruote, estrazioni</div>
-        <div class="mgCat mystery"><b>❓ E molto altro</b>si sblocca giocando</div>
-      </div>
-      <p style="margin-top:26px; color:var(--muted); font-size:14px;">Con il piano <b style="color:var(--white)">Basic</b> scegli tu 5 minigiochi dal catalogo. Con il piano <b style="color:var(--gold)">Full</b> ne scegli 20. Con il piano <b style="color:var(--cyan)">Annuale</b>: 15 minigiochi inclusi da subito e almeno un nuovo minigioco al mese, che resta per sempre incluso nel tuo abbonamento.</p>
-    </div>
-    <div class="grid2" style="margin-top:36px;">
-      <div class="prodCard">
-        <span class="badge lime">Gratis</span>
-        <div class="emoji">🎁</div>
-        <h3>3 pacchetti di domande in omaggio</h3>
-        <p style="color:var(--muted); font-size:14.5px;">Tre pacchetti già pronti all'uso, inclusi gratuitamente con ogni noleggio: li carichi e parti subito, senza scrivere una sola domanda.</p>
-        <ul>
-          <li>30 domande ciascuno, pronte per il gioco</li>
-          <li>Temi generalisti, adatti a qualsiasi pubblico</li>
-          <li>Caricamento immediato nella regia del quiz</li>
-        </ul>
-        <a class="btn btnGhost btnSmall" href="https://wa.me/393295428123?text=Ciao%21%20Vorrei%20richiedere%20i%203%20pacchetti%20di%20domande%20gratuiti" target="_blank" rel="noopener">📱 Richiedi i pacchetti gratis</a>
-      </div>
-      <div class="prodCard">
-        <span class="badge gold">A pagamento</span>
-        <div class="emoji">📚</div>
-        <h3>Pacchetti di domande a tema</h3>
-        <p style="color:var(--muted); font-size:14.5px;">Vuoi dare un taglio tematico alla serata? Ogni pacchetto extra ha una tematica diversa (cinema, musica, sport, cultura generale e molto altro).</p>
-        <ul>
-          <li>15€ a pacchetto: 30 domande su un'unica tematica o miste</li>
-          <li>Ogni quiz ha un tema dedicato, a scelta tra quelli disponibili</li>
-          <li>Pronti da caricare insieme al resto del catalogo</li>
-        </ul>
-        <a class="btn btnGold btnSmall" href="https://wa.me/393295428123?text=Ciao%21%20Vorrei%20informazioni%20sui%20pacchetti%20di%20domande%20a%20tema" target="_blank" rel="noopener">📱 Scopri i pacchetti a tema</a>
-      </div>
-    </div>
+    <p class="manText">All'avvio, la regia crea una nuova partita e sceglie un quiz tra quelli salvati (oppure ne prepara uno nuovo con le proprie domande). Il sistema genera un codice partita e un QR code, che vengono mostrati sul proiettore: i giocatori inquadrano il QR con la fotocamera del telefono, inseriscono il proprio nome, ed entrano nella lobby in attesa che la regia dia il via.</p>
+    <p class="manText" style="margin-top:14px;">Da qui la regia può scegliere liberamente cosa far giocare in ogni momento della serata: una domanda del quiz, un minigioco di abilità, un gioco di fortuna, oppure aprire uno dei moduli (votazioni, timer, aste).</p>
   </div>
 </section>
 
-<section id="prodotti">
+<section class="manSection" id="menu">
   <div class="wrap">
     <div class="sectionHead">
-      <div class="tag">Altri prodotti Il Capone</div>
-      <h2>Tombola, Asta, Ruota e Fantacalcio, live come il quiz</h2>
-      <p>Stessa filosofia: nessuna installazione, tutto dal telefono, gestione semplice per chi conduce la serata.</p>
+      <div class="tag">Struttura</div>
+      <h2>La struttura dei menu</h2>
     </div>
-    <div style="text-align:center;">
-      <a class="btn btnGhost" href="prodotti.html">🎮 Scopri tutti i prodotti</a>
-    </div>
+    <div class="manSubhead">🧠 Giochi di Abilità</div>
+    <p class="manText">Minigiochi dove conta la bravura, la velocità di riflessi, la memoria o il ragionamento dei giocatori: puzzle, memoria, calcolo, precisione. Chi è più bravo o veloce ottiene punteggi migliori.</p>
+    <div class="manSubhead">🍀 Giochi di Fortuna</div>
+    <p class="manText">Minigiochi basati sulla sorte: estrazioni, ruote, carte, scommesse. L'esito non dipende dall'abilità del giocatore ma dal caso — perfetti per coinvolgere anche chi non ama le sfide di velocità o cultura generale.</p>
+    <div class="manSubhead">🧩 Moduli</div>
+    <p class="manText">Strumenti di supporto alla serata, distinti dai minigiochi veri e propri: un cronometro a vista, una votazione del pubblico su una proposta, un'asta con rilancio in tempo reale, e una classifica di gradimento.</p>
   </div>
 </section>
 
-<section id="ingiro">
+<section class="manSection" id="meccaniche">
   <div class="wrap">
     <div class="sectionHead">
-      <div class="tag">Il Capone in giro</div>
-      <h2>Foto, video e serate vere</h2>
-      <p>Uno sguardo a Il Capone in azione: locali, eventi, pubblico in gara.</p>
+      <div class="tag">Regole</div>
+      <h2>Meccaniche generali</h2>
     </div>
-    <div class="galleryFeatured">
-      <span class="featBadge">▶ Guarda il promo</span>
-      <video controls preload="metadata" playsinline>
-        <source src="promo.mp4" type="video/mp4">
-        Il tuo browser non supporta la riproduzione video.
-      </video>
-    </div>
-    <div style="text-align:center; margin-top:24px;">
-      <a class="btn btnGold" href="galleria.html" style="font-size:16px; padding:17px 30px;">🎥 Guarda altri video e foto</a>
-    </div>
+    <div class="manSubhead">Punteggio</div>
+    <p class="manText">Ogni gioco assegna punti secondo regole proprie, impostabili dalla regia prima di ogni manche (punti fissi, a scalare col tempo di risposta, premi differenziati per il podio, ecc.). Il punteggio di ciascun giocatore si accumula per tutta la serata ed è sempre visibile in classifica.</p>
+    <div class="manSubhead">Tempo</div>
+    <p class="manText">Quasi tutti i minigiochi hanno un tempo limite scelto dalla regia al momento di avviarli, mostrato come barra a scorrimento sia sui telefoni che sul proiettore.</p>
+    <div class="manSubhead">Modalità Highlander</div>
+    <p class="manText">Una modalità opzionale di eliminazione diretta applicabile alle domande del quiz: chi sbaglia viene eliminato e non può più rispondere alle domande successive, finché non resta un solo giocatore — l'Highlander, il campione assoluto della serata. Se in un turno sbagliano tutti i rimasti insieme, eccezionalmente nessuno viene eliminato e si prosegue, per essere sicuri di arrivare comunque a un vincitore.</p>
   </div>
 </section>
 
-<section id="prezzi">
+<section class="manSection" id="giocatori">
   <div class="wrap">
     <div class="sectionHead">
-      <div class="tag">Prezzi</div>
-      <h2>Noleggia solo per quanto ti serve</h2>
-      <p>Chiave di licenza personale, attiva in pochi minuti. Due versioni: <b style="color:var(--white)">Basic</b> (scegli 5 minigiochi dal catalogo) e <b style="color:var(--white)">Full</b> (scegli 20 minigiochi dal catalogo).</p>
+      <div class="tag">Regia</div>
+      <h2>Gestione giocatori e punti</h2>
     </div>
-    <div class="priceGrid">
-      <div class="priceCard">
-        <div class="period">Giornaliero</div>
-        <div class="tiers">
-          <div class="tierRow">
-            <div class="tierName">Basic<small>scegli 5 minigiochi dal catalogo</small></div>
-            <div class="priceNums"><span class="oldPrice">35€</span><span class="price">30€</span></div>
-          </div>
-          <div class="tierRow">
-            <div class="tierName">Full<small>scegli 20 minigiochi dal catalogo</small></div>
-            <div class="priceNums"><span class="oldPrice">60€</span><span class="price">50€</span></div>
-          </div>
-        </div>
-        <div class="lockNote">🔒 PREZZO BLOCCATO FINO AL 20 NOVEMBRE 2026</div>
-        <p class="noteFull">Ideale per un singolo evento: festa, matrimonio, serata aziendale.</p>
-        <a class="btn btnGold" href="https://wa.me/393295428123?text=Ciao%21%20Vorrei%20prenotare%20il%20noleggio%20giornaliero%20del%20Quiz" target="_blank" rel="noopener">Prenota il giorno</a>
-      </div>
-      <div class="priceCard">
-        <div class="period">Mensile</div>
-        <div class="tiers">
-          <div class="tierRow">
-            <div class="tierName">Basic<small>scegli 5 minigiochi dal catalogo</small></div>
-            <div class="priceNums"><span class="oldPrice">130€</span><span class="price">100€</span></div>
-          </div>
-          <div class="tierRow">
-            <div class="tierName">Full<small>scegli 20 minigiochi dal catalogo</small></div>
-            <div class="priceNums"><span class="oldPrice">180€</span><span class="price">150€</span></div>
-          </div>
-        </div>
-        <div class="lockNote">🔒 PREZZO BLOCCATO FINO AL 20 NOVEMBRE 2026</div>
-        <p class="noteFull">Per chi ha più serate ravvicinate: locali, residency, animatori.</p>
-        <a class="btn btnGold" href="https://wa.me/393295428123?text=Ciao%21%20Vorrei%20prenotare%20il%20noleggio%20mensile%20del%20Quiz" target="_blank" rel="noopener">Prenota il mese</a>
-      </div>
-      <div class="priceCard featured">
-        <div class="period">Annuale</div>
-        <div class="priceNums" style="justify-content:center;"><span class="oldPrice big">460€</span><span class="price single">400€</span></div>
-        <div class="lockNote">🔒 PREZZO BLOCCATO FINO AL 31 DICEMBRE 2026</div>
-        <p class="noteFull">Include da subito <b style="color:var(--gold)">15 minigiochi scelti da noi</b> per garantire un'esperienza completa. Durante l'anno arrivano <b style="color:var(--gold)">nuovi minigiochi (1 garantito al mese)</b>, che restano inclusi per sempre nel tuo abbonamento. La soluzione più conveniente per chi lavora tutto l'anno.</p>
-        <p class="noteFull" style="margin-top:12px;">🎁 Con il pacchetto annuale è inclusa una chiave aggiuntiva, in omaggio, a scelta tra <b style="color:var(--white)">La Ruota Gira per Tutti</b>, <b style="color:var(--white)">Asta</b> o <b style="color:var(--white)">Fantacalcio</b>. Questa chiave non sblocca un altro quiz: dà accesso a uno di questi pacchetti aggiuntivi, a tua scelta.</p>
-        <a class="btn btnGold" href="https://wa.me/393295428123?text=Ciao%21%20Vorrei%20prenotare%20il%20piano%20annuale%20del%20Quiz" target="_blank" rel="noopener">Prenota l'anno</a>
-      </div>
-    </div>
-    <div class="priceFootnote">
-      <p>⚠️ I prezzi sono soggetti a variazione. Il pacchetto scelto può essere modificato in qualsiasi momento, a partire dalla scadenza di quello attualmente acquistato.</p>
-      <a class="btn btnGold" href="https://wa.me/393295428123?text=Ciao%21%20Vorrei%20richiedere%20la%20mia%20chiave%20per%20il%20periodo%20di%20prova%20gratuita" target="_blank" rel="noopener" style="margin-top:24px;">Richiedi ora la tua chiave per un periodo di prova gratuita!</a>
-    </div>
+    <p class="manText">Dal pannello "Gestisci Giocatori", sempre raggiungibile dalla regia, è possibile tenere sotto controllo ogni aspetto dei partecipanti durante la serata:</p>
+    <ul class="manList">
+      <li>Ordinare l'elenco alfabeticamente o per punteggio, per trovare rapidamente chi si cerca.</li>
+      <li>Aggiungere o togliere punti manualmente a un singolo giocatore in qualsiasi momento — utile per correggere una svista o premiare un episodio simpatico successo dal vivo.</li>
+      <li>Rinominare un partecipante, ad esempio se ha scritto un nome inopportuno in fase di ingresso: da quel momento non potrà più riscriverlo.</li>
+      <li>Far cambiare telefono a un giocatore senza che perda nome e punti: si genera un codice usa e getta da fargli inserire sul telefono nuovo (utile in caso di batteria scarica o problemi tecnici).</li>
+      <li>Reintegrare in partita un giocatore eliminato dalla Modalità Highlander, se la regia decide di dargli un'altra possibilità.</li>
+      <li>Eliminare definitivamente un giocatore che si ritira o lascia la serata in anticipo.</li>
+      <li>Aggiungere "squadre manuali" senza smartphone — un tavolo, un gruppo, chi non ha il telefono con sé — che ricevono punti solo dalla regia e dal modulo Votometro, restando comunque in classifica insieme a tutti gli altri.</li>
+    </ul>
   </div>
 </section>
 
-<section>
+<section class="manSection" id="classifiche">
   <div class="wrap">
     <div class="sectionHead">
-      <div class="tag">Sempre incluso</div>
-      <h2>Non noleggi solo un file, noleggi un supporto</h2>
+      <div class="tag">Risultati</div>
+      <h2>Classifiche e podio</h2>
     </div>
-    <div class="inclList">
-      <div class="inclItem">
-        <div class="ic">🕐</div>
-        <h4>Assistenza h24</h4>
-        <p>Un problema durante l'evento? Rispondiamo subito, anche di sera e nel weekend.</p>
-      </div>
-      <div class="inclItem">
-        <div class="ic">🎬</div>
-        <h4>Video tutorial</h4>
-        <p>Guide passo-passo per gestire regia, proiettore e minigiochi senza sorprese.</p>
-      </div>
-      <div class="inclItem">
-        <div class="ic">🧰</div>
-        <h4>Materiale operativo</h4>
-        <p>Tutto quello che serve per condurre la serata, pronto all'uso.</p>
-      </div>
-      <div class="inclItem">
-        <div class="ic">🐛</div>
-        <h4>Bug risolti in fretta</h4>
-        <p>Eventuali problemi tecnici vengono sistemati rapidamente prima e/o dopo l'evento.</p>
-      </div>
-    </div>
+    <p class="manText">Dopo ogni domanda del quiz, sul proiettore compare la classifica aggiornata in tempo reale, limitata alle prime posizioni per restare sempre leggibile anche con moltissimi giocatori collegati.</p>
+    <p class="manText" style="margin-top:14px;">In qualunque momento della serata, la regia può richiamare il podio: una rivelazione a tappe (prima il terzo posto, poi il secondo, infine il primo) che tiene la suspense alta, sincronizzata automaticamente su proiettore e telefoni di tutti i giocatori. Lo stesso meccanismo si usa sia per un podio intermedio a metà serata, sia per il podio finale di chiusura.</p>
+    <p class="manText" style="margin-top:14px;">A fine quiz viene generato in automatico, senza bisogno di alcun pulsante, un report della serata: quiz giocato, data, durata, codice partita, e un riepilogo pensato per essere riletto con calma dopo l'evento — utile per valutare come è andata e accorgersi di eventuali anomalie (scarsa partecipazione, domande su cui nessuno ha risposto giusto, ecc.).</p>
   </div>
 </section>
 
-<section>
+<section class="manSection" id="controlli">
   <div class="wrap">
     <div class="sectionHead">
-      <div class="tag">Come funziona</div>
-      <h2>Dal contatto alla serata, in 3 passaggi</h2>
+      <div class="tag">Comandi</div>
+      <h2>Pulsanti e controlli comuni</h2>
     </div>
-    <div class="steps">
-      <div class="step">
-        <div class="n">01</div>
-        <h3>Scegli il piano</h3>
-        <p>Giorno, mese o anno, Basic o Full: scrivimi su WhatsApp e ti attivo il codice di licenza personale.</p>
-      </div>
-      <div class="step">
-        <div class="n">02</div>
-        <h3>Apri il quiz</h3>
-        <p>Da qualsiasi computer o tablet collegato al proiettore: inserisci il codice una volta, resta salvato sul dispositivo.</p>
-      </div>
-      <div class="step">
-        <div class="n">03</div>
-        <h3>Il pubblico entra e si gioca</h3>
-        <p>QR a schermo, telefoni pronti, si parte. Tu conduci, il sistema pensa a punteggi e classifica.</p>
-      </div>
+    <p class="manText">Molti comandi si ritrovano identici in quasi tutti i minigiochi, per rendere la regia intuitiva anche passando velocemente da un gioco all'altro:</p>
+    <ul class="manList">
+      <li><b style="color:var(--white)">↩ Torna al quiz</b> — interrompe subito il minigioco in corso e torna alle domande del quiz principale.</li>
+      <li><b style="color:var(--white)">🔁 Un'altra manche</b> — ripete lo stesso minigioco appena concluso con le stesse impostazioni, senza dover reimpostare tutto da capo.</li>
+      <li><b style="color:var(--white)">🏆 Mostra i vincitori / i risultati</b> — nei giochi a estrazione o a punteggio differito, rivela sul proiettore l'esito quando la regia decide che è il momento giusto, invece che automaticamente.</li>
+      <li><b style="color:var(--white)">La barra del tempo</b> — presente in quasi ogni minigioco a tempo, sia sui telefoni che sul proiettore, mostra visivamente quanto manca alla scadenza.</li>
+      <li>Molti pulsanti della regia, se tenuti premuti o sfiorati, mostrano un piccolo suggerimento che spiega a cosa servono: utile nei primi utilizzi per non doversi ricordare tutto a memoria.</li>
+    </ul>
+  </div>
+</section>
+
+<section class="manSection" id="moduli">
+  <div class="wrap">
+    <div class="sectionHead">
+      <div class="tag">🧩 Moduli</div>
+      <h2>Moduli disponibili</h2>
+    </div>
+    <p class="manText">Oltre ai numerosi minigiochi di Abilità e di Fortuna, il quiz include questi moduli di supporto alla serata:</p>
+    <table class="manModTable">
+      <tr><td class="num">1</td><td>Asta</td></tr>
+      <tr><td class="num">2</td><td>Classifica di Gradimento</td></tr>
+      <tr><td class="num">3</td><td>Timer</td></tr>
+      <tr><td class="num">4</td><td>Votometro</td></tr>
+    </table>
+  </div>
+</section>
+
+<section class="manSection" id="manuali-singoli">
+  <div class="wrap">
+    <div class="sectionHead">
+      <div class="tag">Approfondimenti</div>
+      <h2>Manuali dei singoli giochi</h2>
+    </div>
+    <p class="manText">Per ciascun minigioco del quiz — sia di Abilità che di Fortuna — è disponibile un manuale a parte, con la spiegazione dettagliata di come impostarlo dalla regia, cosa vedono i giocatori sul telefono, cosa appare sul proiettore, e come viene assegnato il punteggio. L'elenco completo dei minigiochi non è riportato in questo manuale generale: viene comunicato direttamente da Alberto Seminerio a chi gestisce la licenza.</p>
+  </div>
+</section>
+
+<section class="manSection" id="novita">
+  <div class="wrap">
+    <div class="sectionHead">
+      <div class="tag">Changelog</div>
+      <h2>Novità della versione v13.40</h2>
+    </div>
+    <p class="manText">Questo manuale documenta lo stato del quiz alla versione v13.40. Data la sua dimensione contenuta, l'intero manuale viene rigenerato a ogni versione aggiornata: questa nota viene quindi sostituita di volta in volta con le migliorie introdotte, i bug risolti, le nuove implementazioni e la menzione degli eventuali nuovi giochi aggiunti da quella versione in poi, così da avere sempre un unico documento aggiornato invece di tanti manuali di aggiornamento separati da consultare insieme.</p>
+    <div class="manNewsBox">
+      <p class="manText" style="color:var(--white);"><b>Il Ponte Sospeso:</b> corretto un effetto collaterale della correzione precedente, per cui chi completava l'attraversata riceveva "NaN punti" invece del punteggio reale (e quindi, di fatto, zero punti accreditati). Il calcolo del punteggio ora usa correttamente lo stesso riferimento di tempo locale introdotto nella versione precedente.</p>
     </div>
   </div>
 </section>
 
-<section id="contatti">
+<section class="manSection" id="contatti-man" style="border-bottom:1px solid var(--border);">
   <div class="wrap">
-    <div class="ctaBox">
-      <span class="floatIcon fi2">🎉</span>
-      <span class="floatIcon fi4">✨</span>
-      <span class="floatIcon fi8">🎊</span>
-      <h2 class="brandFont">Pronto a portare Il Capone alla tua prossima serata?</h2>
-      <p>Raccontami che tipo di evento hai in programma: ti consiglio il piano più adatto e attiviamo la licenza in giornata.</p>
-      <a class="btn btnGold" href="https://wa.me/393295428123?text=Ciao%21%20Vorrei%20organizzare%20una%20serata%20con%20Il%20Capone%3A%20raccontami%20come%20procedere" target="_blank" rel="noopener">📱 Scrivimi su WhatsApp — 329 542 8123</a>
-      <div class="ctaTagline"><b>ASSISTENZA H24</b> · <b>VIDEOTUTORIAL</b> · <b>SPIEGAZIONI PASSO PASSO</b> · <b>RISOLUZIONE PROBLEMI</b><br>ALTRI SOFTWARE IL CAPONE.</div>
+    <div class="sectionHead">
+      <div class="tag">Serve aiuto?</div>
+      <h2>Contatti</h2>
+    </div>
+    <p class="manText">Per informazioni e curiosità non specificate nel manuale, contatta Alberto Seminerio.</p>
+    <div style="margin-top:24px;">
+      <a class="btn btnGold" href="https://wa.me/393295428123?text=Ciao%21%20Ho%20una%20domanda%20sul%20manuale%20de%20Il%20Capone%20Quiz" target="_blank" rel="noopener">📱 Scrivimi su WhatsApp</a>
     </div>
   </div>
 </section>

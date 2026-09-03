@@ -255,26 +255,34 @@ function closeGame(){
 }
 
 /* ===================== PRECISIONE SVIZZERA ===================== */
-let swRunning = false, swStart = 0, swInt = null;
+// Il pulsante ha SEMPRE e SOLO l'onclick fisso "swAction()" scritto nell'HTML: non viene mai
+// riassegnato via JS (a differenza della versione precedente, che scambiava la funzione agganciata
+// al pulsante — un pattern più fragile). Lo stato del gioco vive in "swPhase", non nella funzione
+// collegata al pulsante: così un solo interruttore decide sempre cosa deve fare il prossimo click.
+let swPhase = 'idle'; // idle/done -> il click FA PARTIRE · running -> il click FERMA
+let swStart = 0, swInt = null;
 function swReset(){
-  swRunning = false; clearInterval(swInt);
+  swPhase = 'idle';
+  clearInterval(swInt); swInt = null;
   document.getElementById('swDisplay').textContent = '00.00';
   document.getElementById('swBtn').textContent = '▶ VIA!';
   document.getElementById('swResult').textContent = '';
 }
 function swAction(){
-  if (!swRunning){
-    swRunning = true;
+  if (swPhase !== 'running'){
+    swPhase = 'running';
     swStart = Date.now();
     document.getElementById('swBtn').textContent = '⏹ FERMA!';
     document.getElementById('swResult').textContent = '';
+    document.getElementById('swDisplay').textContent = '00.00';
+    clearInterval(swInt); // per sicurezza, non deve mai restarne uno vecchio acceso in sottofondo
     swInt = setInterval(()=>{
       const el = (Date.now()-swStart)/1000;
       document.getElementById('swDisplay').textContent = el.toFixed(2);
     }, 30);
   } else {
-    swRunning = false;
-    clearInterval(swInt);
+    swPhase = 'done';
+    clearInterval(swInt); swInt = null;
     const el = (Date.now()-swStart)/1000;
     document.getElementById('swDisplay').textContent = el.toFixed(2);
     const diff = Math.abs(el-10);
@@ -283,16 +291,7 @@ function swAction(){
     else if (diff < 0.3){ r.textContent = '👏 Molto bravo! Scarto: '+diff.toFixed(2)+'s'; r.className='resultMsg ok'; }
     else { r.textContent = '😅 Scarto: '+diff.toFixed(2)+'s — riprova!'; r.className='resultMsg bad'; }
     document.getElementById('swBtn').textContent = '↺ Riprova';
-    document.getElementById('swBtn').onclick = swRetry; // NON una funzione "usa e getta": deve tornare al normale via/ferma dal prossimo giro
   }
-}
-// Al "Riprova", azzero tutto E ripristino il pulsante al comportamento normale (via/ferma) PRIMA di far
-// partire il nuovo cronometro: altrimenti il click successivo (che dovrebbe fermarlo) lo farebbe ripartire
-// da capo ogni volta, perché il pulsante resterebbe agganciato per sempre a questa funzione di reset.
-function swRetry(){
-  swReset();
-  document.getElementById('swBtn').onclick = swAction;
-  swAction();
 }
 
 /* ===================== ANAGRAMMA ===================== */

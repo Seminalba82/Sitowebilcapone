@@ -283,8 +283,16 @@ function swAction(){
     else if (diff < 0.3){ r.textContent = '👏 Molto bravo! Scarto: '+diff.toFixed(2)+'s'; r.className='resultMsg ok'; }
     else { r.textContent = '😅 Scarto: '+diff.toFixed(2)+'s — riprova!'; r.className='resultMsg bad'; }
     document.getElementById('swBtn').textContent = '↺ Riprova';
-    document.getElementById('swBtn').onclick = ()=>{ swReset(); swAction(); };
+    document.getElementById('swBtn').onclick = swRetry; // NON una funzione "usa e getta": deve tornare al normale via/ferma dal prossimo giro
   }
+}
+// Al "Riprova", azzero tutto E ripristino il pulsante al comportamento normale (via/ferma) PRIMA di far
+// partire il nuovo cronometro: altrimenti il click successivo (che dovrebbe fermarlo) lo farebbe ripartire
+// da capo ogni volta, perché il pulsante resterebbe agganciato per sempre a questa funzione di reset.
+function swRetry(){
+  swReset();
+  document.getElementById('swBtn').onclick = swAction;
+  swAction();
 }
 
 /* ===================== ANAGRAMMA ===================== */

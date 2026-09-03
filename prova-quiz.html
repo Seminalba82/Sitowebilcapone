@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Prova il Quiz Mix — Il Capone Quiz 3.0</title>
+<meta name="description" content="Prova gratis alcune domande vere di Il Capone Quiz 3.0, direttamente dal browser, senza installare nulla.">
+<meta name="robots" content="noindex, nofollow">
+<link rel="icon" type="image/png" sizes="512x512" href="/favicon.png">
+<link rel="apple-touch-icon" href="/favicon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@600;700&family=Orbitron:wght@700;900&family=Outfit:wght@400;600;700;900&family=Fredoka:wght@600;700&display=optional" rel="stylesheet">
+<style>
+:root{
+  --bg:#040309; --panel:#0c0a1f; --panel2:#100c2b;
+  --magenta:#ff1fc9; --cyan:#00f6ff; --lime:#2b6dff; --gold:#eaff2b; --viola:#8b2aff;
+  --white:#f3f6ff; --muted:#93a3c9; --border:rgba(0,246,255,.14);
+  --ok:#2bff7a; --bad:#ff2b5c;
+}
+*{box-sizing:border-box; margin:0; padding:0;}
+html{scroll-behavior:smooth;}
+body{font-family:'Outfit',sans-serif; color:var(--white); background:var(--bg); line-height:1.55; min-height:100vh;}
+body::before{content:""; position:fixed; inset:0; z-index:-1; pointer-events:none; background:
+  radial-gradient(circle at 10% 0%, rgba(139,42,255,.28), transparent 40%),
+  radial-gradient(circle at 100% 10%, rgba(255,31,201,.22), transparent 42%),
+  radial-gradient(circle at 50% 100%, rgba(0,246,255,.18), transparent 48%), var(--bg);}
+a{color:inherit;}
+.wrap{max-width:760px; margin:0 auto; padding:0 20px;}
+header{padding:16px 0; border-bottom:1px solid var(--border); position:sticky; top:0; background:rgba(4,3,9,.85); backdrop-filter:blur(12px); z-index:10;}
+.headRow{display:flex; align-items:center; justify-content:space-between;}
+.logo{font-family:'Chakra Petch',sans-serif; font-weight:700; letter-spacing:1px; text-transform:uppercase; font-size:15px; text-decoration:none; color:var(--gold);}
+.logo span{color:var(--white);}
+.backBtn{font-family:'Chakra Petch',sans-serif; font-size:12px; font-weight:700; letter-spacing:.5px; text-transform:uppercase;
+  color:var(--muted); text-decoration:none; border:1px solid var(--border); padding:8px 14px; border-radius:2px;
+  clip-path:polygon(8px 0,100% 0,100% calc(100% - 8px),calc(100% - 8px) 100%,0 100%,0 8px);}
+.backBtn:hover{color:var(--cyan); border-color:var(--cyan);}
+
+main{padding:40px 0 80px;}
+.tag{color:var(--magenta); font-weight:800; font-size:12px; letter-spacing:2px; text-transform:uppercase; text-align:center; display:block; text-shadow:0 0 12px rgba(255,31,201,.5);}
+h1{font-family:'Fredoka',sans-serif; font-weight:700; text-transform:uppercase; text-align:center; font-size:clamp(26px,6vw,42px); margin:10px 0 8px;
+  background:linear-gradient(180deg,#ffe38a,var(--gold),#ff8a1f); -webkit-background-clip:text; background-clip:text; color:transparent;}
+.subtext{text-align:center; color:var(--muted); font-size:15px; max-width:520px; margin:0 auto 30px;}
+
+/* ---- SCHERMATA INIZIALE ---- */
+#screenStart{text-align:center;}
+.startCard{background:var(--panel); border:1px solid var(--border); border-radius:4px; padding:36px 26px;
+  clip-path:polygon(20px 0,100% 0,100% calc(100% - 20px),calc(100% - 20px) 100%,0 100%,0 20px);}
+.startCard .emoji{font-size:52px; margin-bottom:10px;}
+.startCard h2{font-family:'Chakra Petch',sans-serif; font-size:20px; margin-bottom:12px; color:var(--white);}
+.startCard p{color:var(--muted); font-size:14.5px; margin-bottom:6px;}
+
+.btn{display:inline-block; font-family:'Chakra Petch',sans-serif; font-size:14px; letter-spacing:1px; text-transform:uppercase; font-weight:700;
+  padding:15px 30px; border-radius:2px; text-decoration:none; cursor:pointer; border:none; margin-top:22px;
+  clip-path:polygon(12px 0,100% 0,100% calc(100% - 12px),calc(100% - 12px) 100%,0 100%,0 12px);}
+.btnGold{background:linear-gradient(120deg,var(--cyan),var(--gold),var(--magenta),var(--gold),var(--cyan)); background-size:300% 100%;
+  animation:shift 5s linear infinite; color:#050014; box-shadow:0 0 22px rgba(234,255,43,.45);}
+@keyframes shift{from{background-position:0% 0;} to{background-position:300% 0;}}
+.btnGhost{background:rgba(0,246,255,.05); color:var(--white); border:1px solid var(--border);}
+
+/* ---- SCHERMATA DOMANDA ---- */
+#screenQuiz{display:none;}
+.qTop{display:flex; justify-content:space-between; align-items:center; font-family:'Chakra Petch',sans-serif; font-size:13px; color:var(--muted); margin-bottom:10px;}
+.qTop b{color:var(--cyan);}
+.timerWrap{width:100%; height:8px; background:rgba(255,255,255,.08); border-radius:6px; overflow:hidden; margin-bottom:22px;}
+.timerBar{height:100%; background:linear-gradient(90deg,var(--lime),var(--cyan)); width:100%; transition:width .1s linear;}
+.qMedia{width:100%; border-radius:14px; overflow:hidden; margin-bottom:18px; border:1px solid var(--border); background:#000;}
+.qMedia img{width:100%; display:block;}
+.qMedia audio{width:100%; display:block; padding:14px;}
+.qText{font-family:'Chakra Petch',sans-serif; font-size:clamp(18px,3.6vw,24px); text-align:center; margin-bottom:26px; color:var(--white); line-height:1.35;}
+.optsGrid{display:grid; grid-template-columns:1fr; gap:12px;}
+@media(min-width:560px){ .optsGrid.two{grid-template-columns:1fr 1fr;} }
+.optBtn{background:var(--panel); border:1.5px solid var(--border); border-radius:12px; padding:16px 18px; font-size:15px; font-weight:700;
+  color:var(--white); text-align:left; cursor:pointer; transition:all .15s ease;}
+.optBtn:hover{border-color:var(--cyan);}
+.optBtn.correct{border-color:var(--ok); background:rgba(43,255,122,.12); color:var(--ok); box-shadow:0 0 20px rgba(43,255,122,.3);}
+.optBtn.wrong{border-color:var(--bad); background:rgba(255,43,92,.12); color:var(--bad); box-shadow:0 0 20px rgba(255,43,92,.3);}
+.optBtn:disabled{cursor:default;}
+.textInputRow{display:flex; gap:10px; flex-wrap:wrap;}
+.textInput{flex:1; min-width:180px; padding:15px 16px; border-radius:12px; border:1.5px solid var(--border); background:rgba(255,255,255,.04);
+  color:var(--white); font-size:16px; font-family:'Outfit',sans-serif;}
+.textInput:focus{outline:none; border-color:var(--cyan);}
+.sendBtn{font-family:'Chakra Petch',sans-serif; font-weight:700; text-transform:uppercase; letter-spacing:.5px; font-size:13px;
+  padding:15px 20px; border:none; border-radius:12px; background:linear-gradient(120deg,var(--cyan),var(--lime)); color:#050014; cursor:pointer;}
+.anagramLetters{display:flex; flex-wrap:wrap; gap:8px; justify-content:center; margin-bottom:18px;}
+.anagramLetters span{background:var(--panel2); border:1px solid var(--border); border-radius:8px; padding:10px 14px;
+  font-family:'Orbitron',sans-serif; font-weight:900; font-size:18px; color:var(--gold);}
+.feedbackMsg{text-align:center; font-family:'Chakra Petch',sans-serif; font-weight:700; font-size:15px; margin-top:18px; min-height:22px;}
+.feedbackMsg.ok{color:var(--ok);}
+.feedbackMsg.bad{color:var(--bad);}
+.nextBtn{display:block; margin:20px auto 0;}
+
+/* ---- SCHERMATA FINALE ---- */
+#screenEnd{display:none; text-align:center;}
+.scoreBig{font-family:'Orbitron',sans-serif; font-weight:900; font-size:clamp(50px,14vw,90px); color:var(--cyan);
+  text-shadow:0 0 30px rgba(0,246,255,.6); line-height:1; margin:14px 0;}
+.scoreLabel{font-family:'Chakra Petch',sans-serif; letter-spacing:1px; text-transform:uppercase; color:var(--muted); font-size:13px;}
+.endNote{color:var(--muted); font-size:15px; max-width:480px; margin:20px auto 0;}
+footer{padding:30px 0; text-align:center; color:var(--muted); font-size:12.5px; border-top:1px solid var(--border);}
+footer a{color:var(--gold); text-decoration:none;}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap headRow">
+    <a href="index.html" class="logo">IL CAPONE <span>QUIZ 3.0</span></a>
+    <a href="index.html" class="backBtn">← Torna al sito</a>
+  </div>
+</header>
+
+<main class="wrap">
+
+  <div id="screenStart">
+    <span class="tag">Demo gratuita</span>
+    <h1>Prova il Quiz Mix</h1>
+    <p class="subtext">Domande vere, prese da un pacchetto reale di Il Capone Quiz 3.0. Nessuna registrazione, nessuna app: gioca direttamente da qui, in solitaria.</p>
+    <div class="startCard">
+      <div class="emoji">🎩</div>
+      <h2 id="startTitle">Copia di QUIZ MIX</h2>
+      <p id="startCount">14 domande · foto, audio, testo libero e anagrammi</p>
+      <p>Nella serata vera, gioca tutta la sala insieme dal proprio telefono, con classifica live e podio finale.</p>
+      <button class="btn btnGold" onclick="startQuiz()">▶ INIZIA LA DEMO</button>
+    </div>
+  </div>
+
+  <div id="screenQuiz">
+    <div class="qTop">
+      <span>Domanda <b id="qNum">1</b>/<span id="qTotal">14</span></span>
+      <span>Punteggio: <b id="qScore">0</b></span>
+    </div>
+    <div class="timerWrap"><div class="timerBar" id="timerBar"></div></div>
+    <div id="qMediaWrap"></div>
+    <div class="qText" id="qText"></div>
+    <div id="qAnswerArea"></div>
+    <div class="feedbackMsg" id="feedbackMsg"></div>
+    <button class="btn btnGold nextBtn" id="nextBtn" style="display:none" onclick="nextQuestion()">Prossima domanda →</button>
+  </div>
+
+  <div id="screenEnd">
+    <span class="tag">Demo conclusa</span>
+    <h1>Ecco il tuo punteggio!</h1>
+    <div class="scoreLabel">Punti totalizzati</div>
+    <div class="scoreBig" id="finalScore">0</div>
+    <p class="endNote">Questa era solo un assaggio in solitaria. Nella serata vera gioca tutta la sala insieme, in tempo reale, con classifica live sul proiettore e podio finale.</p>
+    <a class="btn btnGold" href="https://wa.me/393295428123?text=Ciao%21%20Ho%20provato%20la%20demo%20del%20Quiz%20Mix%20sul%20sito%2C%20vorrei%20saperne%20di%20pi%C3%B9" target="_blank" rel="noopener">📱 Vorrei saperne di più</a>
+    <br>
+    <button class="btn btnGhost" onclick="location.reload()">↺ Rigioca la demo</button>
+  </div>
+
+</main>
+
+<footer>
+  <div class="wrap">IL CAPONE QUIZ 3.0 · by <a href="https://linktr.ee/Albertoseminerio" target="_blank" rel="noopener">Alberto Seminerio</a></div>
+</footer>
+
+<script src="prova-quiz-data.js"></script>
+<script>
+let qi = -1;
+let score = 0;
+let timerInt = null;
+let answered = false;
+
+document.getElementById('qTotal').textContent = QUIZ_DEMO_DATA.length;
+document.getElementById('startCount').textContent = QUIZ_DEMO_DATA.length + ' domande · foto, audio, testo libero e anagrammi';
+
+function startQuiz(){
+  document.getElementById('screenStart').style.display = 'none';
+  document.getElementById('screenQuiz').style.display = 'block';
+  qi = -1;
+  score = 0;
+  nextQuestion();
+}
+
+function shuffleWord(w){
+  const letters = w.split('');
+  for (let i=letters.length-1;i>0;i--){ const j=Math.floor(Math.random()*(i+1)); [letters[i],letters[j]]=[letters[j],letters[i]]; }
+  const joined = letters.join('');
+  return joined === w && w.length>1 ? shuffleWord(w) : joined;
+}
+
+function nextQuestion(){
+  answered = false;
+  qi++;
+  if (qi >= QUIZ_DEMO_DATA.length){ endQuiz(); return; }
+  const q = QUIZ_DEMO_DATA[qi];
+  document.getElementById('qNum').textContent = qi+1;
+  document.getElementById('qScore').textContent = score;
+  document.getElementById('feedbackMsg').textContent = '';
+  document.getElementById('feedbackMsg').className = 'feedbackMsg';
+  document.getElementById('nextBtn').style.display = 'none';
+
+  const mediaWrap = document.getElementById('qMediaWrap');
+  mediaWrap.innerHTML = '';
+  if (q.mediaKind === 'photo' && q.mediaData){
+    mediaWrap.innerHTML = `<div class="qMedia"><img src="${q.mediaData}" alt=""></div>`;
+  } else if (q.mediaKind === 'audio' && q.mediaData){
+    mediaWrap.innerHTML = `<div class="qMedia"><audio controls src="${q.mediaData}"></audio></div>`;
+  }
+
+  document.getElementById('qText').textContent = q.text;
+  const area = document.getElementById('qAnswerArea');
+
+  if (q.type === 'mult'){
+    const many = q.opts.length > 4;
+    area.innerHTML = `<div class="optsGrid ${many?'two':''}" id="optsGrid"></div>`;
+    const grid = document.getElementById('optsGrid');
+    q.opts.forEach((opt,i)=>{
+      const b = document.createElement('button');
+      b.className = 'optBtn'; b.textContent = opt;
+      b.onclick = ()=> answerMult(i, q);
+      grid.appendChild(b);
+    });
+  } else if (q.type === 'open'){
+    area.innerHTML = `<div class="textInputRow">
+      <input type="text" class="textInput" id="freeInput" placeholder="Scrivi la tua risposta..." onkeydown="if(event.key==='Enter') answerText()">
+      <button class="sendBtn" onclick="answerText()">Invia</button>
+    </div>`;
+  } else if (q.type === 'anagram'){
+    const scrambled = shuffleWord((q.accepted||'').toUpperCase());
+    area.innerHTML = `<div class="anagramLetters">${scrambled.split('').map(c=>`<span>${c}</span>`).join('')}</div>
+      <div class="textInputRow">
+        <input type="text" class="textInput" id="freeInput" placeholder="Riordina le lettere..." onkeydown="if(event.key==='Enter') answerText()">
+        <button class="sendBtn" onclick="answerText()">Invia</button>
+      </div>`;
+  }
+
+  startTimer(q.timer || 15);
+}
+
+function startTimer(seconds){
+  clearInterval(timerInt);
+  const bar = document.getElementById('timerBar');
+  bar.style.transition = 'none'; bar.style.width = '100%';
+  void bar.offsetWidth;
+  bar.style.transition = `width ${seconds}s linear`;
+  bar.style.width = '0%';
+  timerInt = setTimeout(()=>{ if (!answered) timeUp(); }, seconds*1000);
+}
+
+function timeUp(){
+  if (answered) return;
+  answered = true;
+  const q = QUIZ_DEMO_DATA[qi];
+  document.getElementById('feedbackMsg').textContent = '⏱ TEMPO SCADUTO!';
+  document.getElementById('feedbackMsg').className = 'feedbackMsg bad';
+  if (q.type==='mult'){
+    document.querySelectorAll('.optBtn').forEach((b,i)=>{
+      b.disabled = true;
+      if (q.corrects.includes(i)) b.classList.add('correct');
+    });
+  }
+  document.getElementById('nextBtn').style.display = 'block';
+}
+
+function answerMult(i, q){
+  if (answered) return;
+  answered = true;
+  clearTimeout(timerInt);
+  const correct = q.corrects.includes(i);
+  document.querySelectorAll('.optBtn').forEach((b,idx)=>{
+    b.disabled = true;
+    if (q.corrects.includes(idx)) b.classList.add('correct');
+    else if (idx===i) b.classList.add('wrong');
+  });
+  if (correct){
+    score += q.points || 300;
+    document.getElementById('feedbackMsg').textContent = `✅ ESATTO! +${q.points||300} punti`;
+    document.getElementById('feedbackMsg').className = 'feedbackMsg ok';
+  } else {
+    document.getElementById('feedbackMsg').textContent = '❌ Risposta sbagliata...';
+    document.getElementById('feedbackMsg').className = 'feedbackMsg bad';
+  }
+  document.getElementById('qScore').textContent = score;
+  document.getElementById('nextBtn').style.display = 'block';
+}
+
+function normalize(s){
+  return (s||'').toUpperCase().trim().normalize('NFD').replace(/[\u0300-\u036f]/g,'');
+}
+
+function answerText(){
+  if (answered) return;
+  answered = true;
+  clearTimeout(timerInt);
+  const q = QUIZ_DEMO_DATA[qi];
+  const input = document.getElementById('freeInput');
+  const val = normalize(input.value);
+  const target = normalize(q.accepted);
+  input.disabled = true;
+  const correct = val.length>0 && (val===target || val.includes(target) || target.includes(val));
+  if (correct){
+    score += q.points || 300;
+    document.getElementById('feedbackMsg').textContent = `✅ ESATTO! La risposta era "${q.accepted}" — +${q.points||300} punti`;
+    document.getElementById('feedbackMsg').className = 'feedbackMsg ok';
+  } else {
+    document.getElementById('feedbackMsg').textContent = `❌ Non proprio... la risposta era "${q.accepted}"`;
+    document.getElementById('feedbackMsg').className = 'feedbackMsg bad';
+  }
+  document.getElementById('qScore').textContent = score;
+  document.getElementById('nextBtn').style.display = 'block';
+}
+
+function endQuiz(){
+  document.getElementById('screenQuiz').style.display = 'none';
+  document.getElementById('screenEnd').style.display = 'block';
+  document.getElementById('finalScore').textContent = score;
+}
+</script>
+</body>
+</html>

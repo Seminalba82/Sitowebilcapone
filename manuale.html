@@ -22,622 +22,431 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@600;700&family=Orbitron:wght@700;900&family=Outfit:wght@400;600;700;900&family=Titan+One&family=Baloo+2:wght@600;700;800&family=Fredoka:wght@600;700&display=optional" rel="stylesheet">
 <style>
-  :root{
-    --bg:#040309; --bg2:#08051a; --panel:#0c0a1f; --panel2:#100c2b;
-    --magenta:#ff1fc9; --cyan:#00f6ff; --lime:#2b6dff; --gold:#eaff2b; --viola:#8b2aff;
-    --white:#f3f6ff; --muted:#93a3c9; --border:rgba(0,246,255,.14);
-  }
-  *{box-sizing:border-box; margin:0; padding:0;}
-  html{scroll-behavior:smooth; overscroll-behavior-y:none;}
-  body{
-    font-family:'Outfit',sans-serif; color:var(--white); background:var(--bg);
-    line-height:1.55;
-    overflow-x:hidden;
-    position:relative;
-    overscroll-behavior-y:none;
-  }
-  body::before{
-    content:""; position:fixed; inset:0; z-index:-2; pointer-events:none;
-    background-color:var(--bg);
-    background-image:
-      linear-gradient(180deg, rgba(4,3,9,.25) 0%, rgba(4,3,9,.45) 45%, rgba(4,3,9,.88) 100%),
-      url("assets/img/sfondo-hero.webp"),
-      url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.3'/%3E%3C/svg%3E");
-    background-repeat:no-repeat, no-repeat, repeat;
-    background-position:center, center top, top left;
-    background-blend-mode:normal, normal, overlay;
-    background-size:cover, cover, 160px 160px;
-    transform:translateZ(0) scale(1.06); transform-origin:center;
-    animation:auroraShift 18s ease-in-out infinite alternate;
-    will-change:transform, opacity;
-  }
-  body::after{
-    content:""; position:fixed; top:-8px; left:0; right:0; bottom:0; z-index:-1; pointer-events:none; opacity:.22; mix-blend-mode:overlay;
-    background:repeating-linear-gradient(0deg, rgba(0,246,255,.1) 0px, rgba(0,246,255,.1) 1px, transparent 1px, transparent 3px);
-    background-size:100% 4px;
-    animation:scanlineMove 7s linear infinite;
-    will-change:transform;
-  }
-  a{color:inherit;}
-  .wrap{max-width:1100px; margin:0 auto; padding:0 24px;}
-  .brandFont{font-family:'Chakra Petch',sans-serif; letter-spacing:1px; text-transform:uppercase;}
-  .numFont{font-family:'Orbitron',sans-serif; font-weight:900;}
-
-  /* ---------- HEADER ---------- */
-  header{position:sticky; top:0; z-index:50; backdrop-filter:blur(14px); background:rgba(4,3,9,.7); border-bottom:1px solid rgba(0,246,255,.12);
-    box-shadow:0 10px 40px rgba(0,0,0,.5);}
-  .navRow{display:flex; align-items:center; justify-content:space-between; padding:14px 0; flex-wrap:wrap; row-gap:10px;}
-  .logo{font-family:'Fredoka',sans-serif; font-weight:700; font-size:clamp(16px,2.6vw,22px); text-transform:uppercase; letter-spacing:.3px;
-    background:linear-gradient(180deg, #ffe38a 0%, var(--gold) 55%, #ff8a1f 100%);
-    -webkit-background-clip:text; background-clip:text; color:transparent;}
-  .logo span{background:linear-gradient(180deg, #d9fbff 0%, var(--cyan) 55%, #2b6dff 100%);
-    -webkit-background-clip:text; background-clip:text; color:transparent;}
-  nav{display:none; gap:26px; font-weight:600; font-size:15px;}
-  nav a{opacity:.85; text-decoration:none; position:relative; padding-bottom:4px;}
-  nav a::after{content:""; position:absolute; left:0; bottom:0; width:0; height:2px;
-    background:linear-gradient(90deg,var(--magenta),var(--cyan)); transition:width .25s ease;}
-  nav a:hover{opacity:1; color:var(--cyan);}
-  nav a:hover::after{width:100%;}
-  @media(min-width:840px){ nav{display:flex;} }
-  header::before{content:""; position:absolute; top:0; left:0; right:0; height:2px; z-index:1;
-    background:linear-gradient(90deg, var(--magenta), var(--viola), var(--cyan));
-    box-shadow:0 0 14px rgba(0,246,255,.55), 0 0 22px rgba(255,31,201,.35);}
-  header::after{content:""; position:absolute; top:0; left:-25%; width:22%; height:2px; z-index:2; pointer-events:none;
-    background:linear-gradient(90deg, transparent, rgba(255,255,255,.95), transparent);
-    filter:blur(.5px); animation:beamSweep 3.6s ease-in-out infinite;}
-  .btn{
-    display:inline-block; font-family:'Chakra Petch',sans-serif; font-size:14px; letter-spacing:1.2px; text-transform:uppercase; font-weight:700;
-    padding:13px 24px; border-radius:2px; text-decoration:none; cursor:pointer; border:none;
-    clip-path:polygon(12px 0,100% 0,100% calc(100% - 12px),calc(100% - 12px) 100%,0 100%,0 12px);
-    transition:transform .15s ease, box-shadow .15s ease;
-    position:relative; overflow:hidden;
-  }
-  .btn::after{content:""; position:absolute; top:0; left:-60%; width:40%; height:100%;
-    background:linear-gradient(120deg, transparent, rgba(255,255,255,.55), transparent);
-    transform:skewX(-20deg); transition:left .5s ease; pointer-events:none;}
-  .btn:hover::after{left:130%;}
-  .btn:hover{transform:translateY(-2px);}
-  .btnGold{background:linear-gradient(120deg,var(--cyan),var(--gold),var(--magenta),var(--gold),var(--cyan)); background-size:300% 100%;
-    animation:btnGoldShift 5s linear infinite, ctaPulse 2.4s ease-in-out infinite; color:#050014; box-shadow:0 0 0 1px rgba(255,255,255,.25) inset, 0 0 22px rgba(234,255,43,.45), 0 10px 24px rgba(0,246,255,.2);}
-  .btnGold:hover{box-shadow:0 0 0 1px rgba(255,255,255,.35) inset, 0 0 40px rgba(234,255,43,.7), 0 0 30px rgba(255,31,201,.5); animation-play-state:paused, paused; transform:translateY(-2px) scale(1.03);}
-  .btnGhost{background:rgba(0,246,255,.04); color:var(--white); border:1px solid var(--border);}
-  .btnGhost:hover{border-color:var(--cyan); color:var(--cyan); box-shadow:0 0 22px rgba(0,246,255,.35);}
-  .btnSmall{padding:9px 16px; font-size:12px;}
-
-  /* ---------- HERO ---------- */
-  .hero{padding:90px 0 70px; text-align:center; position:relative; overflow:hidden;}
-  .hero .wrap{position:relative;}
-  .kicker{display:inline-block; font-weight:700; font-size:13px; letter-spacing:2px; text-transform:uppercase;
-    color:var(--lime); background:rgba(43,109,255,.1); border:1px solid rgba(43,109,255,.4); padding:6px 16px; border-radius:999px; margin-bottom:22px;
-    animation:kickerPulse 2.6s ease-in-out infinite;}
-  .heroMascotWrap{position:relative; max-width:340px; width:72%; margin:0 auto 26px;}
-  .heroMascotWrap::before{content:""; position:absolute; inset:-30px; border-radius:50%;
-    background:radial-gradient(circle, rgba(255,31,201,.5), rgba(0,246,255,.34) 55%, transparent 75%);
-    filter:blur(26px); animation:pulseGlow 3.5s ease-in-out infinite;}
-  .heroMascotWrap::after{content:""; position:absolute; inset:-4px; border-radius:50%;
-    border:1.5px solid rgba(0,246,255,.4); box-shadow:0 0 24px rgba(0,246,255,.35), inset 0 0 24px rgba(255,31,201,.2);
-    animation:ringPulse 2.6s ease-in-out infinite;}
-  .heroMascot{position:relative; display:block; width:100%; height:auto;
-    filter:drop-shadow(0 0 40px rgba(255,31,201,.55)) drop-shadow(0 0 70px rgba(0,246,255,.35));
-    animation:floatY 5s ease-in-out infinite;}
-  .hero h1{font-family:'Fredoka',sans-serif; font-weight:700; text-transform:uppercase; letter-spacing:.5px;
-    font-size:clamp(36px,8vw,78px); line-height:1.08; position:relative;
-    background:linear-gradient(180deg, #ffe38a 0%, var(--gold) 55%, #ff8a1f 100%);
-    -webkit-background-clip:text; background-clip:text; color:transparent;
-    filter:drop-shadow(0 4px 0 rgba(0,0,0,.3)) drop-shadow(0 0 26px rgba(255,157,31,.4));}
-  .hero h1 .accent{background:linear-gradient(180deg, #d9fbff 0%, var(--cyan) 55%, #2b6dff 100%);
-    -webkit-background-clip:text; background-clip:text; color:transparent; position:relative; display:inline-block;}
-
-  .gridFloor{position:absolute; left:0; right:0; bottom:0; height:220px; overflow:hidden; perspective:300px; pointer-events:none;
-    -webkit-mask-image:linear-gradient(to top, black, transparent); mask-image:linear-gradient(to top, black, transparent); opacity:.55;}
-  .gridFloor::before{content:""; position:absolute; inset:-60% -60% 0; background-image:
-      linear-gradient(rgba(0,246,255,.55) 1px, transparent 1px),
-      linear-gradient(90deg, rgba(255,31,201,.45) 1px, transparent 1px);
-    background-size:56px 56px; transform-origin:bottom; transform:rotateX(75deg) translateY(0);
-    will-change:transform; backface-visibility:hidden; -webkit-backface-visibility:hidden;
-    animation:gridMove 2.4s linear infinite;}
-  .hero p.lead{max-width:640px; margin:22px auto 0; font-size:clamp(16px,2.2vw,20px); color:var(--muted); font-weight:600;}
-  .heroCtas{margin-top:36px; display:flex; gap:16px; justify-content:center; flex-wrap:wrap;}
-  .heroStrip{margin-top:56px; display:flex; gap:14px; justify-content:center; flex-wrap:wrap;}
-  .chip{font-size:13px; font-weight:700; padding:8px 16px; border-radius:999px; background:var(--panel); border:1px solid var(--border); color:var(--muted);
-    transition:transform .2s ease, box-shadow .2s ease, border-color .2s ease;}
-  .chip:hover{transform:translateY(-3px); box-shadow:0 0 16px rgba(0,246,255,.3); border-color:var(--cyan);}
-  .chip b{color:var(--cyan);}
-
-  /* ---------- FLOATING GAME ICONS ---------- */
-  .floatIcon{position:absolute; opacity:.45; pointer-events:none; user-select:none;
-    animation-name:floatY; animation-timing-function:ease-in-out; animation-iteration-count:infinite;}
-  .fi1{top:6%; left:3%; font-size:36px; filter:drop-shadow(0 0 14px var(--magenta)); animation-duration:6s; animation-delay:0s;}
-  .fi2{top:12%; right:5%; font-size:44px; filter:drop-shadow(0 0 16px var(--cyan)); animation-duration:7s; animation-delay:.6s;}
-  .fi3{bottom:10%; left:8%; font-size:30px; filter:drop-shadow(0 0 12px var(--lime)); animation-duration:5.5s; animation-delay:1.2s;}
-  .fi4{bottom:14%; right:10%; font-size:38px; filter:drop-shadow(0 0 14px var(--gold)); animation-duration:6.5s; animation-delay:.3s;}
-  .fi5{top:42%; left:1%; font-size:26px; filter:drop-shadow(0 0 10px var(--viola)); animation-duration:8s; animation-delay:1.6s;}
-  .fi6{top:45%; right:2%; font-size:28px; filter:drop-shadow(0 0 12px var(--magenta)); animation-duration:7.2s; animation-delay:.9s;}
-  .fi7{top:20%; left:46%; font-size:24px; filter:drop-shadow(0 0 10px var(--cyan)); animation-duration:6.8s; animation-delay:2s; opacity:.22;}
-  .fi8{bottom:8%; left:42%; font-size:32px; filter:drop-shadow(0 0 12px var(--lime)); animation-duration:5.8s; animation-delay:.5s;}
-
-  /* ---------- TICKER BAR ---------- */
-  .tickerBar{overflow:hidden; white-space:nowrap; position:relative;
-    background:linear-gradient(90deg, rgba(139,42,255,.1), rgba(0,246,255,.08)); background-color:rgba(4,3,9,.6);
-    border-bottom:1px solid rgba(0,246,255,.14); padding:10px 0;
-    -webkit-mask-image:linear-gradient(90deg, transparent, #000 6%, #000 94%, transparent);
-    mask-image:linear-gradient(90deg, transparent, #000 6%, #000 94%, transparent);}
-  .tickerTrack{display:inline-flex; align-items:center; animation:tickerScroll 30s linear infinite;}
-  .tickerTrack span{display:inline-flex; align-items:center; gap:10px; padding:5px 22px; font-family:'Chakra Petch',sans-serif;
-    font-size:12px; font-weight:600; letter-spacing:1.4px; text-transform:uppercase; color:var(--white); white-space:nowrap;
-    border-right:1px solid rgba(0,246,255,.18);}
-  .tickerTrack span b{color:var(--cyan); text-shadow:0 0 10px rgba(0,246,255,.6);}
-  .tickerTrack span .dot{width:5px; height:5px; border-radius:50%; background:var(--gold); box-shadow:0 0 8px var(--gold); flex-shrink:0;}
-
-  /* ---------- KEYFRAMES ---------- */
-  @keyframes floatY{ 0%,100%{transform:translateY(0);} 50%{transform:translateY(-14px);} }
-  @keyframes pulseGlow{ 0%,100%{opacity:.7; transform:scale(1);} 50%{opacity:1; transform:scale(1.08);} }
-  @keyframes heroGradientShift{ from{background-position:0% 0%;} to{background-position:0% 100%;} }
-  @keyframes ringPulse{ 0%,100%{transform:scale(1); opacity:.7;} 50%{transform:scale(1.06); opacity:1;} }
-  @keyframes kickerPulse{ 0%,100%{box-shadow:0 0 0 rgba(43,109,255,0);} 50%{box-shadow:0 0 16px rgba(43,109,255,.45);} }
-  @keyframes beamSweep{ 0%{left:-25%;} 100%{left:105%;} }
-  @keyframes tickerScroll{ from{transform:translateX(0);} to{transform:translateX(-50%);} }
-  @keyframes numFlicker{ 0%,100%{text-shadow:0 0 30px rgba(0,246,255,.6);} 50%{text-shadow:0 0 45px rgba(0,246,255,.9), 0 0 70px rgba(139,42,255,.4);} }
-  @keyframes pulseGold{ 0%,100%{box-shadow:0 0 0 0 rgba(234,255,43,.35);} 50%{box-shadow:0 0 40px 6px rgba(234,255,43,.3);} }
-  @keyframes auroraShift{ 0%{transform:translateZ(0) scale(1.06) rotate(0deg); opacity:.88;} 100%{transform:translateZ(0) scale(1.1) rotate(1deg); opacity:1;} }
-  @keyframes scanlineMove{ from{transform:translateY(0);} to{transform:translateY(8px);} }
-  @keyframes btnGoldShift{ from{background-position:0% 0;} to{background-position:300% 0;} }
-  @keyframes ctaPulse{ 0%,100%{box-shadow:0 0 0 1px rgba(255,255,255,.25) inset, 0 0 22px rgba(234,255,43,.45), 0 10px 24px rgba(0,246,255,.2);}
-    50%{box-shadow:0 0 0 1px rgba(255,255,255,.3) inset, 0 0 36px rgba(234,255,43,.7), 0 0 26px rgba(255,31,201,.4), 0 10px 24px rgba(0,246,255,.25);} }
-  @keyframes glitchTop{ 0%,40%,100%{transform:translate(0,0);} 10%{transform:translate(-2px,-1px);} 20%{transform:translate(2px,1px);} 30%{transform:translate(-1px,1px);} }
-  @keyframes glitchBottom{ 0%,45%,100%{transform:translate(0,0);} 15%{transform:translate(2px,1px);} 25%{transform:translate(-2px,-1px);} 35%{transform:translate(1px,-1px);} }
-  @keyframes gridMove{ from{transform:rotateX(75deg) translateY(0);} to{transform:rotateX(75deg) translateY(56px);} }
-  @keyframes blinkDot{ 0%,100%{opacity:1;} 50%{opacity:.25;} }
-  @keyframes borderRotate{ to{ --angle:360deg; } }
-  @property --angle{ syntax:'<angle>'; initial-value:0deg; inherits:false; }
-
-  /* ---------- SECTION GENERIC ---------- */
-  section{padding:70px 0;}
-  .sectionHead{text-align:center; max-width:680px; margin:0 auto 46px;}
-  .sectionHead .tag{color:var(--magenta); font-weight:800; font-size:13px; letter-spacing:2px; text-transform:uppercase; text-shadow:0 0 12px rgba(255,31,201,.5);}
-  .sectionHead h2{font-family:'Fredoka',sans-serif; font-weight:700; text-transform:uppercase; letter-spacing:.3px; font-size:clamp(24px,4.5vw,40px); margin-top:10px; color:var(--white);}
-  .sectionHead p{color:var(--muted); margin-top:14px; font-size:16px;}
-
-  .grid3{display:grid; grid-template-columns:1fr; gap:22px;}
-  @media(min-width:760px){ .grid3{grid-template-columns:repeat(3,1fr);} }
-  .grid2{display:grid; grid-template-columns:1fr; gap:26px;}
-  @media(min-width:760px){ .grid2{grid-template-columns:repeat(2,1fr);} }
-
-  .card{background:var(--panel); border:1px solid var(--border); border-radius:4px; padding:28px; height:100%;
-    clip-path:polygon(18px 0,100% 0,100% calc(100% - 18px),calc(100% - 18px) 100%,0 100%,0 18px);
-    position:relative; overflow:hidden; transition:transform .25s ease, box-shadow .25s ease, border-color .25s ease;}
-  .card::before{content:""; position:absolute; top:0; left:0; right:0; height:3px;
-    background:linear-gradient(90deg,var(--magenta),var(--cyan),var(--lime)); transform:scaleX(0); transform-origin:left; transition:transform .3s ease;}
-  .card:hover::before{transform:scaleX(1);}
-  .card::after{content:""; position:absolute; right:0; bottom:0; width:22px; height:22px; pointer-events:none;
-    border-right:2px solid rgba(0,246,255,.5); border-bottom:2px solid rgba(0,246,255,.5); opacity:0; transition:opacity .25s ease;}
-  .card:hover::after{opacity:1;}
-  .card:hover{transform:translateY(-6px); border-color:rgba(0,246,255,.3);
-    box-shadow:0 14px 34px rgba(0,0,0,.5), 0 0 34px rgba(139,42,255,.3);}
-  .card .ic{width:56px; height:56px; display:flex; align-items:center; justify-content:center; font-size:28px; margin-bottom:14px;
-    border-radius:16px; background:radial-gradient(circle at 30% 30%, rgba(255,255,255,.08), rgba(139,42,255,.18));
-    box-shadow:0 0 20px rgba(139,42,255,.22), inset 0 0 0 1px rgba(255,255,255,.06);}
-  .card h3{font-family:'Chakra Petch',sans-serif; font-size:17px; color:var(--gold); margin-bottom:10px; line-height:1.3;}
-  .card p{color:var(--muted); font-size:14.5px;}
-
-  /* ---------- MINIGIOCHI TEASER ---------- */
-  .mgWrap{background:linear-gradient(135deg, rgba(139,42,255,.24), rgba(0,246,255,.15)); border:1px solid var(--border); border-radius:4px;
-    clip-path:polygon(24px 0,100% 0,100% calc(100% - 24px),calc(100% - 24px) 100%,0 100%,0 24px);
-    padding:44px 30px; text-align:center;
-    position:relative; overflow:hidden; box-shadow:0 0 0 1px rgba(255,255,255,.06), 0 0 60px rgba(139,42,255,.2);}
-  .mgWrap > div, .mgWrap > p{position:relative;}
-  .mgWrap::after{content:""; position:absolute; top:0; left:-40%; width:35%; height:100%;
-    background:linear-gradient(120deg, transparent, rgba(255,255,255,.12), transparent);
-    transform:skewX(-20deg); animation:mgSweep 4.5s ease-in-out infinite;}
-  @keyframes mgSweep{ 0%{left:-40%;} 60%,100%{left:130%;} }
-  .mgCount{font-family:'Orbitron',sans-serif; font-weight:900; font-size:clamp(50px,10vw,90px); color:var(--cyan); text-shadow:0 0 30px rgba(0,246,255,.6); line-height:1;
-    animation:numFlicker 2.2s ease-in-out infinite;}
-  .mgCats{display:flex; flex-wrap:wrap; gap:12px; justify-content:center; margin-top:26px;}
-  .mgCat{background:rgba(255,255,255,.04); border:1px dashed var(--border); border-radius:14px; padding:14px 20px; font-weight:700; font-size:14px; color:var(--muted); min-width:150px;}
-  .mgCat b{display:block; color:var(--white); font-size:15px; margin-bottom:4px;}
-  .mystery{opacity:.55; font-style:italic;}
-
-  /* ---------- PRODOTTI (Tombola / Asta) ---------- */
-  .prodCard{border:1px solid transparent; border-radius:4px;
-    clip-path:polygon(20px 0,100% 0,100% calc(100% - 20px),calc(100% - 20px) 100%,0 100%,0 20px);
-    padding:32px; position:relative; overflow:hidden;
-    transition:transform .25s ease, box-shadow .25s ease;
-    background-image:linear-gradient(var(--panel2), var(--panel2)),
-      conic-gradient(from var(--angle), var(--magenta), var(--cyan), var(--lime), var(--gold), var(--viola), var(--magenta));
-    background-origin:border-box; background-clip:padding-box, border-box;
-    animation:borderRotate 5s linear infinite;}
-  .prodCard::before{content:""; position:absolute; width:200px; height:200px; border-radius:50%; filter:blur(55px); opacity:.4; top:-70px; right:-70px; background:var(--magenta);}
-  .prodCard:nth-of-type(2)::before{background:var(--lime);}
-  .prodCard:nth-of-type(3)::before{background:var(--gold);}
-  .prodCard:nth-of-type(4)::before{background:var(--cyan);}
-  .prodCard:hover{transform:translateY(-6px); box-shadow:0 14px 34px rgba(0,0,0,.4), 0 0 40px rgba(0,246,255,.25);}
-  .prodCard .badge{position:absolute; top:18px; right:18px; font-size:11px; font-weight:800; letter-spacing:1px; text-transform:uppercase; padding:5px 12px; border-radius:999px;}
-  .prodCard .emoji{position:relative; font-size:44px;}
-  .prodCard h3{position:relative; font-family:'Chakra Petch',sans-serif; font-size:22px; margin:14px 0 10px; color:var(--white);}
-  .prodCard ul{position:relative; margin:16px 0 22px 18px; color:var(--muted); font-size:14.5px;}
-  .prodCard ul li{margin-bottom:6px;}
-  .prodCard > a{position:relative;}
-  .badge.gold{background:rgba(234,255,43,.15); color:var(--gold); border:1px solid rgba(234,255,43,.5);}
-  .badge.lime{background:rgba(43,109,255,.15); color:var(--lime); border:1px solid rgba(43,109,255,.5);}
-
-  /* ---------- PREZZI ---------- */
-  .priceGrid{display:grid; grid-template-columns:1fr; gap:22px;}
-  @media(min-width:900px){ .priceGrid{grid-template-columns:repeat(3,1fr);} }
-  .priceCard{background:var(--panel); border:1px solid var(--border); border-radius:4px;
-    clip-path:polygon(18px 0,100% 0,100% calc(100% - 18px),calc(100% - 18px) 100%,0 100%,0 18px);
-    padding:30px; display:flex; flex-direction:column; position:relative;
-    transition:transform .25s ease, box-shadow .25s ease;}
-  .priceCard::after{content:""; position:absolute; left:0; top:0; width:24px; height:24px; pointer-events:none;
-    border-left:2px solid rgba(0,246,255,.5); border-top:2px solid rgba(0,246,255,.5); opacity:0; transition:opacity .25s ease;}
-  .priceCard:hover{transform:translateY(-5px); box-shadow:0 14px 30px rgba(0,0,0,.35);}
-  .priceCard:hover::after{opacity:1;}
-  .priceCard.featured{border:2px solid var(--gold); background:linear-gradient(180deg, rgba(234,255,43,.1), var(--panel)); position:relative;
-    padding-top:52px; box-shadow:0 0 0 1px rgba(234,255,43,.15), 0 0 50px rgba(234,255,43,.18);
-    animation:pulseGold 3s ease-in-out infinite;}
-  .priceCard.featured::before{content:"★ CONSIGLIATO"; position:absolute; top:0; right:0; z-index:2;
-    background:linear-gradient(120deg,var(--gold),var(--cyan)); color:#050014; font-family:'Chakra Petch',sans-serif; font-weight:700; letter-spacing:1px; text-transform:uppercase;
-    font-size:11.5px; padding:9px 20px 9px 16px; white-space:nowrap;
-    clip-path:polygon(14px 0,100% 0,100% 100%,0 100%);
-    box-shadow:0 4px 16px rgba(234,255,43,.35);}
-  .priceCard .period{font-weight:800; letter-spacing:2px; text-transform:uppercase; font-size:13px; color:var(--muted);}
-  .priceCard .tiers{margin-top:18px; display:flex; flex-direction:column; gap:14px;}
-  .tierRow{display:flex; align-items:baseline; justify-content:space-between; padding:14px 16px; border-radius:14px; background:rgba(255,255,255,.03); border:1px solid var(--border);}
-  .tierRow .tierName{font-weight:700; font-size:14px; color:var(--white);}
-  .tierRow .tierName small{display:block; color:var(--muted); font-weight:500; font-size:12px; margin-top:2px;}
-  .tierRow .price{font-family:'Orbitron',sans-serif; font-weight:900; font-size:22px; color:var(--gold); white-space:nowrap;}
-  .priceCard .price.single{font-family:'Orbitron',sans-serif; font-weight:900; font-size:44px; color:var(--gold); margin-top:14px;}
-  .priceNums{display:flex; align-items:baseline; gap:9px;}
-  .oldPrice{font-family:'Orbitron',sans-serif; font-weight:700; font-size:14px; color:var(--muted); text-decoration:line-through; opacity:.7;}
-  .oldPrice.big{font-size:22px;}
-  .lockNote{margin-top:16px; text-align:center; font-family:'Chakra Petch',sans-serif; font-size:10.5px; letter-spacing:.4px; color:var(--lime);
-    background:rgba(43,109,255,.1); border:1px solid rgba(43,109,255,.4); border-radius:10px; padding:9px 10px; line-height:1.4;
-    display:flex; align-items:center; justify-content:center; gap:7px;}
-  .lockNote::before{content:""; width:7px; height:7px; border-radius:50%; background:var(--lime); box-shadow:0 0 8px var(--lime); animation:blinkDot 1.4s ease-in-out infinite; flex-shrink:0;}
-  .priceCard .noteFull{margin-top:16px; font-size:13.5px; color:var(--muted); flex-grow:1;}
-  .priceCard .btn{margin-top:20px; width:100%; text-align:center;}
-  .priceFootnote{max-width:720px; margin:34px auto 0; text-align:center;}
-  .priceFootnote p{color:var(--muted); font-size:13.5px; margin-top:12px; line-height:1.6;}
-
-  .galleryGrid{display:grid; grid-template-columns:repeat(2,1fr); gap:16px;}
-  @media(min-width:760px){ .galleryGrid{grid-template-columns:repeat(3,1fr);} }
-  .galleryItem{aspect-ratio:4/3; border-radius:16px; border:1.5px dashed var(--border); background:rgba(255,255,255,.03);
-    display:flex; flex-direction:column; align-items:center; justify-content:center; gap:10px; color:var(--muted); font-weight:700; font-size:13px;
-    transition:border-color .25s ease, transform .25s ease;}
-  .galleryItem:hover{border-color:var(--cyan); transform:translateY(-3px);}
-  .galleryItem .ic{font-size:34px; opacity:.7;}
-
-  .galleryFeatured{position:relative; border-radius:16px; overflow:hidden; border:1px solid var(--border); margin:0 auto 20px;
-    box-shadow:0 0 50px rgba(0,246,255,.18); display:flex; justify-content:center; background:#000; max-width:560px;
-    contain:layout paint; transform:translateZ(0); isolation:isolate;}
-  .galleryFeatured video{width:100%; aspect-ratio:1/1; max-height:560px; display:block; background:#000; object-fit:contain; transform:translateZ(0);}
-  .galleryFeatured .featBadge{position:absolute; top:16px; left:16px; z-index:2;
-    background:linear-gradient(120deg,var(--gold),var(--cyan)); color:#050014; font-family:'Chakra Petch',sans-serif; font-weight:700;
-    text-transform:uppercase; letter-spacing:1px; font-size:12px; padding:7px 16px; border-radius:2px;
-    box-shadow:0 4px 14px rgba(234,255,43,.4);}
-  .galleryMedia{border-radius:16px; overflow:hidden; border:1px solid var(--border); aspect-ratio:4/3; background:#000;
-    transition:transform .25s ease, border-color .25s ease;}
-  .galleryMedia:hover{transform:translateY(-3px); border-color:var(--cyan);}
-  .galleryMedia video, .galleryMedia img{width:100%; height:100%; object-fit:cover; display:block;}
-
-  /* ---------- INCLUSO ---------- */
-  .inclList{display:grid; grid-template-columns:1fr; gap:18px;}
-  @media(min-width:760px){ .inclList{grid-template-columns:repeat(4,1fr);} }
-  .inclItem{text-align:center;}
-  .inclItem .ic{width:60px; height:60px; margin:0 auto; font-size:30px; display:flex; align-items:center; justify-content:center;
-    border-radius:50%; background:radial-gradient(circle at 30% 30%, rgba(255,255,255,.08), rgba(43,109,255,.16));
-    box-shadow:0 0 20px rgba(43,109,255,.22);}
-  .inclItem h4{font-family:'Chakra Petch',sans-serif; font-size:14px; color:var(--lime); margin:12px 0 8px;}
-  .inclItem p{font-size:13.5px; color:var(--muted);}
-
-  /* ---------- COME FUNZIONA ---------- */
-  .steps{counter-reset:step; display:grid; grid-template-columns:1fr; gap:26px;}
-  @media(min-width:760px){ .steps{grid-template-columns:repeat(3,1fr);} }
-  .step{position:relative; padding-top:10px;}
-  .step .n{counter-increment:step; font-family:'Orbitron',sans-serif; font-weight:900; font-size:40px; color:var(--viola); opacity:.8;
-    text-shadow:0 0 20px rgba(139,42,255,.5);}
-  .step h3{font-family:'Chakra Petch',sans-serif; font-size:16px; margin:10px 0; color:var(--white);}
-  .step p{color:var(--muted); font-size:14.5px;}
-
-  /* ---------- CONTATTI / FOOTER ---------- */
-  .ctaBox{background:linear-gradient(135deg, rgba(255,31,201,.2), rgba(139,42,255,.2)); border:1px solid var(--border); border-radius:4px;
-    clip-path:polygon(26px 0,100% 0,100% calc(100% - 26px),calc(100% - 26px) 100%,0 100%,0 26px);
-    padding:50px 30px; text-align:center;
-    position:relative; overflow:hidden; box-shadow:0 0 60px rgba(255,31,201,.15);}
-  .ctaBox h2, .ctaBox p, .ctaBox .btn, .ctaBox .ctaTagline{position:relative;}
-  .ctaBox h2{font-family:'Fredoka',sans-serif; font-weight:700; text-transform:uppercase; letter-spacing:.3px; font-size:clamp(22px,4vw,34px); color:var(--white);}
-  .ctaBox p{color:var(--muted); margin:14px 0 26px;}
-  .ctaTagline{margin-top:26px; font-family:'Chakra Petch',sans-serif; font-size:12px; letter-spacing:1px; color:var(--muted); line-height:1.9;}
-  .ctaTagline b{color:var(--gold);}
-
-  /* ---------- NOVITÀ ASSOLUTA HIGHLIGHT ---------- */
-  .highlightBox{background:linear-gradient(135deg, rgba(0,246,255,.14), rgba(139,42,255,.16)); border:1px solid rgba(0,246,255,.3); border-radius:4px;
-    clip-path:polygon(26px 0,100% 0,100% calc(100% - 26px),calc(100% - 26px) 100%,0 100%,0 26px);
-    padding:48px 32px; text-align:center; position:relative; overflow:hidden;
-    box-shadow:0 0 70px rgba(0,246,255,.16), inset 0 0 0 1px rgba(255,255,255,.04);}
-  .highlightBox::before{content:""; position:absolute; inset:0; z-index:0; pointer-events:none;
-    background:radial-gradient(circle at 15% 20%, rgba(0,246,255,.16), transparent 45%), radial-gradient(circle at 85% 80%, rgba(255,31,201,.14), transparent 45%);}
-  .highlightBox > *{position:relative;}
-  .highlightBadge{display:inline-flex; align-items:center; gap:8px; font-family:'Chakra Petch',sans-serif; font-weight:700; text-transform:uppercase;
-    letter-spacing:1.5px; font-size:13px; color:#050014; background:linear-gradient(120deg,var(--cyan),var(--gold),var(--magenta),var(--gold),var(--cyan));
-    background-size:300% 100%; animation:btnGoldShift 5s linear infinite, ctaPulse 2.4s ease-in-out infinite;
-    padding:8px 20px; clip-path:polygon(10px 0,100% 0,calc(100% - 10px) 100%,0 100%); margin-bottom:22px;}
-  .highlightBox h2{font-family:'Fredoka',sans-serif; font-weight:700; text-transform:uppercase; letter-spacing:.3px; font-size:clamp(24px,4.2vw,38px); line-height:1.2; color:var(--white); max-width:820px; margin:0 auto;}
-  .highlightBox h2 .accentCyan{color:var(--cyan); text-shadow:0 0 24px rgba(0,246,255,.5);}
-  .highlightBox > p.lead2{max-width:700px; margin:18px auto 0; color:var(--muted); font-size:15.5px; line-height:1.7;}
-  .highlightGrid{display:grid; grid-template-columns:1fr; gap:18px; max-width:920px; margin:34px auto 0; text-align:left;}
-  @media(min-width:760px){ .highlightGrid{grid-template-columns:repeat(3,1fr);} }
-  .highlightItem{background:rgba(4,3,9,.4); border:1px solid rgba(0,246,255,.2); border-radius:4px; padding:20px 18px;}
-  .highlightItem .ic{font-size:26px; margin-bottom:10px;}
-  .highlightItem b{display:block; font-family:'Chakra Petch',sans-serif; font-size:14.5px; color:var(--cyan); margin-bottom:6px; text-transform:uppercase; letter-spacing:.4px;}
-  .highlightItem span{color:var(--muted); font-size:13.5px; line-height:1.6;}
-  .highlightBox .btn{margin-top:34px;}
-  footer{padding:36px 0; text-align:center; color:var(--muted); font-size:13px; border-top:1px solid var(--border); margin-top:20px; position:relative;}
-  footer::before{content:""; position:absolute; top:-1px; left:0; right:0; height:2px;
-    background:linear-gradient(90deg, var(--magenta), var(--cyan), var(--lime), var(--gold), var(--viola));}
-  footer a{color:var(--gold); text-decoration:none;}
-
-  /* ---------- MANUALE ---------- */
-  .manHero{padding:60px 0 10px; text-align:center;}
-  .manHero .kicker{margin-bottom:18px;}
-  .manHero h1{font-family:'Fredoka',sans-serif; font-weight:700; text-transform:uppercase; letter-spacing:.3px;
-    font-size:clamp(26px,5vw,42px); color:var(--white); max-width:800px; margin:0 auto;}
-  .manHero h1 span{color:var(--gold); text-shadow:0 0 22px rgba(234,255,43,.4);}
-  .manHero p.lead{max-width:620px; margin:16px auto 0; color:var(--muted); font-size:15.5px;}
-  .manVersion{display:inline-flex; align-items:center; gap:8px; margin-top:20px; font-family:'Chakra Petch',sans-serif;
-    font-size:12.5px; font-weight:700; letter-spacing:.6px; color:#050014; background:linear-gradient(120deg,var(--cyan),var(--gold));
-    padding:7px 18px; border-radius:999px; text-transform:uppercase;}
-  .manToc{display:flex; flex-wrap:wrap; gap:10px; justify-content:center; max-width:900px; margin:34px auto 0;}
-  .manToc a{font-family:'Chakra Petch',sans-serif; font-size:12.5px; font-weight:600; letter-spacing:.4px;
-    color:var(--muted); text-decoration:none; border:1px solid var(--border); padding:8px 16px; border-radius:999px;
-    transition:border-color .2s ease, color .2s ease;}
-  .manToc a:hover{border-color:var(--cyan); color:var(--cyan);}
-  .manSection{padding:54px 0; border-top:1px solid var(--border);}
-  .manSection .sectionHead{text-align:left; margin-bottom:26px;}
-  .manSection .sectionHead h2{font-size:clamp(21px,3.4vw,30px); text-align:left; margin:8px 0 0;}
-  .manSubhead{font-family:'Chakra Petch',sans-serif; font-size:16px; font-weight:700; color:var(--cyan);
-    text-transform:uppercase; letter-spacing:.4px; margin:26px 0 10px;}
-  .manSubhead:first-child{margin-top:0;}
-  .manText{color:var(--muted); font-size:15px; line-height:1.75; max-width:760px;}
-  .manList{list-style:none; max-width:760px; margin:14px 0 0;}
-  .manList li{position:relative; padding-left:26px; margin-bottom:12px; color:var(--muted); font-size:15px; line-height:1.7;}
-  .manList li::before{content:"▸"; position:absolute; left:0; top:0; color:var(--cyan);}
-  .manTriad{display:grid; grid-template-columns:1fr; gap:16px; margin-top:24px;}
-  @media(min-width:760px){ .manTriad{grid-template-columns:repeat(3,1fr);} }
-  .manTriad .card{padding:22px;}
-  .manTriad .card h3{font-size:15px;}
-  .manTriad .card p{color:var(--muted); font-size:13.5px; line-height:1.6;}
-  .manModTable{width:100%; max-width:520px; border-collapse:collapse; margin-top:18px; font-family:'Chakra Petch',sans-serif;}
-  .manModTable td{padding:12px 16px; border-bottom:1px solid var(--border); font-size:14.5px; color:var(--white);}
-  .manModTable tr:last-child td{border-bottom:none;}
-  .manModTable td.num{color:var(--cyan); font-weight:700; width:36px;}
-  .manNewsBox{background:linear-gradient(135deg, rgba(0,246,255,.12), rgba(234,255,43,.1)); border:1px solid rgba(0,246,255,.3);
-    border-radius:4px; clip-path:polygon(18px 0,100% 0,100% calc(100% - 18px),calc(100% - 18px) 100%,0 100%,0 18px);
-    padding:26px 24px; margin-top:16px; max-width:760px;}
-  .manNewsBox b{color:var(--gold);}
-
-  @media (prefers-reduced-motion: reduce){
-    *, *::before, *::after{animation-duration:.001ms !important; animation-iteration-count:1 !important; transition-duration:.001ms !important;}
-  }
+:root{
+--bg:#040309; --bg2:#08051a; --panel:#0c0a1f; --panel2:#100c2b;
+--magenta:#ff1fc9; --cyan:#00f6ff; --lime:#2b6dff; --gold:#eaff2b; --viola:#8b2aff;
+--white:#f3f6ff; --muted:#93a3c9; --border:rgba(0,246,255,.14);
+}
+*{box-sizing:border-box; margin:0; padding:0;}
+html{scroll-behavior:smooth; overscroll-behavior-y:none;}
+body{
+font-family:'Outfit',sans-serif; color:var(--white); background:var(--bg);
+line-height:1.55;
+overflow-x:hidden;
+position:relative;
+overscroll-behavior-y:none;
+}
+body::before{
+content:""; position:fixed; inset:0; z-index:-2; pointer-events:none;
+background-color:var(--bg);
+background-image:
+linear-gradient(180deg, rgba(4,3,9,.25) 0%, rgba(4,3,9,.45) 45%, rgba(4,3,9,.88) 100%),
+url("assets/img/sfondo-hero.webp"),
+url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.3'/%3E%3C/svg%3E");
+background-repeat:no-repeat, no-repeat, repeat;
+background-position:center, center top, top left;
+background-blend-mode:normal, normal, overlay;
+background-size:cover, cover, 160px 160px;
+transform:translateZ(0) scale(1.06); transform-origin:center;
+animation:auroraShift 18s ease-in-out infinite alternate;
+will-change:transform, opacity;
+}
+body::after{
+content:""; position:fixed; top:-8px; left:0; right:0; bottom:0; z-index:-1; pointer-events:none; opacity:.22; mix-blend-mode:overlay;
+background:repeating-linear-gradient(0deg, rgba(0,246,255,.1) 0px, rgba(0,246,255,.1) 1px, transparent 1px, transparent 3px);
+background-size:100% 4px;
+animation:scanlineMove 7s linear infinite;
+will-change:transform;
+}
+a{color:inherit;}
+.wrap{max-width:1100px; margin:0 auto; padding:0 24px;}
+.brandFont{font-family:'Chakra Petch',sans-serif; letter-spacing:1px; text-transform:uppercase;}
+.numFont{font-family:'Orbitron',sans-serif; font-weight:900;}
+header{position:sticky; top:0; z-index:50; backdrop-filter:blur(14px); background:rgba(4,3,9,.7); border-bottom:1px solid rgba(0,246,255,.12);
+box-shadow:0 10px 40px rgba(0,0,0,.5);}
+.navRow{display:flex; align-items:center; justify-content:space-between; padding:14px 0; flex-wrap:wrap; row-gap:10px;}
+.logo{font-family:'Fredoka',sans-serif; font-weight:700; font-size:clamp(16px,2.6vw,22px); text-transform:uppercase; letter-spacing:.3px;
+background:linear-gradient(180deg, #ffe38a 0%, var(--gold) 55%, #ff8a1f 100%);
+-webkit-background-clip:text; background-clip:text; color:transparent;}
+.logo span{background:linear-gradient(180deg, #d9fbff 0%, var(--cyan) 55%, #2b6dff 100%);
+-webkit-background-clip:text; background-clip:text; color:transparent;}
+nav{display:none; gap:26px; font-weight:600; font-size:15px;}
+nav a{opacity:.85; text-decoration:none; position:relative; padding-bottom:4px;}
+nav a::after{content:""; position:absolute; left:0; bottom:0; width:0; height:2px;
+background:linear-gradient(90deg,var(--magenta),var(--cyan)); transition:width .25s ease;}
+nav a:hover{opacity:1; color:var(--cyan);}
+nav a:hover::after{width:100%;}
+@media(min-width:840px){ nav{display:flex;} }
+header::before{content:""; position:absolute; top:0; left:0; right:0; height:2px; z-index:1;
+background:linear-gradient(90deg, var(--magenta), var(--viola), var(--cyan));
+box-shadow:0 0 14px rgba(0,246,255,.55), 0 0 22px rgba(255,31,201,.35);}
+header::after{content:""; position:absolute; top:0; left:-25%; width:22%; height:2px; z-index:2; pointer-events:none;
+background:linear-gradient(90deg, transparent, rgba(255,255,255,.95), transparent);
+filter:blur(.5px); animation:beamSweep 3.6s ease-in-out infinite;}
+.btn{
+display:inline-block; font-family:'Chakra Petch',sans-serif; font-size:14px; letter-spacing:1.2px; text-transform:uppercase; font-weight:700;
+padding:13px 24px; border-radius:2px; text-decoration:none; cursor:pointer; border:none;
+clip-path:polygon(12px 0,100% 0,100% calc(100% - 12px),calc(100% - 12px) 100%,0 100%,0 12px);
+transition:transform .15s ease, box-shadow .15s ease;
+position:relative; overflow:hidden;
+}
+.btn::after{content:""; position:absolute; top:0; left:-60%; width:40%; height:100%;
+background:linear-gradient(120deg, transparent, rgba(255,255,255,.55), transparent);
+transform:skewX(-20deg); transition:left .5s ease; pointer-events:none;}
+.btn:hover::after{left:130%;}
+.btn:hover{transform:translateY(-2px);}
+.btnGold{background:linear-gradient(120deg,var(--cyan),var(--gold),var(--magenta),var(--gold),var(--cyan)); background-size:300% 100%;
+animation:btnGoldShift 5s linear infinite, ctaPulse 2.4s ease-in-out infinite; color:#050014; box-shadow:0 0 0 1px rgba(255,255,255,.25) inset, 0 0 22px rgba(234,255,43,.45), 0 10px 24px rgba(0,246,255,.2);}
+.btnGold:hover{box-shadow:0 0 0 1px rgba(255,255,255,.35) inset, 0 0 40px rgba(234,255,43,.7), 0 0 30px rgba(255,31,201,.5); animation-play-state:paused, paused; transform:translateY(-2px) scale(1.03);}
+.btnGhost{background:rgba(0,246,255,.04); color:var(--white); border:1px solid var(--border);}
+.btnGhost:hover{border-color:var(--cyan); color:var(--cyan); box-shadow:0 0 22px rgba(0,246,255,.35);}
+.btnSmall{padding:9px 16px; font-size:12px;}
+@keyframes floatY{ 0%,100%{transform:translateY(0);} 50%{transform:translateY(-14px);} }
+@keyframes pulseGlow{ 0%,100%{opacity:.7; transform:scale(1);} 50%{opacity:1; transform:scale(1.08);} }
+@keyframes ringPulse{ 0%,100%{transform:scale(1); opacity:.7;} 50%{transform:scale(1.06); opacity:1;} }
+@keyframes kickerPulse{ 0%,100%{box-shadow:0 0 0 rgba(43,109,255,0);} 50%{box-shadow:0 0 16px rgba(43,109,255,.45);} }
+@keyframes beamSweep{ 0%{left:-25%;} 100%{left:105%;} }
+@keyframes numFlicker{ 0%,100%{text-shadow:0 0 30px rgba(0,246,255,.6);} 50%{text-shadow:0 0 45px rgba(0,246,255,.9), 0 0 70px rgba(139,42,255,.4);} }
+@keyframes pulseGold{ 0%,100%{box-shadow:0 0 0 0 rgba(234,255,43,.35);} 50%{box-shadow:0 0 40px 6px rgba(234,255,43,.3);} }
+@keyframes auroraShift{ 0%{transform:translateZ(0) scale(1.06) rotate(0deg); opacity:.88;} 100%{transform:translateZ(0) scale(1.1) rotate(1deg); opacity:1;} }
+@keyframes scanlineMove{ from{transform:translateY(0);} to{transform:translateY(8px);} }
+@keyframes btnGoldShift{ from{background-position:0% 0;} to{background-position:300% 0;} }
+@keyframes ctaPulse{ 0%,100%{box-shadow:0 0 0 1px rgba(255,255,255,.25) inset, 0 0 22px rgba(234,255,43,.45), 0 10px 24px rgba(0,246,255,.2);}
+50%{box-shadow:0 0 0 1px rgba(255,255,255,.3) inset, 0 0 36px rgba(234,255,43,.7), 0 0 26px rgba(255,31,201,.4), 0 10px 24px rgba(0,246,255,.25);} }
+@keyframes blinkDot{ 0%,100%{opacity:1;} 50%{opacity:.25;} }
+section{padding:70px 0;}
+.sectionHead{text-align:center; max-width:680px; margin:0 auto 46px;}
+.sectionHead .tag{color:var(--magenta); font-weight:800; font-size:13px; letter-spacing:2px; text-transform:uppercase; text-shadow:0 0 12px rgba(255,31,201,.5);}
+.sectionHead h2{font-family:'Fredoka',sans-serif; font-weight:700; text-transform:uppercase; letter-spacing:.3px; font-size:clamp(24px,4.5vw,40px); margin-top:10px; color:var(--white);}
+.sectionHead p{color:var(--muted); margin-top:14px; font-size:16px;}
+.card{background:var(--panel); border:1px solid var(--border); border-radius:4px; padding:28px; height:100%;
+clip-path:polygon(18px 0,100% 0,100% calc(100% - 18px),calc(100% - 18px) 100%,0 100%,0 18px);
+position:relative; overflow:hidden; transition:transform .25s ease, box-shadow .25s ease, border-color .25s ease;}
+.card::before{content:""; position:absolute; top:0; left:0; right:0; height:3px;
+background:linear-gradient(90deg,var(--magenta),var(--cyan),var(--lime)); transform:scaleX(0); transform-origin:left; transition:transform .3s ease;}
+.card:hover::before{transform:scaleX(1);}
+.card:hover{transform:translateY(-6px); border-color:rgba(0,246,255,.3);
+box-shadow:0 14px 34px rgba(0,0,0,.5), 0 0 34px rgba(139,42,255,.3);}
+.card .ic{width:56px; height:56px; display:flex; align-items:center; justify-content:center; font-size:28px; margin-bottom:14px;
+border-radius:16px; background:radial-gradient(circle at 30% 30%, rgba(255,255,255,.08), rgba(139,42,255,.18));
+box-shadow:0 0 20px rgba(139,42,255,.22), inset 0 0 0 1px rgba(255,255,255,.06);}
+.card h3{font-family:'Chakra Petch',sans-serif; font-size:17px; color:var(--gold); margin-bottom:10px; line-height:1.3;}
+.card p{color:var(--muted); font-size:14.5px;}
+footer{padding:36px 0; text-align:center; color:var(--muted); font-size:13px; border-top:1px solid var(--border); margin-top:20px; position:relative;}
+footer::before{content:""; position:absolute; top:-1px; left:0; right:0; height:2px;
+background:linear-gradient(90deg, var(--magenta), var(--cyan), var(--lime), var(--gold), var(--viola));}
+footer a{color:var(--gold); text-decoration:none;}
+.manHero{padding:60px 0 10px; text-align:center;}
+.manHero .kicker{display:inline-block; font-weight:700; font-size:13px; letter-spacing:2px; text-transform:uppercase;
+color:var(--lime); background:rgba(43,109,255,.1); border:1px solid rgba(43,109,255,.4); padding:6px 16px; border-radius:999px; margin-bottom:18px;
+animation:kickerPulse 2.6s ease-in-out infinite;}
+.manHero h1{font-family:'Fredoka',sans-serif; font-weight:700; text-transform:uppercase; letter-spacing:.3px;
+font-size:clamp(26px,5vw,42px); color:var(--white); max-width:800px; margin:0 auto;}
+.manHero h1 span{color:var(--gold); text-shadow:0 0 22px rgba(234,255,43,.4);}
+.manHero p.lead{max-width:620px; margin:16px auto 0; color:var(--muted); font-size:15.5px;}
+.manVersion{display:inline-flex; align-items:center; gap:8px; margin-top:20px; font-family:'Chakra Petch',sans-serif;
+font-size:12.5px; font-weight:700; letter-spacing:.6px; color:#050014; background:linear-gradient(120deg,var(--cyan),var(--gold));
+padding:7px 18px; border-radius:999px; text-transform:uppercase;}
+.manToc{display:flex; flex-wrap:wrap; gap:10px; justify-content:center; max-width:900px; margin:34px auto 0;}
+.manToc a{font-family:'Chakra Petch',sans-serif; font-size:12.5px; font-weight:600; letter-spacing:.4px;
+color:var(--muted); text-decoration:none; border:1px solid var(--border); padding:8px 16px; border-radius:999px;
+transition:border-color .2s ease, color .2s ease;}
+.manToc a:hover{border-color:var(--cyan); color:var(--cyan);}
+.manSection{padding:54px 0; border-top:1px solid var(--border);}
+.manSection .sectionHead{text-align:left; margin-bottom:26px;}
+.manSection .sectionHead h2{font-size:clamp(21px,3.4vw,30px); text-align:left; margin:8px 0 0;}
+.manSubhead{font-family:'Chakra Petch',sans-serif; font-size:16px; font-weight:700; color:var(--cyan);
+text-transform:uppercase; letter-spacing:.4px; margin:26px 0 10px;}
+.manSubhead:first-child{margin-top:0;}
+.manText{color:var(--muted); font-size:15px; line-height:1.75; max-width:760px;}
+.manList{list-style:none; max-width:760px; margin:14px 0 0;}
+.manList li{position:relative; padding-left:26px; margin-bottom:12px; color:var(--muted); font-size:15px; line-height:1.7;}
+.manList li::before{content:"▸"; position:absolute; left:0; top:0; color:var(--cyan);}
+.manTriad{display:grid; grid-template-columns:1fr; gap:16px; margin-top:24px;}
+@media(min-width:760px){ .manTriad{grid-template-columns:repeat(3,1fr);} }
+.manTriad .card{padding:22px;}
+.manTriad .card h3{font-size:15px;}
+.manTriad .card p{color:var(--muted); font-size:13.5px; line-height:1.6;}
+.manModTable{width:100%; max-width:520px; border-collapse:collapse; margin-top:18px; font-family:'Chakra Petch',sans-serif;}
+.manModTable td{padding:12px 16px; border-bottom:1px solid var(--border); font-size:14.5px; color:var(--white);}
+.manModTable tr:last-child td{border-bottom:none;}
+.manModTable td.num{color:var(--cyan); font-weight:700; width:36px;}
+.manNewsBox{background:linear-gradient(135deg, rgba(0,246,255,.12), rgba(234,255,43,.1)); border:1px solid rgba(0,246,255,.3);
+border-radius:4px; clip-path:polygon(18px 0,100% 0,100% calc(100% - 18px),calc(100% - 18px) 100%,0 100%,0 18px);
+padding:26px 24px; margin-top:16px; max-width:760px;}
+.manNewsBox b{color:var(--gold);}
+@media (prefers-reduced-motion: reduce){
+*, *::before, *::after{animation-duration:.001ms !important; animation-iteration-count:1 !important; transition-duration:.001ms !important;}
+}
 </style>
 </head>
 <body>
-
 <header>
-  <div class="wrap navRow">
-    <a href="index.html" class="logo brandFont">IL CAPONE <span>QUIZ 3.0</span></a>
-    <nav>
-      <a href="index.html#novita">Novità</a>
-      <a href="index.html#cose">Cos'è</a>
-      <a href="index.html#minigiochi">Minigiochi</a>
-      <a href="index.html#prodotti">Altri prodotti Il Capone</a>
-      <a href="index.html#ingiro">Foto e Video</a>
-      <a href="index.html#prezzi">Prezzi</a>
-      <a href="index.html#contatti">Contatti</a>
-    </nav>
-    <div style="display:flex; gap:10px; align-items:center; flex-wrap:wrap;">
-      <a class="btn btnGhost btnSmall" href="in-giro-per-i-locali.html">🗺️ In giro per i locali</a>
-      <a class="btn btnGhost btnSmall" href="in-giro-per-i-locali.html#storico">📍 Il Capone è stato anche qui</a>
-      <a class="btn btnGold btnSmall" href="index.html#prezzi">💰 Vedi i prezzi</a>
-      <a class="btn btnGold btnSmall" href="https://wa.me/393295428123?text=Ciao%21%20Vorrei%20avere%20informazioni%20su%20Il%20Capone%20Quiz%203.0" target="_blank" rel="noopener">📱 Richiedi info</a>
-    </div>
-  </div>
+<div class="wrap navRow">
+<a href="index.html" class="logo brandFont">IL CAPONE <span>QUIZ 3.0</span></a>
+<nav>
+<a href="index.html#novita">Novità</a>
+<a href="index.html#cose">Cos'è</a>
+<a href="index.html#minigiochi">Minigiochi</a>
+<a href="index.html#prodotti">Altri prodotti Il Capone</a>
+<a href="index.html#ingiro">Foto e Video</a>
+<a href="index.html#prezzi">Prezzi</a>
+<a href="index.html#contatti">Contatti</a>
+</nav>
+<div style="display:flex; gap:10px; align-items:center; flex-wrap:wrap;">
+<a class="btn btnGhost btnSmall" href="in-giro-per-i-locali.html">🗺️ In giro per i locali</a>
+<a class="btn btnGhost btnSmall" href="in-giro-per-i-locali.html#storico">📍 Il Capone è stato anche qui</a>
+<a class="btn btnGold btnSmall" href="index.html#prezzi">💰 Vedi i prezzi</a>
+<a class="btn btnGold btnSmall" href="https://wa.me/393295428123?text=Ciao%21%20Vorrei%20avere%20informazioni%20su%20Il%20Capone%20Quiz%203.0" target="_blank" rel="noopener">📱 Richiedi info</a>
+</div>
+</div>
 </header>
 
 <section class="manHero">
-  <div class="wrap">
-    <span class="kicker">📘 Manuale d'uso</span>
-    <h1>Come funziona <span>Il Capone Quiz 3.0</span></h1>
-    <p class="lead">Tutto quello che serve per condurre una serata: come si avvia una partita, come funzionano regia, proiettore e telefoni, e come gestire punteggi e classifiche.</p>
-    <div class="manVersion">🔖 Versione documentata: v13.51</div>
-    <div class="manToc">
-      <a href="#cose-e">Cos'è</a>
-      <a href="#iniziare">Come iniziare</a>
-      <a href="#menu">I menu</a>
-      <a href="#meccaniche">Meccaniche</a>
-      <a href="#giocatori">Gestione giocatori</a>
-      <a href="#classifiche">Classifiche e podio</a>
-      <a href="#controlli">Pulsanti comuni</a>
-      <a href="#moduli">Moduli disponibili</a>
-      <a href="#novita">Novità versione</a>
-      <a href="#contatti-man">Contatti</a>
-    </div>
-  </div>
+<div class="wrap">
+<span class="kicker">📘 Manuale d'uso</span>
+<h1>Come funziona <span>Il Capone Quiz 3.0</span></h1>
+<p class="lead">Tutto quello che serve per condurre una serata: come si avvia una partita, come funzionano regia, proiettore e telefoni, tutti i moduli extra e come gestire punteggi e classifiche.</p>
+<div class="manVersion">🔖 Versione documentata: v13.86</div>
+<div class="manToc">
+<a href="#cose-e">Cos'è</a>
+<a href="#licenza">Licenza</a>
+<a href="#iniziare">Come iniziare</a>
+<a href="#menu">I menu</a>
+<a href="#meccaniche">Meccaniche</a>
+<a href="#giocatori">Gestione giocatori</a>
+<a href="#classifiche">Classifiche e podio</a>
+<a href="#controlli">Pulsanti comuni</a>
+<a href="#moduli">Moduli disponibili</a>
+<a href="#whatsapp-messaggio">Messaggio e WhatsApp</a>
+<a href="#campionato">Campionato e Storico</a>
+<a href="#novita">Novità versione</a>
+<a href="#contatti-man">Contatti</a>
+</div>
+</div>
 </section>
 
 <section class="manSection" id="cose-e">
-  <div class="wrap">
-    <div class="sectionHead">
-      <div class="tag">Cos'è</div>
-      <h2>Cos'è Il Capone Quiz</h2>
-    </div>
-    <p class="manText">Il Capone Quiz 3.0 è un quiz interattivo per feste, eventi ed intrattenimento serale, pensato per essere condotto dal vivo da un animatore (la "regia") davanti a un pubblico che partecipa dal proprio smartphone, con le domande e i giochi proiettati su un grande schermo.</p>
-    <p class="manText" style="margin-top:14px;">Il sistema funziona su tre schermi che lavorano insieme in tempo reale:</p>
-    <div class="manTriad">
-      <div class="card">
-        <div class="ic">🎛️</div>
-        <h3>La Regia</h3>
-        <p>Lo schermo di chi conduce la serata (di solito un computer o un tablet), da cui si scelgono le domande, si avviano i minigiochi, si impostano tempi e punteggi, e si tiene sotto controllo tutta la partita.</p>
-      </div>
-      <div class="card">
-        <div class="ic">📽️</div>
-        <h3>Il Proiettore</h3>
-        <p>Lo schermo grande visto da tutto il pubblico, che mostra domande, classifiche, grafiche dei giochi e risultati.</p>
-      </div>
-      <div class="card">
-        <div class="ic">📱</div>
-        <h3>I Telefoni dei Giocatori</h3>
-        <p>Ogni partecipante entra inquadrando un QR code e gioca dal proprio smartphone, senza bisogno di installare nulla.</p>
-      </div>
-    </div>
-    <p class="manText" style="margin-top:24px;">Tutti e tre gli schermi restano sincronizzati automaticamente: quando la regia avvia una domanda o un gioco, il proiettore e i telefoni si aggiornano da soli, in tempo reale.</p>
-  </div>
+<div class="wrap">
+<div class="sectionHead">
+<div class="tag">Cos'è</div>
+<h2>Cos'è Il Capone Quiz</h2>
+</div>
+<p class="manText">Il Capone Quiz 3.0 è un quiz interattivo per feste, eventi ed intrattenimento serale, pensato per essere condotto dal vivo da un animatore (la "regia") davanti a un pubblico che partecipa dal proprio smartphone, con le domande e i giochi proiettati su un grande schermo.</p>
+<p class="manText" style="margin-top:14px;">Il sistema funziona su tre schermi che lavorano insieme in tempo reale:</p>
+<div class="manTriad">
+<div class="card">
+<div class="ic">🎛️</div>
+<h3>La Regia</h3>
+<p>Lo schermo di chi conduce la serata (di solito un computer o un tablet), da cui si scelgono le domande, si avviano i minigiochi, si impostano tempi e punteggi, e si tiene sotto controllo tutta la partita.</p>
+</div>
+<div class="card">
+<div class="ic">📽️</div>
+<h3>Il Proiettore</h3>
+<p>Lo schermo grande, che mostra domande, classifiche, grafiche dei giochi e risultati.</p>
+</div>
+<div class="card">
+<div class="ic">📱</div>
+<h3>I Telefoni dei Giocatori</h3>
+<p>Ogni partecipante entra inquadrando un QR code e gioca dal proprio smartphone, senza bisogno di installare nulla.</p>
+</div>
+</div>
+<p class="manText" style="margin-top:24px;">Tutti e tre gli schermi restano sincronizzati automaticamente: quando la regia avvia una domanda o un gioco, il proiettore e i telefoni si aggiornano da soli, in tempo reale. Il pubblico segue tutto dal proiettore e/o dal proprio smartphone: nessuno dei due è indispensabile da solo.</p>
+</div>
+</section>
+
+<section class="manSection" id="licenza">
+<div class="wrap">
+<div class="sectionHead">
+<div class="tag">Prima di iniziare</div>
+<h2>La licenza</h2>
+</div>
+<p class="manText">Ogni serata richiede una chiave di licenza valida, fornita da Alberto Seminerio. La licenza stabilisce quali minigiochi sono abilitati per quell'occasione e la durata del noleggio, ed è legata al primo dispositivo su cui viene inserita — un accorgimento pensato per evitare che una stessa chiave venga usata su più eventi contemporaneamente.</p>
+<p class="manText" style="margin-top:14px;">Se serve spostare la licenza su un altro dispositivo (ad esempio un cambio dell'ultimo minuto), il pulsante "🔑 Cambia licenza" in home permette di scollegarla per inserirne una nuova.</p>
+<div class="manNewsBox">
+<p class="manText" style="color:var(--white);">Il cambio dispositivo è concesso <b>una sola volta per licenza</b>, per correttezza verso entrambe le parti: va richiesto solo in presenza di un problema reale (telefono rotto, smarrito, sostituito), non come comodità.</p>
+</div>
+</div>
 </section>
 
 <section class="manSection" id="iniziare">
-  <div class="wrap">
-    <div class="sectionHead">
-      <div class="tag">Si parte</div>
-      <h2>Come iniziare una serata</h2>
-    </div>
-    <p class="manText">All'avvio, la regia crea una nuova partita e sceglie un quiz tra quelli salvati (oppure ne prepara uno nuovo con le proprie domande). Il sistema genera un codice partita e un QR code, che vengono mostrati sul proiettore: i giocatori inquadrano il QR con la fotocamera del telefono, inseriscono il proprio nome, ed entrano nella lobby in attesa che la regia dia il via.</p>
-    <p class="manText" style="margin-top:14px;">Da qui la regia può scegliere liberamente cosa far giocare in ogni momento della serata: una domanda del quiz, un minigioco di abilità, un gioco di fortuna, oppure aprire uno dei moduli (votazioni, timer, aste).</p>
-  </div>
+<div class="wrap">
+<div class="sectionHead">
+<div class="tag">Si parte</div>
+<h2>Come iniziare una serata</h2>
+</div>
+<p class="manText">All'avvio, la regia crea una nuova partita e sceglie un quiz tra quelli salvati (oppure ne prepara uno nuovo con le proprie domande). Il sistema genera un codice partita e un QR code, che vengono mostrati sul proiettore: i giocatori inquadrano il QR con la fotocamera del telefono, inseriscono il proprio nome, ed entrano nella lobby in attesa che la regia dia il via.</p>
+<p class="manText" style="margin-top:14px;">Da qui la regia può scegliere liberamente cosa far giocare in ogni momento della serata: una domanda del quiz, un minigioco di abilità, un gioco di fortuna, oppure aprire uno dei moduli extra.</p>
+</div>
 </section>
 
 <section class="manSection" id="menu">
-  <div class="wrap">
-    <div class="sectionHead">
-      <div class="tag">Struttura</div>
-      <h2>La struttura dei menu</h2>
-    </div>
-    <div class="manSubhead">🧠 Giochi di Abilità</div>
-    <p class="manText">Minigiochi dove conta la bravura, la velocità di riflessi, la memoria o il ragionamento dei giocatori: puzzle, memoria, calcolo, precisione. Chi è più bravo o veloce ottiene punteggi migliori.</p>
-    <div class="manSubhead">🍀 Giochi di Fortuna</div>
-    <p class="manText">Minigiochi basati sulla sorte: estrazioni, ruote, carte, scommesse. L'esito non dipende dall'abilità del giocatore ma dal caso — perfetti per coinvolgere anche chi non ama le sfide di velocità o cultura generale.</p>
-    <div class="manSubhead">🧩 Moduli</div>
-    <p class="manText">Strumenti di supporto alla serata, distinti dai minigiochi veri e propri: un cronometro a vista, una votazione del pubblico su una proposta, un'asta con rilancio in tempo reale, e una classifica di gradimento.</p>
-  </div>
+<div class="wrap">
+<div class="sectionHead">
+<div class="tag">Struttura</div>
+<h2>La struttura dei menu</h2>
+</div>
+<div class="manSubhead">🧠 Giochi di Abilità</div>
+<p class="manText">Minigiochi dove conta la bravura, la velocità di riflessi, la memoria o il ragionamento dei giocatori: puzzle, memoria, calcolo, precisione. Chi è più bravo o veloce ottiene punteggi migliori.</p>
+<div class="manSubhead">🍀 Giochi di Fortuna</div>
+<p class="manText">Minigiochi basati sulla sorte: estrazioni, ruote, carte, scommesse. L'esito non dipende dall'abilità del giocatore ma dal caso — perfetti per coinvolgere anche chi non ama le sfide di velocità o cultura generale.</p>
+<p class="manText" style="margin-top:14px;">Con un catalogo di oltre 60 giochi, il menu "🎮 Giochi" offre anche un filtro per sottocategoria (Carte, Colpo d'Occhio, Dita Veloci, Estrazione Casuale, Logica, Scelta Fortunata, Si Grida): senza nessuna spunta si vede tutto, spuntando solo una sottocategoria si vedono insieme i giochi di Abilità e Fortuna che la condividono.</p>
+<div class="manSubhead">🧩 Moduli</div>
+<p class="manText">Strumenti di supporto alla serata, distinti dai minigiochi veri e propri: una chat di gruppo, un cronometro a vista, una votazione del pubblico, un'asta con rilancio in tempo reale, e una classifica di gradimento.</p>
+</div>
 </section>
 
 <section class="manSection" id="meccaniche">
-  <div class="wrap">
-    <div class="sectionHead">
-      <div class="tag">Regole</div>
-      <h2>Meccaniche generali</h2>
-    </div>
-    <div class="manSubhead">Punteggio</div>
-    <p class="manText">Ogni gioco assegna punti secondo regole proprie, impostabili dalla regia prima di ogni manche (punti fissi, a scalare col tempo di risposta, premi differenziati per il podio, ecc.). Il punteggio di ciascun giocatore si accumula per tutta la serata ed è sempre visibile in classifica.</p>
-    <div class="manSubhead">Tempo</div>
-    <p class="manText">Quasi tutti i minigiochi hanno un tempo limite scelto dalla regia al momento di avviarli, mostrato come barra a scorrimento sia sui telefoni che sul proiettore.</p>
-    <div class="manSubhead">Modalità Highlander</div>
-    <p class="manText">Una modalità opzionale di eliminazione diretta applicabile alle domande del quiz: chi sbaglia viene eliminato e non può più rispondere alle domande successive, finché non resta un solo giocatore — l'Highlander, il campione assoluto della serata. Se in un turno sbagliano tutti i rimasti insieme, eccezionalmente nessuno viene eliminato e si prosegue, per essere sicuri di arrivare comunque a un vincitore.</p>
-  </div>
+<div class="wrap">
+<div class="sectionHead">
+<div class="tag">Regole</div>
+<h2>Meccaniche generali</h2>
+</div>
+<div class="manSubhead">Punteggio</div>
+<p class="manText">Ogni gioco assegna punti secondo regole proprie, impostabili dalla regia prima di ogni manche. Il punteggio di ciascun giocatore si accumula per tutta la serata ed è sempre visibile in classifica.</p>
+<div class="manSubhead">Tempo</div>
+<p class="manText">Quasi tutti i minigiochi hanno un tempo limite scelto dalla regia al momento di avviarli, mostrato come barra a scorrimento sia sui telefoni che sul proiettore.</p>
+<div class="manSubhead">Modalità Highlander</div>
+<p class="manText">Una modalità opzionale di eliminazione diretta applicabile alle domande del quiz: chi sbaglia viene eliminato, finché non resta un solo giocatore — l'Highlander, il campione assoluto della serata. Se in un turno sbagliano tutti i rimasti insieme, eccezionalmente nessuno viene eliminato e si prosegue.</p>
+<div class="manSubhead">Modalità Suspense</div>
+<p class="manText">Nasconde ai giocatori la propria posizione in classifica durante il gioco, lasciando la vera classifica come sorpresa riservata al podio finale.</p>
+</div>
 </section>
 
 <section class="manSection" id="giocatori">
-  <div class="wrap">
-    <div class="sectionHead">
-      <div class="tag">Regia</div>
-      <h2>Gestione giocatori e punti</h2>
-    </div>
-    <p class="manText">Dal pannello "Gestisci Giocatori", sempre raggiungibile dalla regia, è possibile tenere sotto controllo ogni aspetto dei partecipanti durante la serata:</p>
-    <ul class="manList">
-      <li>Ordinare l'elenco alfabeticamente o per punteggio, per trovare rapidamente chi si cerca.</li>
-      <li>Aggiungere o togliere punti manualmente a un singolo giocatore in qualsiasi momento — utile per correggere una svista o premiare un episodio simpatico successo dal vivo.</li>
-      <li>Rinominare un partecipante, ad esempio se ha scritto un nome inopportuno in fase di ingresso: da quel momento non potrà più riscriverlo.</li>
-      <li>Far cambiare telefono a un giocatore senza che perda nome e punti: si genera un codice usa e getta da fargli inserire sul telefono nuovo (utile in caso di batteria scarica o problemi tecnici).</li>
-      <li>Reintegrare in partita un giocatore eliminato dalla Modalità Highlander, se la regia decide di dargli un'altra possibilità.</li>
-      <li>Eliminare definitivamente un giocatore che si ritira o lascia la serata in anticipo.</li>
-      <li>Aggiungere "squadre manuali" senza smartphone — un tavolo, un gruppo, chi non ha il telefono con sé — che ricevono punti solo dalla regia e dal modulo Votometro, restando comunque in classifica insieme a tutti gli altri.</li>
-    </ul>
-  </div>
+<div class="wrap">
+<div class="sectionHead">
+<div class="tag">Regia</div>
+<h2>Gestione giocatori e punti</h2>
+</div>
+<p class="manText">Dal pannello "Gestisci Giocatori", sempre raggiungibile dalla regia, è possibile tenere sotto controllo ogni aspetto dei partecipanti durante la serata:</p>
+<ul class="manList">
+<li>Ordinare l'elenco alfabeticamente o per punteggio, per trovare rapidamente chi si cerca.</li>
+<li>Aggiungere o togliere punti manualmente a un singolo giocatore in qualsiasi momento.</li>
+<li>Rinominare un partecipante, ad esempio se ha scritto un nome inopportuno in fase di ingresso.</li>
+<li>Far cambiare telefono a un giocatore senza che perda nome e punti, con un codice usa e getta.</li>
+<li>Reintegrare in partita un giocatore eliminato dalla Modalità Highlander.</li>
+<li>Eliminare definitivamente un giocatore che si ritira o lascia la serata in anticipo.</li>
+<li>Aggiungere "squadre manuali" senza smartphone, che restano comunque in classifica insieme a tutti gli altri.</li>
+</ul>
+<div class="manNewsBox">
+<p class="manText" style="color:var(--white);"><b>Novità — Avviso giocatore inattivo:</b> se una squadra non risponde per 3 domande consecutive, la regia riceve subito una richiesta: "[Nome] non ha risposto per 3 domande consecutive. Vuoi eliminare questa squadra?" — con un semplice Sì/No. Utile per chi se n'è andato lasciando il telefono collegato: basta chiedere al microfono e, se non risponde nessuno, eliminarlo con un tocco. Chi risponde regolarmente non riceve mai questo avviso.</p>
+</div>
+<p class="manText" style="margin-top:16px;">Lo stesso identico problema può capitare durante Patata Bollente e Batti Cinque, dove un giocatore assente blocca la bomba o la mano sul proprio telefono per sempre: entrambi i giochi hanno un pulsante dedicato per farla proseguire senza aspettare, senza intaccare punteggi o vincite altrui.</p>
+</div>
 </section>
 
 <section class="manSection" id="classifiche">
-  <div class="wrap">
-    <div class="sectionHead">
-      <div class="tag">Risultati</div>
-      <h2>Classifiche e podio</h2>
-    </div>
-    <p class="manText">Dopo ogni domanda del quiz, sul proiettore compare la classifica aggiornata in tempo reale, limitata alle prime posizioni per restare sempre leggibile anche con moltissimi giocatori collegati.</p>
-    <p class="manText" style="margin-top:14px;">In qualunque momento della serata, la regia può richiamare il podio: una rivelazione a tappe (prima il terzo posto, poi il secondo, infine il primo) che tiene la suspense alta, sincronizzata automaticamente su proiettore e telefoni di tutti i giocatori. Lo stesso meccanismo si usa sia per un podio intermedio a metà serata, sia per il podio finale di chiusura.</p>
-    <p class="manText" style="margin-top:14px;">A fine quiz viene generato in automatico, senza bisogno di alcun pulsante, un report della serata: quiz giocato, data, durata, codice partita, e un riepilogo pensato per essere riletto con calma dopo l'evento — utile per valutare come è andata e accorgersi di eventuali anomalie (scarsa partecipazione, domande su cui nessuno ha risposto giusto, ecc.).</p>
-  </div>
+<div class="wrap">
+<div class="sectionHead">
+<div class="tag">Risultati</div>
+<h2>Classifiche e podio</h2>
+</div>
+<p class="manText">Dopo ogni domanda del quiz, sul proiettore compare la classifica aggiornata in tempo reale, limitata alle prime posizioni per restare sempre leggibile anche con moltissimi giocatori collegati.</p>
+<p class="manText" style="margin-top:14px;">In qualunque momento della serata, la regia può richiamare il podio: una rivelazione a tappe (prima il terzo posto, poi il secondo, infine il primo) sincronizzata automaticamente su proiettore e telefoni di tutti i giocatori.</p>
+<p class="manText" style="margin-top:14px;">A fine quiz viene generato in automatico un report della serata: quiz giocato, data, durata, codice partita, e per ogni domanda chi ha risposto cosa, giusto o sbagliato, con i relativi punti.</p>
+</div>
 </section>
 
 <section class="manSection" id="controlli">
-  <div class="wrap">
-    <div class="sectionHead">
-      <div class="tag">Comandi</div>
-      <h2>Pulsanti e controlli comuni</h2>
-    </div>
-    <p class="manText">Molti comandi si ritrovano identici in quasi tutti i minigiochi, per rendere la regia intuitiva anche passando velocemente da un gioco all'altro:</p>
-    <ul class="manList">
-      <li><b style="color:var(--white)">↩ Torna al quiz</b> — interrompe subito il minigioco in corso e torna alle domande del quiz principale.</li>
-      <li><b style="color:var(--white)">🔁 Un'altra manche</b> — ripete lo stesso minigioco appena concluso con le stesse impostazioni, senza dover reimpostare tutto da capo.</li>
-      <li><b style="color:var(--white)">🏆 Mostra i vincitori / i risultati</b> — nei giochi a estrazione o a punteggio differito, rivela sul proiettore l'esito quando la regia decide che è il momento giusto, invece che automaticamente.</li>
-      <li><b style="color:var(--white)">La barra del tempo</b> — presente in quasi ogni minigioco a tempo, sia sui telefoni che sul proiettore, mostra visivamente quanto manca alla scadenza.</li>
-      <li>Molti pulsanti della regia, se tenuti premuti o sfiorati, mostrano un piccolo suggerimento che spiega a cosa servono: utile nei primi utilizzi per non doversi ricordare tutto a memoria.</li>
-    </ul>
-  </div>
+<div class="wrap">
+<div class="sectionHead">
+<div class="tag">Comandi</div>
+<h2>Pulsanti e controlli comuni</h2>
+</div>
+<p class="manText">Molti comandi si ritrovano identici in quasi tutti i minigiochi, per rendere la regia intuitiva anche passando velocemente da un gioco all'altro:</p>
+<ul class="manList">
+<li><b style="color:var(--white)">↩ Torna al quiz</b> — interrompe subito il minigioco in corso e torna alle domande del quiz principale.</li>
+<li><b style="color:var(--white)">🔁 Un'altra manche</b> — ripete lo stesso minigioco appena concluso con le stesse impostazioni.</li>
+<li><b style="color:var(--white)">🏆 Mostra i vincitori / i risultati</b> — rivela sul proiettore l'esito quando la regia decide che è il momento.</li>
+<li><b style="color:var(--white)">La barra del tempo</b> — mostra visivamente quanto manca alla scadenza, sia sui telefoni che sul proiettore.</li>
+<li>Molti pulsanti della regia, se tenuti premuti o sfiorati, mostrano un piccolo suggerimento a cosa servono.</li>
+</ul>
+</div>
 </section>
 
 <section class="manSection" id="moduli">
-  <div class="wrap">
-    <div class="sectionHead">
-      <div class="tag">🧩 Moduli</div>
-      <h2>Moduli disponibili</h2>
-    </div>
-    <p class="manText">Oltre ai numerosi minigiochi di Abilità e di Fortuna, il quiz include questi moduli di supporto alla serata:</p>
-    <table class="manModTable">
-      <tr><td class="num">1</td><td>Asta</td></tr>
-      <tr><td class="num">2</td><td>Classifica di Gradimento</td></tr>
-      <tr><td class="num">3</td><td>Timer</td></tr>
-      <tr><td class="num">4</td><td>Votometro</td></tr>
-    </table>
-  </div>
+<div class="wrap">
+<div class="sectionHead">
+<div class="tag">🧩 Moduli</div>
+<h2>Moduli disponibili</h2>
+</div>
+<p class="manText">Oltre ai numerosi minigiochi di Abilità e di Fortuna, il quiz include questi moduli di supporto alla serata:</p>
+<table class="manModTable">
+<tr><td class="num">1</td><td>Asta</td></tr>
+<tr><td class="num">2</td><td>Chat</td></tr>
+<tr><td class="num">3</td><td>Classifica di Gradimento</td></tr>
+<tr><td class="num">4</td><td>Timer</td></tr>
+<tr><td class="num">5</td><td>Votometro</td></tr>
+</table>
+<div class="manSubhead" style="margin-top:30px;">💬 Chat</div>
+<p class="manText">Una chat di gruppo in tempo reale su tutti gli smartphone e sul proiettore. Si può scrivere nel gruppo, in privato a un altro giocatore o direttamente alla regia — sempre marcato "PRIVATO", mai visibile a terzi. La regia può scrivere anche lei ed eliminare qualunque messaggio per moderare. Tempo libero o timer fino a un'ora, allungabile anche a chat già avviata, con avviso rosso e vibrazione nell'ultimo minuto. Il QR per entrare resta fisso in un angolo del proiettore per tutta la durata, e l'intera trascrizione si può salvare in qualsiasi momento.</p>
+</div>
+</section>
+
+<section class="manSection" id="whatsapp-messaggio">
+<div class="wrap">
+<div class="sectionHead">
+<div class="tag">Comunicazione</div>
+<h2>Messaggio e Gruppo WhatsApp</h2>
+</div>
+<p class="manText">"💬 Messaggio → 📺" mostra un testo a comparsa a schermo intero su proiettore e smartphone, per annunci o ringraziamenti; sul telefono dei giocatori compare anche un pulsante per contattare la regia su WhatsApp. "📱 Gruppo WhatsApp" mostra invece QR e link per entrare nel gruppo della serata o del locale. In entrambi i casi, i contenuti già usati restano salvati e richiamabili in un tocco per le prossime occasioni.</p>
+</div>
 </section>
 
 <section class="manSection" id="manuali-singoli">
-  <div class="wrap">
-    <div class="sectionHead">
-      <div class="tag">Approfondimenti</div>
-      <h2>Manuali dei singoli giochi</h2>
-    </div>
-    <p class="manText">Per ciascun minigioco del quiz — sia di Abilità che di Fortuna — è disponibile un manuale a parte, con la spiegazione dettagliata di come impostarlo dalla regia, cosa vedono i giocatori sul telefono, cosa appare sul proiettore, e come viene assegnato il punteggio. L'elenco completo dei minigiochi non è riportato in questo manuale generale: viene comunicato direttamente da Alberto Seminerio a chi gestisce la licenza.</p>
-  </div>
+<div class="wrap">
+<div class="sectionHead">
+<div class="tag">Approfondimenti</div>
+<h2>Manuali dei singoli giochi</h2>
+</div>
+<p class="manText">Per ciascun minigioco del quiz è disponibile un manuale a parte, con la spiegazione dettagliata di come impostarlo dalla regia, cosa vedono i giocatori sul telefono, cosa appare sul proiettore, e come viene assegnato il punteggio. L'elenco completo dei minigiochi non è riportato in questo manuale generale: viene comunicato direttamente da Alberto Seminerio a chi gestisce la licenza.</p>
+</div>
+</section>
+
+<section class="manSection" id="campionato">
+<div class="wrap">
+<div class="sectionHead">
+<div class="tag">Serate ricorrenti</div>
+<h2>Campionato delle serate e Storico locali</h2>
+</div>
+<div class="manSubhead">Campionato delle serate</div>
+<p class="manText">Per chi organizza serate ricorrenti nello stesso locale o con lo stesso gruppo di giocatori, ogni manche può essere salvata all'interno di un campionato: ogni salvataggio registra data, locale e punteggio di ciascuno. Da qui è possibile unire più serate in un'unica classifica combinata, proiettabile, per premiare chi si distingue nel tempo e non solo in una singola sera. I campionati restano identificati da un nome scritto a mano dalla regia.</p>
+<div class="manSubhead">Storico locali e serate</div>
+<p class="manText">Prima di ogni partita, la piattaforma chiede il nome del locale della serata (spuntabile come "prova" per non registrarla) e lo salva automaticamente all'avvio del quiz, così anche una sessione interrotta a metà resta comunque nello storico. Da "📍 Storico locali/serate" si può consultare l'elenco completo, e aggiungere manualmente anche le serate precedenti a questa funzione.</p>
+</div>
 </section>
 
 <section class="manSection" id="novita">
-  <div class="wrap">
-    <div class="sectionHead">
-      <div class="tag">Changelog</div>
-      <h2>Novità della versione v13.51</h2>
-    </div>
-    <p class="manText">Questo manuale documenta lo stato del quiz alla versione v13.51. Data la sua dimensione contenuta, l'intero manuale viene rigenerato a ogni versione aggiornata: questa nota viene quindi sostituita di volta in volta con le migliorie introdotte, i bug risolti, le nuove implementazioni e la menzione degli eventuali nuovi giochi aggiunti da quella versione in poi, così da avere sempre un unico documento aggiornato invece di tanti manuali di aggiornamento separati da consultare insieme.</p>
-    <div class="manNewsBox">
-      <p class="manText" style="color:var(--white);"><b>Campionato serate:</b> il pulsante "💾 Salva nel campionato serate" è ora disponibile anche dalla barra REGIA in qualsiasi momento della partita (non solo dal podio finale). Ogni salvataggio registra automaticamente anche data e locale della serata (lo stesso indicato all'avvio del quiz). Aggiunto un nuovo pulsante "🔀 Fondi classifiche delle serate" nel dettaglio di ogni campionato: permette di scegliere quali serate registrate sommare insieme, per ottenere a piacere la classifica di un singolo locale oppure quella di tutti i locali insieme (i "campioni dei campioni"), mostrabile anche sul proiettore. Come richiesto, i campionati restano identificati da un nome scritto a mano dalla regia, senza alcun menu a tendina.</p>
-    </div>
-  </div>
+<div class="wrap">
+<div class="sectionHead">
+<div class="tag">Changelog</div>
+<h2>Novità della versione v13.86</h2>
+</div>
+<p class="manText">Questo manuale documenta lo stato del quiz alla versione v13.86. Data la sua dimensione contenuta, il manuale si aggiorna insieme al gioco: questa nota viene quindi sostituita di volta in volta con le migliorie introdotte, i bug risolti, le nuove implementazioni e la menzione degli eventuali nuovi giochi aggiunti da quella versione in poi.</p>
+<div class="manNewsBox">
+<p class="manText" style="color:var(--white);">Nuovo avviso per giocatori inattivi: se una squadra non risponde per 3 domande consecutive del quiz principale, la regia riceve subito una richiesta con un semplice Sì/No per eliminarla dalla partita — utile per chi se n'è andato lasciando il telefono acceso. Aggiunti anche due nuovi minigiochi di Fortuna (🌼 M'ama non m'ama e 🖐️ Batti Cinque), un pulsante di salvataggio per Patata Bollente e Batti Cinque quando un giocatore è assente, e corretto un difetto grafico che poteva far rimpicciolire la schermata del proiettore con molti giocatori collegati in alcuni minigiochi.</p>
+</div>
+</div>
 </section>
 
 <section class="manSection" id="contatti-man" style="border-bottom:1px solid var(--border);">
-  <div class="wrap">
-    <div class="sectionHead">
-      <div class="tag">Serve aiuto?</div>
-      <h2>Contatti</h2>
-    </div>
-    <p class="manText">Per informazioni e curiosità non specificate nel manuale, contatta Alberto Seminerio.</p>
-    <div style="margin-top:24px;">
-      <a class="btn btnGold" href="https://wa.me/393295428123?text=Ciao%21%20Ho%20una%20domanda%20sul%20manuale%20de%20Il%20Capone%20Quiz" target="_blank" rel="noopener">📱 Scrivimi su WhatsApp</a>
-    </div>
-  </div>
+<div class="wrap">
+<div class="sectionHead">
+<div class="tag">Serve aiuto?</div>
+<h2>Contatti</h2>
+</div>
+<p class="manText">Per informazioni e curiosità non specificate nel manuale, contatta Alberto Seminerio.</p>
+<div style="margin-top:24px;">
+<a class="btn btnGold" href="https://wa.me/393295428123?text=Ciao%21%20Ho%20una%20domanda%20sul%20manuale%20de%20Il%20Capone%20Quiz" target="_blank" rel="noopener">📱 Scrivimi su WhatsApp</a>
+</div>
+</div>
 </section>
 
 <footer>
-  <div class="wrap">
-    IL CAPONE QUIZ 3.0 · by <a href="https://linktr.ee/Albertoseminerio" target="_blank" rel="noopener">Alberto Seminerio</a> · Tutti i diritti riservati
-  </div>
+<div class="wrap">
+IL CAPONE QUIZ 3.0 · by <a href="https://linktr.ee/Albertoseminerio" target="_blank" rel="noopener">Alberto Seminerio</a> · Tutti i diritti riservati
+</div>
 </footer>
 
 </body>

@@ -5,26 +5,25 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Prova il Quiz Mix — Il Capone Quiz 3.0</title>
 <meta name="description" content="Prova gratis alcune domande vere di Il Capone Quiz 3.0, direttamente dal browser, senza installare nulla.">
-<meta name="robots" content="noindex, nofollow">
 <link rel="icon" type="image/png" sizes="512x512" href="/favicon.png">
 <link rel="apple-touch-icon" href="/favicon.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Bungee&family=Orbitron:wght@700;900&family=Outfit:wght@400;600;700;900&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@600;700&family=Orbitron:wght@700;900&family=Outfit:wght@400;600;700;900&display=swap" rel="stylesheet">
 <style>
 :root{
-  --bg:#0b0614; --bg2:#150a26; --panel:#1c1033;
-  --magenta:#ff2e9a; --cyan:#00f0ff; --lime:#b6ff2e; --gold:#ffc93c; --viola:#9d4dff;
-  --red:#ff3b3b; --white:#ffffff; --muted:#b9a8d9; --border:rgba(255,255,255,.1);
-  --ok:#b6ff2e; --bad:#ff3b3b;
+  --bg:#040309; --bg2:#08051a; --panel:#0c0a1f;
+  --magenta:#ff1fc9; --cyan:#00f6ff; --lime:#2b6dff; --gold:#eaff2b; --viola:#8b2aff;
+  --red:#ff3b3b; --white:#f3f6ff; --muted:#93a3c9; --border:rgba(0,246,255,.14);
+  --ok:#39ff8a; --bad:#ff3b3b;
 }
 *{box-sizing:border-box; margin:0; padding:0;}
 html{scroll-behavior:smooth;}
 body{font-family:'Outfit',sans-serif; color:var(--white); background:var(--bg); line-height:1.55; min-height:100vh; overflow-x:hidden;}
 body::before{content:""; position:fixed; inset:-6%; z-index:-2; pointer-events:none;
-  background:radial-gradient(ellipse at 20% 15%, rgba(157,77,255,.35), transparent 45%),
-             radial-gradient(ellipse at 85% 10%, rgba(255,46,154,.28), transparent 45%),
-             radial-gradient(ellipse at 50% 100%, rgba(0,240,255,.22), transparent 50%), var(--bg);
+  background:radial-gradient(ellipse at 20% 15%, rgba(139,42,255,.35), transparent 45%),
+             radial-gradient(ellipse at 85% 10%, rgba(255,31,201,.28), transparent 45%),
+             radial-gradient(ellipse at 50% 100%, rgba(0,246,255,.22), transparent 50%), var(--bg);
   animation:cosmicDrift 22s ease-in-out infinite alternate;}
 body::after{content:""; position:fixed; inset:0; z-index:-1; pointer-events:none; background:rgba(8,4,16,.35);}
 @keyframes cosmicDrift{0%{transform:scale(1.08) translate(0,0);} 50%{transform:scale(1.13) translate(-1.6%,-1.1%);} 100%{transform:scale(1.08) translate(1.2%,1.6%);}}
@@ -32,73 +31,79 @@ a{color:inherit;}
 .wrap{max-width:760px; margin:0 auto; padding:0 20px;}
 header{padding:16px 0; border-bottom:1px solid var(--border); position:sticky; top:0; background:rgba(11,6,20,.85); backdrop-filter:blur(12px); z-index:10;}
 .headRow{display:flex; align-items:center; justify-content:space-between;}
-.logo{font-family:'Bungee',cursive; font-weight:400; letter-spacing:.5px; font-size:15px; text-decoration:none; color:var(--gold); text-shadow:0 0 10px rgba(255,201,60,.4);}
-.logo span{color:var(--cyan); text-shadow:0 0 10px rgba(0,240,255,.5);}
-.backBtn{font-family:'Bungee',cursive; font-size:11px; color:var(--muted); text-decoration:none; border:2px solid rgba(185,168,217,.35);
-  padding:9px 14px; border-radius:14px;}
-.backBtn:active{transform:translateY(2px);}
+.logo{font-family:'Chakra Petch',sans-serif; font-weight:700; letter-spacing:1px; text-transform:uppercase; font-size:15px; text-decoration:none; color:var(--gold); text-shadow:0 0 10px rgba(234,255,43,.4);}
+.logo span{color:var(--cyan); text-shadow:0 0 10px rgba(0,246,255,.5);}
+.backBtn{font-family:'Chakra Petch',sans-serif; font-weight:700; text-transform:uppercase; font-size:11px; letter-spacing:.5px; color:var(--white); text-decoration:none;
+  border:1px solid rgba(0,246,255,.3); background:rgba(0,246,255,.04); padding:9px 16px; border-radius:2px; transition:border-color .2s ease, color .2s ease;}
+.backBtn:hover{border-color:var(--cyan); color:var(--cyan);}
 
 main{padding:40px 0 80px;}
-.tag{color:var(--magenta); font-weight:800; font-size:12px; letter-spacing:2px; text-transform:uppercase; text-align:center; display:block; text-shadow:0 0 12px rgba(255,46,154,.5);}
-h1{font-family:'Bungee',cursive; text-align:center; font-size:clamp(24px,6vw,38px); margin:12px 0 10px; color:var(--gold);
-  text-shadow:0 0 18px rgba(255,201,60,.55), 0 4px 0 #7a4b00, 0 8px 0 #3d2500;}
+.tag{color:var(--magenta); font-weight:800; font-size:12px; letter-spacing:2px; text-transform:uppercase; text-align:center; display:block; text-shadow:0 0 12px rgba(255,31,201,.5);}
+h1{font-family:'Chakra Petch',sans-serif; text-transform:uppercase; text-align:center; font-size:clamp(24px,6vw,38px); margin:12px 0 10px; color:var(--gold);
+  text-shadow:0 0 18px rgba(234,255,43,.45);}
 .subtext{text-align:center; color:var(--muted); font-size:15px; max-width:520px; margin:0 auto 30px;}
 
 /* ---- SCHERMATA INIZIALE ---- */
 #screenStart{text-align:center;}
-.startCard{background:var(--panel); border:1px solid var(--border); border-radius:22px; padding:36px 26px; box-shadow:0 14px 40px rgba(0,0,0,.5);}
+.startCard{background:var(--panel); border:1px solid var(--border); border-radius:4px;
+  clip-path:polygon(20px 0,100% 0,100% calc(100% - 20px),calc(100% - 20px) 100%,0 100%,0 20px);
+  padding:36px 26px; box-shadow:0 14px 40px rgba(0,0,0,.5);}
 .startCard .emoji{font-size:52px; margin-bottom:10px;}
-.startCard h2{font-family:'Bungee',cursive; font-size:18px; margin-bottom:14px; color:var(--white);}
+.startCard h2{font-family:'Chakra Petch',sans-serif; text-transform:uppercase; font-size:18px; margin-bottom:14px; color:var(--white);}
 .startCard p{color:var(--muted); font-size:14.5px; margin-bottom:6px;}
 
-.btn{display:inline-block; font-family:'Bungee',cursive; font-size:16px; color:#1a0b00; cursor:pointer; border:none;
-  padding:16px 28px; border-radius:18px; text-decoration:none; text-transform:uppercase; letter-spacing:.5px; margin-top:22px;
-  background:linear-gradient(180deg,#ffe08a,var(--gold)); box-shadow:0 7px 0 #8a5f00, 0 10px 0 rgba(0,0,0,.45), 0 14px 30px rgba(255,201,60,.35);
-  transition:transform .08s, box-shadow .08s;}
-.btn:active{transform:translateY(6px); box-shadow:0 1px 0 #8a5f00, 0 3px 0 rgba(0,0,0,.45);}
-.btnGhost{background:linear-gradient(180deg,#2a1a45,#1c1033); color:var(--white); box-shadow:0 7px 0 #0a0616,0 10px 0 rgba(0,0,0,.4);}
-.btnGhost:active{box-shadow:0 1px 0 #0a0616,0 3px 0 rgba(0,0,0,.4);}
+.btn{display:inline-block; font-family:'Chakra Petch',sans-serif; font-size:15px; font-weight:700; letter-spacing:1px; color:#050014; cursor:pointer; border:none;
+  padding:14px 28px; border-radius:2px; text-decoration:none; text-transform:uppercase; margin-top:22px;
+  clip-path:polygon(12px 0,100% 0,100% calc(100% - 12px),calc(100% - 12px) 100%,0 100%,0 12px);
+  background:linear-gradient(120deg,var(--cyan),var(--gold),var(--magenta),var(--gold),var(--cyan)); background-size:300% 100%;
+  box-shadow:0 0 0 1px rgba(255,255,255,.25) inset, 0 0 22px rgba(234,255,43,.4);
+  transition:transform .15s ease, box-shadow .15s ease;}
+.btn:hover{transform:translateY(-2px); box-shadow:0 0 0 1px rgba(255,255,255,.35) inset, 0 0 34px rgba(234,255,43,.6);}
+.btn:active{transform:translateY(0);}
+.btnGhost{background:rgba(0,246,255,.04); color:var(--white); box-shadow:none; border:1px solid rgba(0,246,255,.3);}
+.btnGhost:hover{border-color:var(--cyan); color:var(--cyan); box-shadow:0 0 18px rgba(0,246,255,.3);}
 
 /* ---- SCHERMATA DOMANDA ---- */
 #screenQuiz{display:none;}
-.qTop{display:flex; justify-content:space-between; align-items:center; font-family:'Bungee',cursive; font-size:12px; color:var(--muted); margin-bottom:12px;}
+.qTop{display:flex; justify-content:space-between; align-items:center; font-family:'Chakra Petch',sans-serif; font-size:12px; color:var(--muted); margin-bottom:12px;}
 .qTop b{color:var(--cyan);}
 .timerWrap{width:100%; height:10px; background:rgba(255,255,255,.08); border-radius:8px; overflow:hidden; margin-bottom:22px;}
-.timerBar{height:100%; background:linear-gradient(90deg,var(--lime),var(--cyan)); width:100%; transition:width .1s linear;}
+.timerBar{height:100%; background:linear-gradient(90deg,var(--cyan),var(--gold)); width:100%; transition:width .1s linear;}
 .qMedia{width:100%; border-radius:18px; overflow:hidden; margin-bottom:18px; border:1px solid var(--border); background:#000;}
 .qMedia img{width:100%; display:block;}
 .qMedia audio{width:100%; display:block; padding:14px;}
-.qText{font-family:'Bungee',cursive; font-size:clamp(16px,3.6vw,21px); text-align:center; margin-bottom:26px; color:var(--white); line-height:1.4;}
+.qText{font-family:'Chakra Petch',sans-serif; font-size:clamp(16px,3.6vw,21px); text-align:center; margin-bottom:26px; color:var(--white); line-height:1.4;}
 .optsGrid{display:grid; grid-template-columns:1fr; gap:12px;}
 @media(min-width:560px){ .optsGrid.two{grid-template-columns:1fr 1fr;} }
 .optBtn{background:var(--panel); border:2px solid rgba(255,255,255,.12); border-radius:16px; padding:16px 18px; font-size:15px; font-weight:700;
   color:var(--white); text-align:left; cursor:pointer; transition:all .15s ease; font-family:'Outfit',sans-serif;}
 .optBtn:hover{border-color:var(--cyan);}
-.optBtn.correct{border-color:var(--ok); background:rgba(182,255,46,.12); color:var(--ok); box-shadow:0 0 20px rgba(182,255,46,.3);}
+.optBtn.correct{border-color:var(--ok); background:rgba(57,255,138,.12); color:var(--ok); box-shadow:0 0 20px rgba(57,255,138,.3);}
 .optBtn.wrong{border-color:var(--bad); background:rgba(255,59,59,.12); color:var(--bad); box-shadow:0 0 20px rgba(255,59,59,.3);}
 .optBtn:disabled{cursor:default;}
 .textInputRow{display:flex; gap:10px; flex-wrap:wrap;}
 .textInput{flex:1; min-width:180px; padding:15px 16px; border-radius:14px; border:2px solid rgba(255,255,255,.12); background:rgba(255,255,255,.05);
   color:var(--white); font-size:16px; font-family:'Outfit',sans-serif;}
 .textInput:focus{outline:none; border-color:var(--cyan);}
-.sendBtn{font-family:'Bungee',cursive; font-size:13px; padding:15px 20px; border:none; border-radius:14px; cursor:pointer;
-  background:linear-gradient(180deg,#9ffbff,var(--cyan)); color:#00232a; box-shadow:0 5px 0 #007e8a;}
-.sendBtn:active{transform:translateY(4px); box-shadow:0 1px 0 #007e8a;}
+.sendBtn{font-family:'Chakra Petch',sans-serif; font-weight:700; text-transform:uppercase; letter-spacing:.5px; font-size:13px; padding:15px 20px; border:none; border-radius:2px; cursor:pointer;
+  clip-path:polygon(10px 0,100% 0,100% calc(100% - 10px),calc(100% - 10px) 100%,0 100%,0 10px);
+  background:var(--cyan); color:#00232a; box-shadow:0 0 16px rgba(0,246,255,.4); transition:transform .12s ease, box-shadow .12s ease;}
+.sendBtn:hover{box-shadow:0 0 22px rgba(0,246,255,.6);} .sendBtn:active{transform:translateY(1px);}
 .anagramLetters{display:flex; flex-wrap:wrap; gap:8px; justify-content:center; margin-bottom:18px;}
 .anagramLetters span{background:var(--bg2); border:2px solid rgba(255,255,255,.1); border-radius:10px; padding:10px 14px;
   font-family:'Orbitron',sans-serif; font-weight:900; font-size:18px; color:var(--gold);}
-.feedbackMsg{text-align:center; font-family:'Bungee',cursive; font-weight:400; font-size:14px; margin-top:18px; min-height:22px;}
-.feedbackMsg.ok{color:var(--ok); text-shadow:0 0 10px rgba(182,255,46,.5);}
+.feedbackMsg{text-align:center; font-family:'Chakra Petch',sans-serif; font-weight:700; font-size:14px; margin-top:18px; min-height:22px;}
+.feedbackMsg.ok{color:var(--ok); text-shadow:0 0 10px rgba(57,255,138,.5);}
 .feedbackMsg.bad{color:var(--bad); text-shadow:0 0 10px rgba(255,59,59,.5);}
 .nextBtn{display:block; margin:20px auto 0;}
 
 /* ---- SCHERMATA FINALE ---- */
 #screenEnd{display:none; text-align:center;}
 .scoreBig{font-family:'Orbitron',sans-serif; font-weight:900; font-size:clamp(50px,14vw,90px); color:var(--cyan);
-  text-shadow:0 0 30px rgba(0,240,255,.6); line-height:1; margin:14px 0;}
-.scoreLabel{font-family:'Bungee',cursive; letter-spacing:1px; color:var(--muted); font-size:12px;}
+  text-shadow:0 0 30px rgba(0,246,255,.6); line-height:1; margin:14px 0;}
+.scoreLabel{font-family:'Chakra Petch',sans-serif; letter-spacing:1px; color:var(--muted); font-size:12px;}
 .endNote{color:var(--muted); font-size:15px; max-width:480px; margin:20px auto 0;}
-.infoNote{background:rgba(255,201,60,.08); border:1px solid rgba(255,201,60,.3); border-radius:14px; padding:12px 16px;
+.infoNote{background:rgba(234,255,43,.08); border:1px solid rgba(234,255,43,.3); border-radius:14px; padding:12px 16px;
   font-size:12px; color:var(--muted); text-align:center; margin:0 auto 22px; max-width:540px; line-height:1.55;}
 footer{padding:30px 0; text-align:center; color:var(--muted); font-size:12.5px; border-top:1px solid var(--border);}
 footer a{color:var(--gold); text-decoration:none;}
@@ -108,7 +113,7 @@ footer a{color:var(--gold); text-decoration:none;}
 
 <header>
   <div class="wrap headRow">
-    <a href="index.html" class="logo">IL CAPONE <span>QUIZ 3.0</span></a>
+    <a href="index.html" class="logo">IL CAPONE <span>QUIZ 3.0<sup style="font-size:.5em; margin-left:1px;">®</sup></span></a>
     <a href="index.html" class="backBtn">← Torna al sito</a>
   </div>
 </header>
@@ -156,7 +161,10 @@ footer a{color:var(--gold); text-decoration:none;}
 </main>
 
 <footer>
-  <div class="wrap">IL CAPONE QUIZ 3.0 · by <a href="https://linktr.ee/Albertoseminerio" target="_blank" rel="noopener">Alberto Seminerio</a></div>
+  <div class="wrap">IL CAPONE QUIZ 3.0® · by <a href="https://linktr.ee/Albertoseminerio" target="_blank" rel="noopener">Alberto Seminerio</a>
+    <div style="margin-top:10px; opacity:.85;">Sito creato da Alberto Seminerio</div>
+    <div style="margin-top:4px;">Vuoi creare il tuo sito? <a href="https://wa.me/393295428123?text=Ciao%21%20Vorrei%20informazioni%20per%20creare%20un%20sito%20web" target="_blank" rel="noopener">Contattami!</a></div>
+  </div>
 </footer>
 
 <script src="prova-quiz-data.js"></script>

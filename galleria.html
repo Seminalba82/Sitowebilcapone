@@ -47,7 +47,7 @@
     background-blend-mode:normal, normal, normal, overlay;
     background-size:auto, auto, auto, 160px 160px;
     transform:translateZ(0) scale(1.06); transform-origin:center;
-    animation:auroraShift 18s ease-in-out infinite alternate;
+    animation:auroraShift 46s ease-in-out infinite alternate;
     will-change:transform, opacity;
   }
   body::after{
@@ -177,7 +177,7 @@
   @keyframes tickerScroll{ from{transform:translateX(0);} to{transform:translateX(-50%);} }
   @keyframes numFlicker{ 0%,100%{text-shadow:0 0 30px rgba(0,246,255,.6);} 50%{text-shadow:0 0 45px rgba(0,246,255,.9), 0 0 70px rgba(139,42,255,.4);} }
   @keyframes pulseGold{ 0%,100%{box-shadow:0 0 0 0 rgba(234,255,43,.35);} 50%{box-shadow:0 0 40px 6px rgba(234,255,43,.3);} }
-  @keyframes auroraShift{ 0%{transform:translateZ(0) scale(1.06) rotate(0deg); opacity:.88;} 100%{transform:translateZ(0) scale(1.1) rotate(1deg); opacity:1;} }
+  @keyframes auroraShift{ 0%{transform:translateZ(0) scale(1.05) rotate(0deg); opacity:.9;} 100%{transform:translateZ(0) scale(1.07) rotate(.4deg); opacity:1;} }
   @keyframes scanlineMove{ from{transform:translateY(0);} to{transform:translateY(8px);} }
   @keyframes btnGoldShift{ from{background-position:0% 0;} to{background-position:300% 0;} }
   @keyframes ctaPulse{ 0%,100%{box-shadow:0 0 0 1px rgba(255,255,255,.25) inset, 0 0 22px rgba(234,255,43,.45), 0 10px 24px rgba(0,246,255,.2);}

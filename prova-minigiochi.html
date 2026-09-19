@@ -134,6 +134,65 @@ h1{font-family:'Chakra Petch',sans-serif; text-transform:uppercase; text-align:c
 .wsCell.found{background:rgba(43,109,255,.22); border-color:var(--ok); color:var(--ok);}
 .wsWordTag{font-family:'Chakra Petch',sans-serif; font-size:12px; color:var(--muted); margin-bottom:6px;}
 
+/* ---- La Bussola Maledetta ---- */
+.bmDial{position:relative; width:260px; height:260px; margin:20px auto; border-radius:50%;
+  background:radial-gradient(circle, var(--bg2) 0%, var(--panel) 70%, var(--bg2) 100%);
+  border:2px solid rgba(255,255,255,.1); box-shadow:0 0 0 1px rgba(0,0,0,.4), inset 0 0 30px rgba(0,0,0,.5);}
+.bmTicks{position:absolute; inset:0; border-radius:50%;
+  background:repeating-conic-gradient(rgba(255,255,255,.14) 0deg 1.2deg, transparent 1.2deg 15deg);}
+.bmZone{position:absolute; inset:0; border-radius:50%; -webkit-mask:radial-gradient(closest-side, transparent 76%, #000 78%);
+  mask:radial-gradient(closest-side, transparent 76%, #000 78%); transition:opacity .2s ease;}
+.bmNeedle{position:absolute; left:50%; top:50%; width:6px; height:112px; margin-left:-3px; margin-top:-112px;
+  transform-origin:50% 100%; background:linear-gradient(180deg,var(--gold),var(--magenta)); border-radius:6px;
+  box-shadow:0 0 14px rgba(234,255,43,.6); z-index:3;}
+.bmNeedle::after{content:""; position:absolute; left:50%; bottom:-9px; width:18px; height:18px; margin-left:-9px;
+  background:var(--panel); border:2px solid var(--gold); border-radius:50%;}
+.bmScoreRow{display:flex; justify-content:center; gap:22px; margin:14px 0 4px; font-family:'Chakra Petch',sans-serif; font-size:13px; color:var(--muted);}
+.bmScoreRow b{color:var(--white); font-size:16px;}
+.bmRoundDots{display:flex; justify-content:center; gap:8px; margin-bottom:6px;}
+.bmRoundDots span{width:10px; height:10px; border-radius:50%; background:rgba(255,255,255,.15); border:1px solid rgba(255,255,255,.2);}
+.bmRoundDots span.hit{background:var(--ok); border-color:var(--ok); box-shadow:0 0 8px rgba(57,255,138,.6);}
+.bmRoundDots span.miss{background:var(--bad); border-color:var(--bad); box-shadow:0 0 8px rgba(255,59,59,.5);}
+
+/* ---- Scuoti Forte ---- */
+.ssIcon{font-size:70px; margin:10px 0; display:inline-block;}
+.ssIcon.shaking{animation:ssShake .35s infinite;}
+@keyframes ssShake{ 0%,100%{transform:rotate(0deg) translateX(0);} 25%{transform:rotate(-14deg) translateX(-6px);}
+  50%{transform:rotate(0deg) translateX(0);} 75%{transform:rotate(14deg) translateX(6px);} }
+.ssCount{font-family:'Orbitron',sans-serif; font-weight:900; font-size:clamp(52px,14vw,84px); color:var(--gold);
+  text-shadow:0 0 26px rgba(234,255,43,.6); margin:6px 0;}
+.ssTimeWrap{width:100%; max-width:320px; height:10px; background:rgba(255,255,255,.08); border-radius:8px; overflow:hidden; margin:10px auto 18px;}
+.ssTimeBar{height:100%; width:100%; background:linear-gradient(90deg,var(--cyan),var(--gold)); transition:width .1s linear;}
+.ssRating{font-family:'Chakra Petch',sans-serif; font-weight:700; font-size:16px; color:var(--cyan); margin-top:6px; min-height:22px;}
+
+/* ---- Carta Nera e Carta Rossa ---- */
+.crCard{width:130px; height:180px; margin:20px auto; border-radius:14px; display:flex; align-items:center; justify-content:center;
+  font-size:64px; box-shadow:0 12px 28px rgba(0,0,0,.5); transition:transform .25s ease, background .2s ease, border-color .2s ease;
+  background:repeating-linear-gradient(45deg, var(--bg2), var(--bg2) 9px, rgba(0,246,255,.07) 9px, rgba(0,246,255,.07) 18px);
+  border:2px solid rgba(0,246,255,.3);}
+.crCard.flipped{background:var(--panel);}
+.crCard.red{color:var(--bad); border-color:rgba(255,59,59,.55); box-shadow:0 12px 28px rgba(0,0,0,.5), 0 0 24px rgba(255,59,59,.25);}
+.crCard.black{color:var(--white); border-color:rgba(255,255,255,.35); box-shadow:0 12px 28px rgba(0,0,0,.5), 0 0 20px rgba(255,255,255,.12);}
+.choiceRow{display:flex; gap:14px; justify-content:center; margin:16px 0; flex-wrap:wrap;}
+.choiceBtn{font-family:'Chakra Petch',sans-serif; font-weight:700; text-transform:uppercase; letter-spacing:.6px; font-size:14px;
+  padding:14px 22px; border-radius:2px; cursor:pointer; border:2px solid; background:var(--panel); color:var(--white); min-width:130px;
+  clip-path:polygon(10px 0,100% 0,100% calc(100% - 10px),calc(100% - 10px) 100%,0 100%,0 10px);
+  transition:transform .12s ease, box-shadow .12s ease;}
+.choiceBtn:active{transform:translateY(2px);}
+.choiceBtn:disabled{opacity:.4; cursor:default;}
+.choiceBtn.redChoice{border-color:var(--bad); }
+.choiceBtn.redChoice:hover:not(:disabled){box-shadow:0 0 18px rgba(255,59,59,.4);}
+.choiceBtn.blackChoice{border-color:rgba(255,255,255,.4);}
+.choiceBtn.blackChoice:hover:not(:disabled){box-shadow:0 0 18px rgba(255,255,255,.25);}
+
+/* ---- Pari o Dispari ---- */
+.pdNumber{font-family:'Orbitron',sans-serif; font-weight:900; font-size:clamp(56px,15vw,90px); color:var(--gold);
+  text-shadow:0 0 28px rgba(234,255,43,.55); margin:16px 0; min-height:1.1em;}
+.choiceBtn.pariChoice{border-color:var(--cyan);}
+.choiceBtn.pariChoice:hover:not(:disabled){box-shadow:0 0 18px rgba(0,246,255,.4);}
+.choiceBtn.dispariChoice{border-color:var(--viola);}
+.choiceBtn.dispariChoice:hover:not(:disabled){box-shadow:0 0 18px rgba(139,42,255,.4);}
+
 .infoNote{background:rgba(234,255,43,.08); border:1px solid rgba(234,255,43,.3); border-radius:14px; padding:12px 16px;
   font-size:12px; color:var(--muted); text-align:center; margin:0 auto 22px; max-width:540px; line-height:1.55;}
 .infoNote.small{font-size:11px; padding:9px 14px; margin:0 auto 18px;}
@@ -153,7 +212,7 @@ footer a{color:var(--gold); text-decoration:none;}
 <main class="wrap">
   <span class="tag">Demo gratuita</span>
   <h1>Prova qualche minigioco</h1>
-  <p class="subtext">5 minigiochi veri, in versione solitaria. Nella serata vera li giocano tutti insieme dal proprio telefono, con punteggi e classifica live.</p>
+  <p class="subtext">9 minigiochi veri, in versione solitaria. Nella serata vera li giocano tutti insieme dal proprio telefono, con punteggi e classifica live.</p>
   <div class="infoNote">ℹ️ La grafica di questa prova è stata volutamente adattata per un utilizzo in solitaria sul sito e non rispecchia fedelmente quella del quiz reale, pensata per la regia, il proiettore e tanti giocatori insieme.</div>
 
   <div class="gameGrid" id="menuGrid">
@@ -171,6 +230,18 @@ footer a{color:var(--gold); text-decoration:none;}
     </div>
     <div class="gameCard" onclick="openGame('ws')">
       <div class="ic">🔤</div><h3>Trova la Parola</h3><p>Cerca la parola nascosta nella griglia. Cambia ogni volta.</p>
+    </div>
+    <div class="gameCard" onclick="openGame('bm')">
+      <div class="ic">🧭</div><h3>La Bussola Maledetta</h3><p>Ferma l'ago esattamente nella zona maledetta. 3 round, quanti ne azzecchi?</p>
+    </div>
+    <div class="gameCard" onclick="openGame('ss')">
+      <div class="ic">📳</div><h3>Scuoti Forte</h3><p>Hai 8 secondi: scuoti il telefono più forte e veloce che puoi.</p>
+    </div>
+    <div class="gameCard" onclick="openGame('cr')">
+      <div class="ic">🃏</div><h3>Carta Nera e Carta Rossa</h3><p>Indovina il colore della prossima carta. 5 round, quante ne azzecchi?</p>
+    </div>
+    <div class="gameCard" onclick="openGame('pd')">
+      <div class="ic">🔢</div><h3>Pari o Dispari</h3><p>Scegli prima di vedere il numero: sarà pari o dispari? 5 round.</p>
     </div>
   </div>
 
@@ -238,6 +309,70 @@ footer a{color:var(--gold); text-decoration:none;}
     <div><button class="btn btnGhost" onclick="wsNew()">↺ Un'altra griglia</button></div>
   </div>
 
+  <!-- ===== LA BUSSOLA MALEDETTA ===== -->
+  <div class="gamePanel" id="panel-bm">
+    <button class="miniBackBtn" onclick="closeGame()">← Tutti i minigiochi</button>
+    <h2>🧭 La Bussola Maledetta</h2>
+    <div class="desc" id="bmDesc">Premi FERMA quando l'ago è dentro la zona maledetta (in magenta). 3 round.</div>
+    <div class="infoNote small">ℹ️ Grafica adattata per la prova in solitaria: non rispecchia fedelmente quella del gioco reale.</div>
+    <div class="bmRoundDots" id="bmDots"></div>
+    <div class="bmDial">
+      <div class="bmTicks"></div>
+      <div class="bmZone" id="bmZone"></div>
+      <div class="bmNeedle" id="bmNeedle"></div>
+    </div>
+    <div class="bmScoreRow"><span>Round <b id="bmRound">1</b>/3</span><span>Centrati <b id="bmHits">0</b></span></div>
+    <div><button class="btn" id="bmBtn" onclick="bmAction()">🛑 FERMA L'AGO!</button></div>
+    <div class="resultMsg" id="bmResult"></div>
+  </div>
+
+  <!-- ===== SCUOTI FORTE ===== -->
+  <div class="gamePanel" id="panel-ss">
+    <button class="miniBackBtn" onclick="closeGame()">← Tutti i minigiochi</button>
+    <h2>📳 Scuoti Forte</h2>
+    <div class="desc" id="ssDesc">Premi INIZIA e scuoti il telefono più forte e veloce che riesci per 8 secondi.</div>
+    <div class="infoNote small">ℹ️ Grafica adattata per la prova in solitaria: non rispecchia fedelmente quella del gioco reale. Da PC, il pulsante si trasforma in un tasto da premere a ripetizione.</div>
+    <div class="ssIcon" id="ssIcon">📱</div>
+    <div class="ssCount" id="ssCount">0</div>
+    <div class="ssTimeWrap"><div class="ssTimeBar" id="ssTimeBar"></div></div>
+    <div><button class="btn" id="ssBtn" onclick="ssAction()">▶ INIZIA!</button></div>
+    <div class="ssRating" id="ssRating"></div>
+  </div>
+
+  <!-- ===== CARTA NERA E CARTA ROSSA ===== -->
+  <div class="gamePanel" id="panel-cr">
+    <button class="miniBackBtn" onclick="closeGame()">← Tutti i minigiochi</button>
+    <h2>🃏 Carta Nera e Carta Rossa</h2>
+    <div class="desc">Scegli il colore prima che la carta si giri. 5 round.</div>
+    <div class="infoNote small">ℹ️ Grafica adattata per la prova in solitaria: non rispecchia fedelmente quella del gioco reale.</div>
+    <div class="bmRoundDots" id="crDots"></div>
+    <div class="crCard" id="crCard">?</div>
+    <div class="choiceRow">
+      <button class="choiceBtn blackChoice" id="crBlackBtn" onclick="crGuess('black')">⬛ Nera</button>
+      <button class="choiceBtn redChoice" id="crRedBtn" onclick="crGuess('red')">🟥 Rossa</button>
+    </div>
+    <div class="bmScoreRow"><span>Round <b id="crRound">1</b>/5</span><span>Indovinate <b id="crHits">0</b></span></div>
+    <div class="resultMsg" id="crResult"></div>
+    <div><button class="btn btnGhost" id="crAgainBtn" onclick="crNew()" style="display:none;">↺ Rigioca</button></div>
+  </div>
+
+  <!-- ===== PARI O DISPARI ===== -->
+  <div class="gamePanel" id="panel-pd">
+    <button class="miniBackBtn" onclick="closeGame()">← Tutti i minigiochi</button>
+    <h2>🔢 Pari o Dispari</h2>
+    <div class="desc">Scegli prima di vedere il numero. 5 round.</div>
+    <div class="infoNote small">ℹ️ Grafica adattata per la prova in solitaria: non rispecchia fedelmente quella del gioco reale.</div>
+    <div class="bmRoundDots" id="pdDots"></div>
+    <div class="pdNumber" id="pdNumber">?</div>
+    <div class="choiceRow">
+      <button class="choiceBtn pariChoice" id="pdPariBtn" onclick="pdGuess('pari')">Pari</button>
+      <button class="choiceBtn dispariChoice" id="pdDispariBtn" onclick="pdGuess('dispari')">Dispari</button>
+    </div>
+    <div class="bmScoreRow"><span>Round <b id="pdRound">1</b>/5</span><span>Indovinate <b id="pdHits">0</b></span></div>
+    <div class="resultMsg" id="pdResult"></div>
+    <div><button class="btn btnGhost" id="pdAgainBtn" onclick="pdNew()" style="display:none;">↺ Rigioca</button></div>
+  </div>
+
 </main>
 
 <footer>
@@ -256,11 +391,17 @@ function openGame(id){
   if (id==='mm') mmNew();
   if (id==='bu') buReset();
   if (id==='ws') wsNew();
+  if (id==='bm') bmNew();
+  if (id==='ss') ssReset();
+  if (id==='cr') crNew();
+  if (id==='pd') pdNew();
 }
 function closeGame(){
   document.querySelectorAll('.gamePanel').forEach(p=>p.classList.remove('active'));
   document.getElementById('menuGrid').style.display = 'grid';
   swReset();
+  bmStopSpin();
+  ssStop();
 }
 
 /* ===================== PRECISIONE SVIZZERA ===================== */
@@ -530,6 +671,306 @@ function wsClick(r,c){
       setTimeout(()=>{ document.querySelectorAll('.wsCell.sel').forEach(el=>el.classList.remove('sel')); wsSel=[]; }, 500);
     }
   }
+}
+
+/* ===================== LA BUSSOLA MALEDETTA ===================== */
+// Stato vive in bmAngle/bmSpinning/bmRound/bmHits: il pulsante ha sempre e solo
+// l'onclick fisso "bmAction()", il suo comportamento dipende da bmSpinning.
+let bmAngle = 0, bmSpinTimer = null, bmSpinning = false;
+let bmRound = 1, bmHits = 0, bmZoneStart = 0, bmZoneWidth = 42, bmSpeed = 3.2;
+const BM_ROUNDS = 3;
+
+function bmNew(){
+  bmRound = 1; bmHits = 0;
+  document.getElementById('bmRound').textContent = bmRound;
+  document.getElementById('bmHits').textContent = bmHits;
+  document.getElementById('bmResult').textContent = '';
+  document.getElementById('bmBtn').textContent = '🛑 FERMA L\'AGO!';
+  document.getElementById('bmBtn').disabled = false;
+  bmRenderDots();
+  bmStartRound();
+}
+function bmRenderDots(){
+  let h = '';
+  for (let i=1;i<=BM_ROUNDS;i++){
+    h += `<span id="bmDot${i}"></span>`;
+  }
+  document.getElementById('bmDots').innerHTML = h;
+}
+function bmStartRound(){
+  bmAngle = Math.floor(Math.random()*360);
+  bmZoneStart = Math.floor(Math.random()*360);
+  bmZoneWidth = 42 - (bmRound-1)*6; // si restringe un po' ogni round
+  bmSpeed = 3.0 + (bmRound-1)*1.1;
+  document.getElementById('bmZone').style.background =
+    `conic-gradient(from ${bmZoneStart}deg, var(--magenta) 0deg ${bmZoneWidth}deg, transparent ${bmZoneWidth}deg 360deg)`;
+  document.getElementById('bmZone').style.opacity = '0.85';
+  bmSpinning = true;
+  clearInterval(bmSpinTimer);
+  bmSpinTimer = setInterval(()=>{
+    bmAngle = (bmAngle + bmSpeed) % 360;
+    document.getElementById('bmNeedle').style.transform = `rotate(${bmAngle}deg)`;
+  }, 16);
+}
+function bmStopSpin(){
+  clearInterval(bmSpinTimer);
+  bmSpinning = false;
+}
+function bmAction(){
+  if (!bmSpinning) return;
+  bmStopSpin();
+  const rel = ((bmAngle - bmZoneStart) % 360 + 360) % 360;
+  const hit = rel <= bmZoneWidth;
+  const r_ = document.getElementById('bmResult');
+  const dot = document.getElementById('bmDot'+bmRound);
+  if (hit){
+    bmHits++;
+    document.getElementById('bmHits').textContent = bmHits;
+    if (dot) dot.className = 'hit';
+    r_.textContent = '🔮 Zona maledetta centrata!'; r_.className = 'resultMsg ok';
+  } else {
+    if (dot) dot.className = 'miss';
+    r_.textContent = 'La maledizione ti sfugge... riprova al prossimo round.'; r_.className = 'resultMsg bad';
+  }
+  document.getElementById('bmZone').style.opacity = '0.3';
+  if (bmRound >= BM_ROUNDS){
+    setTimeout(()=>{
+      r_.innerHTML = `🏁 Fine! Hai centrato la zona maledetta <b style="color:var(--gold)">${bmHits} volte su ${BM_ROUNDS}</b>.`;
+      r_.className = 'resultMsg ok';
+      document.getElementById('bmBtn').textContent = '↺ Rigioca';
+      document.getElementById('bmBtn').onclick = bmNew;
+    }, 900);
+  } else {
+    document.getElementById('bmBtn').disabled = true;
+    setTimeout(()=>{
+      bmRound++;
+      document.getElementById('bmRound').textContent = bmRound;
+      document.getElementById('bmBtn').disabled = false;
+      bmStartRound();
+    }, 1100);
+  }
+}
+
+/* ===================== SCUOTI FORTE ===================== */
+// bmAction pattern ripetuto: onclick fisso "ssAction()", il comportamento dipende da ssState.
+// ssState: 'idle' -> 'running' -> 'done'. Su desktop/senza sensori si passa in automatico
+// alla modalità "tocca forte" (ssTapMode), stesso conteggio e stesso timer.
+let ssState = 'idle', ssCount = 0, ssTimeLeft = 8, ssTimerInterval = null, ssTapMode = false;
+let ssLastMag = null, ssLastShakeAt = 0;
+
+function ssReset(){
+  ssState = 'idle'; ssCount = 0; ssTimeLeft = 8; ssTapMode = false;
+  document.getElementById('ssCount').textContent = '0';
+  document.getElementById('ssTimeBar').style.width = '100%';
+  document.getElementById('ssRating').textContent = '';
+  document.getElementById('ssIcon').textContent = '📱';
+  document.getElementById('ssIcon').classList.remove('shaking');
+  document.getElementById('ssBtn').textContent = '▶ INIZIA!';
+  document.getElementById('ssDesc').textContent = 'Premi INIZIA e scuoti il telefono più forte e veloce che riesci per 8 secondi.';
+}
+function ssStop(){
+  clearInterval(ssTimerInterval);
+  window.removeEventListener('devicemotion', ssOnMotion);
+  document.getElementById('ssIcon').classList.remove('shaking');
+}
+async function ssAction(){
+  if (ssState === 'done'){ ssReset(); return; }
+  if (ssState === 'running'){ if (ssTapMode) ssTapCount(); return; }
+  ssState = 'running'; ssCount = 0; ssTimeLeft = 8;
+  document.getElementById('ssCount').textContent = '0';
+  document.getElementById('ssRating').textContent = '';
+  document.getElementById('ssBtn').textContent = 'IN CORSO...';
+
+  let motionOK = false;
+  if (typeof DeviceMotionEvent !== 'undefined' && typeof DeviceMotionEvent.requestPermission === 'function'){
+    try { motionOK = (await DeviceMotionEvent.requestPermission()) === 'granted'; } catch(e){ motionOK = false; }
+  } else if (typeof DeviceMotionEvent !== 'undefined'){
+    motionOK = true;
+  }
+
+  if (motionOK){
+    ssTapMode = false;
+    document.getElementById('ssDesc').textContent = 'Scuoti il telefono con forza! Mancano pochi secondi...';
+    ssLastMag = null; ssLastShakeAt = 0;
+    window.addEventListener('devicemotion', ssOnMotion);
+  } else {
+    ssTapMode = true;
+    document.getElementById('ssDesc').textContent = 'Niente sensori qui: TOCCA il telefono/pulsante più veloce che puoi!';
+    document.getElementById('ssIcon').textContent = '👇';
+  }
+
+  const totalMs = 8000, stepMs = 100;
+  document.getElementById('ssIcon').classList.add('shaking');
+  ssTimerInterval = setInterval(()=>{
+    ssTimeLeft -= stepMs/1000;
+    document.getElementById('ssTimeBar').style.width = Math.max(0,(ssTimeLeft/8*100)) + '%';
+    if (ssTimeLeft <= 0){
+      ssFinish();
+    }
+  }, stepMs);
+}
+function ssOnMotion(e){
+  const a = e.accelerationIncludingGravity || e.acceleration;
+  if (!a) return;
+  const mag = Math.sqrt((a.x||0)**2 + (a.y||0)**2 + (a.z||0)**2);
+  const now = Date.now();
+  if (ssLastMag !== null){
+    const delta = Math.abs(mag - ssLastMag);
+    if (delta > 12 && (now - ssLastShakeAt) > 180){
+      ssCount++;
+      ssLastShakeAt = now;
+      document.getElementById('ssCount').textContent = ssCount;
+    }
+  }
+  ssLastMag = mag;
+}
+function ssTapCount(){
+  if (ssState !== 'running' || !ssTapMode) return;
+  ssCount++;
+  document.getElementById('ssCount').textContent = ssCount;
+}
+function ssFinish(){
+  clearInterval(ssTimerInterval);
+  window.removeEventListener('devicemotion', ssOnMotion);
+  ssState = 'done';
+  document.getElementById('ssIcon').classList.remove('shaking');
+  document.getElementById('ssIcon').textContent = '🏆';
+  document.getElementById('ssBtn').textContent = '↺ Rigioca';
+  let rating;
+  if (ssCount < 10) rating = '😴 Scuotitore pigro';
+  else if (ssCount < 25) rating = '🙂 Bel ritmo!';
+  else if (ssCount < 45) rating = '🔥 Braccio caldo!';
+  else rating = '🏆 SCUOTITORE LEGGENDARIO!';
+  document.getElementById('ssDesc').textContent = 'Tempo scaduto!';
+  document.getElementById('ssRating').innerHTML = `${rating} — <b style="color:var(--gold)">${ssCount}</b> scosse in 8 secondi`;
+}
+
+/* ===================== CARTA NERA E CARTA ROSSA ===================== */
+let crRound = 1, crHits = 0, crBusy = false;
+const CR_ROUNDS = 5;
+
+function crNew(){
+  crRound = 1; crHits = 0; crBusy = false;
+  document.getElementById('crRound').textContent = crRound;
+  document.getElementById('crHits').textContent = crHits;
+  document.getElementById('crResult').textContent = '';
+  document.getElementById('crAgainBtn').style.display = 'none';
+  const card = document.getElementById('crCard');
+  card.textContent = '?'; card.className = 'crCard';
+  crRenderDots();
+  crSetButtons(true);
+}
+function crRenderDots(){
+  let h = '';
+  for (let i=1;i<=CR_ROUNDS;i++) h += `<span id="crDot${i}"></span>`;
+  document.getElementById('crDots').innerHTML = h;
+}
+function crSetButtons(enabled){
+  document.getElementById('crBlackBtn').disabled = !enabled;
+  document.getElementById('crRedBtn').disabled = !enabled;
+}
+function crGuess(choice){
+  if (crBusy) return;
+  crBusy = true;
+  crSetButtons(false);
+  const isRed = Math.random() < 0.5;
+  const actual = isRed ? 'red' : 'black';
+  const suits = isRed ? ['♥','♦'] : ['♠','♣'];
+  const symbol = suits[Math.floor(Math.random()*suits.length)];
+  const card = document.getElementById('crCard');
+  const r_ = document.getElementById('crResult');
+  const dot = document.getElementById('crDot'+crRound);
+  setTimeout(()=>{
+    card.textContent = symbol;
+    card.className = 'crCard flipped ' + actual;
+    const hit = choice === actual;
+    if (hit){
+      crHits++;
+      document.getElementById('crHits').textContent = crHits;
+      if (dot) dot.className = 'hit';
+      r_.textContent = '🎉 Indovinato!'; r_.className = 'resultMsg ok';
+    } else {
+      if (dot) dot.className = 'miss';
+      r_.textContent = actual==='red' ? 'Era Rossa, peccato!' : 'Era Nera, peccato!'; r_.className = 'resultMsg bad';
+    }
+    if (crRound >= CR_ROUNDS){
+      setTimeout(()=>{
+        r_.innerHTML = `🏁 Fine! Hai indovinato <b style="color:var(--gold)">${crHits} carte su ${CR_ROUNDS}</b>.`;
+        r_.className = 'resultMsg ok';
+        document.getElementById('crAgainBtn').style.display = 'inline-block';
+      }, 700);
+    } else {
+      setTimeout(()=>{
+        crRound++;
+        document.getElementById('crRound').textContent = crRound;
+        card.textContent = '?'; card.className = 'crCard';
+        crBusy = false;
+        crSetButtons(true);
+      }, 1100);
+    }
+  }, 350);
+}
+
+/* ===================== PARI O DISPARI ===================== */
+let pdRound = 1, pdHits = 0, pdBusy = false;
+const PD_ROUNDS = 5;
+
+function pdNew(){
+  pdRound = 1; pdHits = 0; pdBusy = false;
+  document.getElementById('pdRound').textContent = pdRound;
+  document.getElementById('pdHits').textContent = pdHits;
+  document.getElementById('pdResult').textContent = '';
+  document.getElementById('pdAgainBtn').style.display = 'none';
+  document.getElementById('pdNumber').textContent = '?';
+  pdRenderDots();
+  pdSetButtons(true);
+}
+function pdRenderDots(){
+  let h = '';
+  for (let i=1;i<=PD_ROUNDS;i++) h += `<span id="pdDot${i}"></span>`;
+  document.getElementById('pdDots').innerHTML = h;
+}
+function pdSetButtons(enabled){
+  document.getElementById('pdPariBtn').disabled = !enabled;
+  document.getElementById('pdDispariBtn').disabled = !enabled;
+}
+function pdGuess(choice){
+  if (pdBusy) return;
+  pdBusy = true;
+  pdSetButtons(false);
+  const num = Math.floor(Math.random()*100) + 1;
+  const actual = (num % 2 === 0) ? 'pari' : 'dispari';
+  const numEl = document.getElementById('pdNumber');
+  const r_ = document.getElementById('pdResult');
+  const dot = document.getElementById('pdDot'+pdRound);
+  setTimeout(()=>{
+    numEl.textContent = num;
+    const hit = choice === actual;
+    if (hit){
+      pdHits++;
+      document.getElementById('pdHits').textContent = pdHits;
+      if (dot) dot.className = 'hit';
+      r_.textContent = `🎉 Indovinato, era ${actual}!`; r_.className = 'resultMsg ok';
+    } else {
+      if (dot) dot.className = 'miss';
+      r_.textContent = `Era ${actual}, peccato!`; r_.className = 'resultMsg bad';
+    }
+    if (pdRound >= PD_ROUNDS){
+      setTimeout(()=>{
+        r_.innerHTML = `🏁 Fine! Hai indovinato <b style="color:var(--gold)">${pdHits} numeri su ${PD_ROUNDS}</b>.`;
+        r_.className = 'resultMsg ok';
+        document.getElementById('pdAgainBtn').style.display = 'inline-block';
+      }, 700);
+    } else {
+      setTimeout(()=>{
+        pdRound++;
+        document.getElementById('pdRound').textContent = pdRound;
+        numEl.textContent = '?';
+        pdBusy = false;
+        pdSetButtons(true);
+      }, 1100);
+    }
+  }, 350);
 }
 </script>
 </body>

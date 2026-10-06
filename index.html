@@ -3,19 +3,19 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>IL CAPONE QUIZ 3.0™ — Noleggio quiz, tombola e asta per eventi live</title>
+<title>IL CAPONE QUIZ 3.0® — Noleggio quiz, tombola e asta per eventi live</title>
 <meta name="description" content="Quiz interattivo, tombola live e asta live per feste, locali ed eventi. Noleggio a giorno, mese o anno con chiave di licenza. Assistenza h24 inclusa.">
 <link rel="canonical" href="https://ilcaponequiz.win/">
 <link rel="icon" type="image/png" sizes="512x512" href="/favicon.png">
 <link rel="apple-touch-icon" href="/favicon.png">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://ilcaponequiz.win/">
-<meta property="og:title" content="IL CAPONE QUIZ 3.0™ — Noleggio quiz, tombola e asta per eventi live">
+<meta property="og:title" content="IL CAPONE QUIZ 3.0® — Noleggio quiz, tombola e asta per eventi live">
 <meta property="og:description" content="Quiz interattivo, tombola live e asta live per feste, locali ed eventi. Noleggio a giorno, mese o anno con chiave di licenza. Assistenza h24 inclusa.">
 <meta property="og:image" content="https://ilcaponequiz.win/og-image.jpg">
 <meta property="og:locale" content="it_IT">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="IL CAPONE QUIZ 3.0™ — Noleggio quiz, tombola e asta per eventi live">
+<meta name="twitter:title" content="IL CAPONE QUIZ 3.0® — Noleggio quiz, tombola e asta per eventi live">
 <meta name="twitter:description" content="Quiz interattivo, tombola live e asta live per feste, locali ed eventi. Noleggio a giorno, mese o anno con chiave di licenza. Assistenza h24 inclusa.">
 <meta name="twitter:image" content="https://ilcaponequiz.win/og-image.jpg">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -384,13 +384,32 @@
   @media (prefers-reduced-motion: reduce){
     *, *::before, *::after{animation-duration:.001ms !important; animation-iteration-count:1 !important; transition-duration:.001ms !important;}
   }
+
+  /* ===== SUPERCAPONE ===== */
+  .scBox{display:grid; grid-template-columns:1fr; gap:0; border:1px solid rgba(234,255,43,.35); background:linear-gradient(135deg,var(--panel2),var(--panel)); overflow:hidden;
+    clip-path:polygon(0 0,calc(100% - 22px) 0,100% 22px,100% 100%,22px 100%,0 calc(100% - 22px)); box-shadow:0 0 50px rgba(255,31,201,.12);}
+  @media(min-width:820px){ .scBox{grid-template-columns:minmax(0,1fr) minmax(0,1.1fr);} }
+  .scImg{position:relative; min-height:260px; background:#4a78b8;}
+  .scImg img{width:100%; height:100%; object-fit:cover; display:block;}
+  .scNew{position:absolute; top:14px; left:14px; font-family:'Chakra Petch',sans-serif; font-weight:800; letter-spacing:1.5px; font-size:13px; color:#040309; background:var(--gold); padding:6px 14px;
+    clip-path:polygon(0 0,100% 0,calc(100% - 8px) 100%,0 100%); animation:scPulse 1.6s ease-in-out infinite;}
+  @keyframes scPulse{0%,100%{box-shadow:0 0 0 rgba(234,255,43,0);} 50%{filter:brightness(1.25);}}
+  .scBody{padding:30px 26px; display:flex; flex-direction:column; justify-content:center; gap:14px; text-align:center; align-items:center;}
+  .scBody h3{font-family:'Orbitron','Chakra Petch',sans-serif; font-size:clamp(24px,4vw,34px); color:var(--white); line-height:1.15;}
+  .scBody h3 span{color:var(--gold);}
+  .scBody p{color:var(--muted); font-size:15px; max-width:460px;}
+  .scNote{font-size:13.5px !important; color:var(--muted);}
+  .scNote b{color:var(--white);}
+  .scCustom{margin-top:30px; border:1px dashed rgba(0,246,255,.4); padding:26px 22px; text-align:center; background:rgba(0,246,255,.04);}
+  .scCustom h3{font-family:'Chakra Petch',sans-serif; font-size:21px; color:var(--cyan); margin-bottom:8px;}
+  .scCustom p{color:var(--muted); font-size:14.5px; max-width:620px; margin:0 auto 18px;}
 </style>
 </head>
 <body>
 
 <header>
   <div class="wrap navRow">
-    <div class="logo brandFont">IL CAPONE <span>QUIZ 3.0<sup style="font-size:.5em; margin-left:1px;">™</sup></span></div>
+    <div class="logo brandFont">IL CAPONE <span>QUIZ 3.0<sup style="font-size:.5em; margin-left:1px;">®</sup></span></div>
     <nav>
       <a href="#novita">Novità</a>
       <a href="#cose">Cos'è</a>
@@ -472,7 +491,7 @@
     <div class="heroMascotWrap">
       <img class="heroMascot" src="assets/img/logo-mascotte-telefono.webp" alt="Il Capone Quiz 3.0 — mascotte">
     </div>
-    <h1 class="brandFont">IL CAPONE<br><span class="accent" data-text="QUIZ 3.0">QUIZ 3.0</span><sup style="font-size:.35em; vertical-align:super; margin-left:2px; color:var(--white); -webkit-text-fill-color:var(--white);">™</sup></h1>
+    <h1 class="brandFont">IL CAPONE<br><span class="accent" data-text="QUIZ 3.0">QUIZ 3.0</span><sup style="font-size:.35em; vertical-align:super; margin-left:2px; color:var(--white); -webkit-text-fill-color:var(--white);">®</sup></h1>
     <p class="lead">Il quiz show interattivo che trasforma qualsiasi serata in un evento: pubblico in gara dal proprio smartphone, classifica dal vivo, proiettore acceso e tanta adrenalina. Pronto a noleggio, pronto in 5 minuti.</p>
     <div class="heroCtas">
       <a class="btn btnGold" href="https://wa.me/393295428123?text=Ciao%21%20Vorrei%20avere%20informazioni%20su%20Il%20Capone%20Quiz%203.0" target="_blank" rel="noopener">📱 Scrivimi su WhatsApp</a>
@@ -622,6 +641,36 @@
           <li>Pronti da caricare insieme al resto del catalogo</li>
         </ul>
         <a class="btn btnGold btnSmall" href="https://wa.me/393295428123?text=Ciao%21%20Vorrei%20informazioni%20sui%20pacchetti%20di%20domande%20a%20tema" target="_blank" rel="noopener">📱 Scopri i pacchetti a tema</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="supercapone">
+  <div class="wrap">
+    <div class="sectionHead">
+      <div class="tag">Novità · Gioco libero</div>
+      <h2>Il nostro gioco arcade: SUPERCAPONE</h2>
+      <p>Un platform arcade a tema Agrigento, giocabile subito dal tuo smartphone. Scala la classifica mondiale!</p>
+    </div>
+    <div class="scBox">
+      <div class="scImg">
+        <img src="supercapone-promo.jpg" alt="SUPERCAPONE, il platform arcade del Capone tra i templi di Agrigento" loading="lazy">
+        <span class="scNew">NOVITÀ</span>
+      </div>
+      <div class="scBody">
+        <h3>SUPER<span>CAPONE</span><sup style="font-size:.4em;">™</sup></h3>
+        <p>Il platform del Capone tra i templi di Agrigento: corri, salta, raccogli le monete e conquista il tuo posto in classifica.</p>
+        <a class="btn btnGold" href="https://supercapone.vercel.app" target="_blank" rel="noopener">🕹️ GIOCA GRATUITAMENTE</a>
+        <p class="scNote"><b>SUPERCAPONE</b> è anche un minigioco de <b>IL CAPONE QUIZ 3.0</b><sup style="font-size:.6em;">®</sup></p>
+      </div>
+    </div>
+    <div class="scCustom">
+      <h3>🎮 Vuoi un gioco arcade tutto tuo?</h3>
+      <p>Si possono creare giochi arcade personalizzati, con il tuo brand, i tuoi personaggi e la tua classifica. Contattami per tutte le info.</p>
+      <div style="display:flex; flex-wrap:wrap; gap:14px; justify-content:center;">
+        <a class="btn btnGold btnSmall" href="https://wa.me/393295428123?text=Ciao%21%20Vorrei%20informazioni%20per%20creare%20un%20gioco%20arcade%20personalizzato" target="_blank" rel="noopener">📱 Scrivimi su WhatsApp</a>
+        <a class="btn btnGhost btnSmall" href="https://albertoseminerio.com" target="_blank" rel="noopener">🌐 Contatta Alberto Seminerio</a>
       </div>
     </div>
   </div>
@@ -789,7 +838,7 @@
 
 <footer>
   <div class="wrap">
-    IL CAPONE QUIZ 3.0™ · by <a href="https://linktr.ee/Albertoseminerio" target="_blank" rel="noopener">Alberto Seminerio</a> · Tutti i diritti riservati
+    IL CAPONE QUIZ 3.0® · by <a href="https://linktr.ee/Albertoseminerio" target="_blank" rel="noopener">Alberto Seminerio</a> · Tutti i diritti riservati
     <div style="margin-top:10px; opacity:.85;">Sito creato da Alberto Seminerio</div>
     <div style="margin-top:4px;">Vuoi creare il tuo sito? <a href="https://wa.me/393295428123?text=Ciao%21%20Vorrei%20informazioni%20per%20creare%20un%20sito%20web" target="_blank" rel="noopener">Contattami!</a></div>
   </div>

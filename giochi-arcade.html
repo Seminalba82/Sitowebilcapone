@@ -446,6 +446,17 @@
   .scCustom{margin-top:30px; border:1px dashed rgba(0,246,255,.4); padding:26px 22px; text-align:center; background:rgba(0,246,255,.04);}
   .scCustom h3{font-family:'Chakra Petch',sans-serif; font-size:21px; color:var(--cyan); margin-bottom:8px;}
   .scCustom p{color:var(--muted); font-size:14.5px; max-width:620px; margin:0 auto 18px;}
+
+  .reviewBox{border:1px solid rgba(255,31,201,.4); background:linear-gradient(135deg,rgba(255,31,201,.07),var(--panel)); padding:30px 24px; text-align:center;
+    clip-path:polygon(0 0,calc(100% - 18px) 0,100% 18px,100% 100%,18px 100%,0 calc(100% - 18px));}
+  .reviewBox .rvTag{display:inline-block; font-family:'Chakra Petch',sans-serif; font-weight:800; letter-spacing:2px; font-size:13px; color:var(--magenta); margin-bottom:10px;}
+  .reviewBox h3{font-family:'Orbitron','Chakra Petch',sans-serif; font-size:clamp(20px,3.5vw,28px); color:var(--white); margin-bottom:6px;}
+  .reviewBox .rvSrc{color:var(--muted); font-size:13.5px; margin-bottom:18px;}
+  .reviewBox .rvScore{display:inline-flex; align-items:baseline; gap:4px; font-family:'Orbitron',sans-serif; font-weight:900; color:var(--gold); text-shadow:0 0 22px rgba(234,255,43,.35); margin-bottom:18px;}
+  .reviewBox .rvScore b{font-size:44px; line-height:1;} .reviewBox .rvScore span{font-size:18px; color:var(--muted);}
+  .reviewBox blockquote{max-width:640px; margin:0 auto 12px; color:var(--white); font-size:16px; font-style:italic; line-height:1.5;}
+  .reviewBox blockquote::before{content:"“"; color:var(--magenta); font-size:28px; line-height:0; vertical-align:-8px; margin-right:4px;}
+  .reviewBox .rvBtn{margin-top:14px;}
 </style>
 </head>
 
@@ -496,6 +507,16 @@
           <a class="btn btnGold" href="https://supercapone.vercel.app" target="_blank" rel="noopener">🕹️ GIOCA GRATUITAMENTE</a>
           <p class="scNote"><b>SUPERCAPONE</b> è anche un minigioco de <b>IL CAPONE QUIZ 3.0</b><sup style="font-size:.6em;">®</sup></p>
         </div>
+      </div>
+
+      <div class="reviewBox">
+        <span class="rvTag">📰 DICONO DI SUPERCAPONE</span>
+        <h3>Super Capone: quando un microfono siciliano prende a testate il mondo dei platform</h3>
+        <div class="rvSrc">Recensione di <b>Paladini del VideoGioco</b> · 8 ottobre 2026</div>
+        <div class="rvScore"><b>8</b><span>/10</span></div>
+        <blockquote>Super Capone è una piccola follia videoludica che merita di essere provata soprattutto per la sua genuinità.</blockquote>
+        <blockquote>Un platform goliardico, genuino e soprattutto divertente.</blockquote>
+        <a class="btn btnGold btnSmall rvBtn" href="https://paladinidelvideogioco.it/super-capone-quando-un-microfono-siciliano-prende-a-testate-il-mondo-dei-platform/" target="_blank" rel="noopener">📖 Leggi la recensione completa</a>
       </div>
 
       <div class="soonCard">

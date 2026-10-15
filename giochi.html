@@ -3,9 +3,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Catalogo minigiochi | Il Capone Quiz 3.0</title>
-<meta name="description" content="Catalogo minigiochi di Il Capone Quiz.">
-<meta name="robots" content="noindex, nofollow">
+<title>Elenco completo dei minigiochi | Il Capone Quiz 3.0</title>
+<meta name="description" content="Tutti i 92 minigiochi di Il Capone Quiz 3.0, con anteprima e descrizione: giochi di abilità e di fortuna per animare la tua serata.">
 <link rel="icon" type="image/png" sizes="512x512" href="/favicon.png">
 <link rel="apple-touch-icon" href="/favicon.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -367,6 +366,32 @@
   @media (prefers-reduced-motion: reduce){
     *, *::before, *::after{animation-duration:.001ms !important; animation-iteration-count:1 !important; transition-duration:.001ms !important;}
   }
+
+  /* ---------- CATALOGO CON IMMAGINI ---------- */
+  .fBar{display:flex; flex-wrap:wrap; gap:8px; justify-content:center; margin:0 auto 12px; max-width:920px;}
+  .fChip{font-family:'Chakra Petch',sans-serif; font-weight:700; font-size:13px; letter-spacing:.4px; text-transform:uppercase; cursor:pointer;
+    background:var(--panel); color:var(--muted); border:1px solid var(--border); border-radius:999px; padding:8px 16px; transition:all .2s ease;}
+  .fChip:hover{color:var(--white); border-color:rgba(0,246,255,.4);}
+  .fChip.on{color:#050014; background:linear-gradient(120deg,var(--cyan),var(--gold)); border-color:transparent;}
+  .fCount{text-align:center; color:var(--muted); font-size:14px; margin:6px 0 26px;}
+  .gGrid{display:grid; grid-template-columns:1fr; gap:22px;}
+  @media(min-width:620px){ .gGrid{grid-template-columns:repeat(2,1fr);} }
+  @media(min-width:960px){ .gGrid{grid-template-columns:repeat(3,1fr);} }
+  .gCard{background:var(--panel); border:1px solid var(--border); border-radius:4px; overflow:hidden; display:flex; flex-direction:column;
+    clip-path:polygon(18px 0,100% 0,100% calc(100% - 18px),calc(100% - 18px) 100%,0 100%,0 18px);
+    transition:transform .25s ease, box-shadow .25s ease, border-color .25s ease;}
+  .gCard:hover{transform:translateY(-5px); border-color:rgba(0,246,255,.3); box-shadow:0 14px 34px rgba(0,0,0,.5), 0 0 30px rgba(139,42,255,.28);}
+  .gCard[hidden]{display:none;}
+  .gImg{aspect-ratio:8/5; background:var(--panel2); overflow:hidden;}
+  .gImg img{width:100%; height:100%; object-fit:cover; display:block;}
+  .gBody{padding:18px 20px 20px; display:flex; flex-direction:column; gap:8px; flex:1;}
+  .gBody h3{font-family:'Chakra Petch',sans-serif; font-size:17px; color:var(--gold); line-height:1.3;}
+  .gBody p{color:var(--muted); font-size:14.5px; flex:1;}
+  .gTags{display:flex; flex-wrap:wrap; gap:6px; margin-top:4px;}
+  .gTag{font-size:11px; font-weight:700; letter-spacing:.6px; text-transform:uppercase; color:var(--cyan); border:1px solid rgba(0,246,255,.3); border-radius:999px; padding:3px 10px;}
+  .gTag.gCap{color:var(--gold); border-color:rgba(234,255,43,.45);}
+  .gSec[hidden]{display:none;}
+  .gNote{max-width:720px; margin:0 auto 22px; color:var(--muted); font-size:13px; text-align:center;}
 </style>
 </head>
 <body>
@@ -389,269 +414,826 @@
   <div class="wrap">
     <div class="sectionHead">
       <div class="tag">Il catalogo</div>
-      <h2>40 minigiochi, divisi per categoria</h2>
-      <p>Ecco il catalogo completo, categoria per categoria. Il catalogo cresce nel tempo: nuovi minigiochi si aggiungono serata dopo serata.</p>
+      <h2>92 minigiochi, divisi per categoria</h2>
+      <p>Ecco il catalogo completo, gioco per gioco, con un'anteprima di ognuno. Il catalogo cresce nel tempo: nuovi minigiochi si aggiungono serata dopo serata.</p>
     </div>
+    <div class="fBar" role="group" aria-label="Filtra per tipo">
+      <button type="button" class="fChip on" data-type="all">Tutti (92)</button>
+      <button type="button" class="fChip" data-type="skill">🧠 Abilità (61)</button>
+      <button type="button" class="fChip" data-type="luck">🍀 Fortuna (31)</button>
+    </div>
+    <div class="fBar" role="group" aria-label="Filtra per categoria">
+      <button type="button" class="fChip" data-cat="Capone">Capone</button><button type="button" class="fChip" data-cat="Carte">Carte</button><button type="button" class="fChip" data-cat="Colpo d&#x27;Occhio">Colpo d&#x27;Occhio</button><button type="button" class="fChip" data-cat="Dita Veloci">Dita Veloci</button><button type="button" class="fChip" data-cat="Estrazione Casuale">Estrazione Casuale</button><button type="button" class="fChip" data-cat="Fotocamera">Fotocamera</button><button type="button" class="fChip" data-cat="Logica">Logica</button><button type="button" class="fChip" data-cat="Oscillometro">Oscillometro</button><button type="button" class="fChip" data-cat="Scelta Fortunata">Scelta Fortunata</button><button type="button" class="fChip" data-cat="Si Grida">Si Grida</button>
+    </div>
+    <div class="fCount" id="fCount" aria-live="polite"></div>
     <div style="text-align:center; margin-bottom:10px;">
       <a class="btn btnGhost btnSmall" href="index.html">← Torna al sito</a>
     </div>
   </div>
 </section>
 
-<section id="squadre">
+<section id="abilita" class="gSec" data-sec="skill">
   <div class="wrap">
     <div class="sectionHead">
-      <div class="tag">🕹️ Giochi d'abilità</div>
-      <h2>Collaborazione e velocità</h2>
-      <p>Format pensati per far lavorare insieme il gruppo, con il cronometro sempre acceso.</p>
+      <div class="tag">🧠 Giochi d'abilità</div>
+      <h2>Riflessi, logica e precisione</h2>
+      <p>Conta quello che sai, quanto sei veloce, quanto sei preciso: vince il più bravo.</p>
     </div>
-    <div class="grid3">
-      <div class="card">
-        <div class="ic">🧩</div>
-        <h3>Puzzle</h3>
-        <p>Le squadre ricompongono l'immagine a pezzi: vince chi completa il puzzle per prima.</p>
-      </div>
-      <div class="card">
-        <div class="ic">🔤</div>
-        <h3>Trova la Parola</h3>
-        <p>Caccia alle parole nascoste nella griglia: la squadra più veloce fa più punti.</p>
-      </div>
-      <div class="card">
-        <div class="ic">🎱</div>
-        <h3>Tombola</h3>
-        <p>Il classico gioco delle cartelle, in versione digitale per tutta la sala.</p>
-      </div>
-      <div class="card">
-        <div class="ic">🗳️</div>
-        <h3>La Maggioranza Vince</h3>
-        <p>La squadra deve indovinare la risposta più votata dal pubblico.</p>
-      </div>
-      <div class="card">
-        <div class="ic">🥁</div>
-        <h3>I Tamburini</h3>
-        <p>Ritmo e sincronia: la squadra che segue meglio la sequenza vince il round.</p>
-      </div>
-      <div class="card">
-        <div class="ic">📣</div>
-        <h3>Mercatista per un Giorno</h3>
-        <p>Trattative a squadre per convincere e concludere il miglior affare.</p>
-      </div>
-      <div class="card">
-        <div class="ic">🔍</div>
-        <h3>Trova le Differenze</h3>
-        <p>Due immagini quasi identiche: la squadra più attenta trova tutti gli errori.</p>
-      </div>
-      <div class="card">
-        <div class="ic">👁</div>
-        <h3>Occhio alle Forme</h3>
-        <p>Riconosci la forma giusta tra tante distrazioni, il più in fretta possibile.</p>
-      </div>
-      <div class="card">
-        <div class="ic">📦</div>
-        <h3>Il Gioco dei Pacchi</h3>
-        <p>La squadra sceglie un pacco: tenerlo o cambiarlo? La suspense è assicurata.</p>
-      </div>
-      <div class="card">
-        <div class="ic">❌⭕</div>
-        <h3>XOX</h3>
-        <p>Il classico tris, ma a squadre: strategia e velocità per allineare tre simboli.</p>
-      </div>
+    <div class="gGrid">
+      <article class="gCard" data-type="skill" data-cats="Carte">
+        <div class="gImg"><img src="assets/giochi/settemezzo.webp" alt="7 e 1/2: anteprima del minigioco" loading="lazy" width="640" height="400"></div>
+        <div class="gBody">
+          <h3>7 e 1/2</h3>
+          <p>Il classico 7 e 1/2 con le carte: ognuno gioca la propria mano dal telefono e prova ad avvicinarsi a sette e mezzo senza sballare.</p>
+          <div class="gTags"><span class="gTag">Carte</span></div>
+        </div>
+      </article>
+      <article class="gCard" data-type="skill" data-cats="Logica">
+        <div class="gImg"><img src="assets/giochi/anagram.webp" alt="Anagramma: anteprima del minigioco" loading="lazy" width="640" height="400"></div>
+        <div class="gBody">
+          <h3>Anagramma</h3>
+          <p>Le lettere di una parola vengono rimescolate: ricomponila prima di tutti gli altri. Con aiuti a scalare.</p>
+          <div class="gTags"><span class="gTag">Logica</span></div>
+        </div>
+      </article>
+      <article class="gCard" data-type="skill" data-cats="Capone|Logica">
+        <div class="gImg"><img src="assets/giochi/porta.webp" alt="Aprite quella Porta: anteprima del minigioco" loading="lazy" width="640" height="400"></div>
+        <div class="gBody">
+          <h3>Aprite quella Porta</h3>
+          <p>Scegliete la porta giusta: se è chiusa si torna all&#x27;inizio!</p>
+          <div class="gTags"><span class="gTag gCap">Capone</span><span class="gTag">Logica</span></div>
+        </div>
+      </article>
+      <article class="gCard" data-type="skill" data-cats="Colpo d&#x27;Occhio">
+        <div class="gImg"><img src="assets/giochi/mini.webp" alt="Bussolotti: anteprima del minigioco" loading="lazy" width="640" height="400"></div>
+        <div class="gBody">
+          <h3>Bussolotti</h3>
+          <p>Tre bussolotti e una pallina: si mescolano sempre più veloci, e il pubblico deve indovinare dove si nasconde.</p>
+          <div class="gTags"><span class="gTag">Colpo d&#x27;Occhio</span></div>
+        </div>
+      </article>
+      <article class="gCard" data-type="skill" data-cats="Fotocamera">
+        <div class="gImg"><img src="assets/giochi/fantasmi.webp" alt="Caccia ai Fantasmi: anteprima del minigioco" loading="lazy" width="640" height="400"></div>
+        <div class="gBody">
+          <h3>Caccia ai Fantasmi</h3>
+          <p>Trova i fantasmini nascosti nel locale e catturali inquadrando il loro QR code con la fotocamera.</p>
+          <div class="gTags"><span class="gTag">Fotocamera</span></div>
+        </div>
+      </article>
+      <article class="gCard" data-type="skill" data-cats="Fotocamera">
+        <div class="gImg"><img src="assets/giochi/tesoro.webp" alt="Caccia al Tesoro: anteprima del minigioco" loading="lazy" width="640" height="400"></div>
+        <div class="gBody">
+          <h3>Caccia al Tesoro</h3>
+          <p>Caccia al tesoro con i QR code nascosti nel locale: chi inquadra per primo quello giusto vince il premio.</p>
+          <div class="gTags"><span class="gTag">Fotocamera</span></div>
+        </div>
+      </article>
+      <article class="gCard" data-type="skill" data-cats="Colpo d&#x27;Occhio|Fotocamera">
+        <div class="gImg"><img src="assets/giochi/caccialuce.webp" alt="Caccia alla Luce: anteprima del minigioco" loading="lazy" width="640" height="400"></div>
+        <div class="gBody">
+          <h3>Caccia alla Luce</h3>
+          <p>Cercate con la fotocamera il punto giusto, guidati dalla luce: più vi avvicinate più punti prendete.</p>
+          <div class="gTags"><span class="gTag">Colpo d&#x27;Occhio</span><span class="gTag">Fotocamera</span></div>
+        </div>
+      </article>
+      <article class="gCard" data-type="skill" data-cats="Capone|Dita Veloci">
+        <div class="gImg"><img src="assets/giochi/ostacoli.webp" alt="Corsa a Ostacoli: anteprima del minigioco" loading="lazy" width="640" height="400"></div>
+        <div class="gBody">
+          <h3>Corsa a Ostacoli</h3>
+          <p>Il Capone è ai blocchi di partenza: salta gli ostacoli al momento giusto e arriva al traguardo.</p>
+          <div class="gTags"><span class="gTag gCap">Capone</span><span class="gTag">Dita Veloci</span></div>
+        </div>
+      </article>
+      <article class="gCard" data-type="skill" data-cats="Capone|Dita Veloci">
+        <div class="gImg"><img src="assets/giochi/formula.webp" alt="Formula Anziani: anteprima del minigioco" loading="lazy" width="640" height="400"></div>
+        <div class="gBody">
+          <h3>Formula Anziani</h3>
+          <p>Corsa arcade dei carrozzini: scegli il tuo anziano e tocca la metà sinistra o destra dello schermo per cambiare corsia.</p>
+          <div class="gTags"><span class="gTag gCap">Capone</span><span class="gTag">Dita Veloci</span></div>
+        </div>
+      </article>
+      <article class="gCard" data-type="skill" data-cats="Dita Veloci">
+        <div class="gImg"><img src="assets/giochi/f1.webp" alt="Formula Uno: anteprima del minigioco" loading="lazy" width="640" height="400"></div>
+        <div class="gBody">
+          <h3>Formula Uno</h3>
+          <p>Gara di Formula Uno: dito sul pulsante del telefono e via al semaforo, vince il pilota più pronto.</p>
+          <div class="gTags"><span class="gTag">Dita Veloci</span></div>
+        </div>
+      </article>
+      <article class="gCard" data-type="skill" data-cats="Dita Veloci">
+        <div class="gImg"><img src="assets/giochi/tamb.webp" alt="I Tamburini: anteprima del minigioco" loading="lazy" width="640" height="400"></div>
+        <div class="gBody">
+          <h3>I Tamburini</h3>
+          <p>Si suonano i tamburi dal telefono, con due o più dita: ritmo, velocità e coordinazione.</p>
+          <div class="gTags"><span class="gTag">Dita Veloci</span></div>
+        </div>
+      </article>
+      <article class="gCard" data-type="skill" data-cats="Dita Veloci|Oscillometro">
+        <div class="gImg"><img src="assets/giochi/colposecco.webp" alt="Il Colpo Secco: anteprima del minigioco" loading="lazy" width="640" height="400"></div>
+        <div class="gBody">
+          <h3>Il Colpo Secco</h3>
+          <p>Tenetevi pronti e date il colpo secco al telefono nel momento giusto: forza e tempismo.</p>
+          <div class="gTags"><span class="gTag">Dita Veloci</span><span class="gTag">Oscillometro</span></div>
+        </div>
+      </article>
+      <article class="gCard" data-type="skill" data-cats="Logica">
+        <div class="gImg"><img src="assets/giochi/pontesospeso.webp" alt="Il Ponte Sospeso: anteprima del minigioco" loading="lazy" width="640" height="400"></div>
+        <div class="gBody">
+          <h3>Il Ponte Sospeso</h3>
+          <p>Scegliete le tavolette giuste per attraversare il ponte: chi sbaglia deve ricostruire il percorso.</p>
+          <div class="gTags"><span class="gTag">Logica</span></div>
+        </div>
+      </article>
+      <article class="gCard" data-type="skill" data-cats="Logica">
+        <div class="gImg"><img src="assets/giochi/punto.webp" alt="Il Punto della Situazione: anteprima del minigioco" loading="lazy" width="640" height="400"></div>
+        <div class="gBody">
+          <h3>Il Punto della Situazione</h3>
+          <p>Una gara a tappe: si risponde dal telefono per avanzare, la regia ferma la corsa quando vuole e i punti vanno a chi è più avanti.</p>
+          <div class="gTags"><span class="gTag">Logica</span></div>
+        </div>
+      </article>
+      <article class="gCard" data-type="skill" data-cats="Colpo d&#x27;Occhio">
+        <div class="gImg"><img src="assets/giochi/clover.webp" alt="Il Quadrifoglio: anteprima del minigioco" loading="lazy" width="640" height="400"></div>
+        <div class="gBody">
+          <h3>Il Quadrifoglio</h3>
+          <p>Ognuno cerca nel proprio campo, dal telefono, i quadrifogli nascosti tra i trifogli.</p>
+          <div class="gTags"><span class="gTag">Colpo d&#x27;Occhio</span></div>
+        </div>
+      </article>
+      <article class="gCard" data-type="skill" data-cats="Colpo d&#x27;Occhio|Oscillometro">
+        <div class="gImg"><img src="assets/giochi/vassoio.webp" alt="Il Vassoio del Cameriere: anteprima del minigioco" loading="lazy" width="640" height="400"></div>
+        <div class="gBody">
+          <h3>Il Vassoio del Cameriere</h3>
+          <p>Tre bicchieri da tenere in equilibrio insieme sul vassoio del cameriere: inclinate piano.</p>
+          <div class="gTags"><span class="gTag">Colpo d&#x27;Occhio</span><span class="gTag">Oscillometro</span></div>
+        </div>
+      </article>
+      <article class="gCard" data-type="skill" data-cats="Oscillometro">
+        <div class="gImg"><img src="assets/giochi/biglia.webp" alt="La Biglia: anteprima del minigioco" loading="lazy" width="640" height="400"></div>
+        <div class="gBody">
+          <h3>La Biglia</h3>
+          <p>Guida la biglia inclinando il telefono, dalla linea di partenza fino al traguardo, senza uscire dal percorso.</p>
+          <div class="gTags"><span class="gTag">Oscillometro</span></div>
+        </div>
+      </article>
+      <article class="gCard" data-type="skill" data-cats="Colpo d&#x27;Occhio|Oscillometro">
+        <div class="gImg"><img src="assets/giochi/bussola.webp" alt="La Bussola Maledetta: anteprima del minigioco" loading="lazy" width="640" height="400"></div>
+        <div class="gBody">
+          <h3>La Bussola Maledetta</h3>
+          <p>Ruotate su voi stessi con il telefono in mano e puntate la direzione giusta: conta la precisione sul bersaglio.</p>
+          <div class="gTags"><span class="gTag">Colpo d&#x27;Occhio</span><span class="gTag">Oscillometro</span></div>
+        </div>
+      </article>
+      <article class="gCard" data-type="skill" data-cats="Logica">
+        <div class="gImg"><img src="assets/giochi/cassaforte.webp" alt="La Cassaforte: anteprima del minigioco" loading="lazy" width="640" height="400"></div>
+        <div class="gBody">
+          <h3>La Cassaforte</h3>
+          <p>Una cassaforte, una combinazione segreta di tre cifre diverse: chi la apre per primo?</p>
+          <div class="gTags"><span class="gTag">Logica</span></div>
+        </div>
+      </article>
+      <article class="gCard" data-type="skill" data-cats="Dita Veloci">
+        <div class="gImg"><img src="assets/giochi/differenziata.webp" alt="La Differenziata: anteprima del minigioco" loading="lazy" width="640" height="400"></div>
+        <div class="gBody">
+          <h3>La Differenziata</h3>
+          <p>Un gioco di velocità sulla raccolta differenziata: smista i rifiuti dal telefono prima degli altri.</p>
+          <div class="gTags"><span class="gTag">Dita Veloci</span></div>
+        </div>
+      </article>
+      <article class="gCard" data-type="skill" data-cats="Fotocamera|Logica">
+        <div class="gImg"><img src="assets/giochi/frase.webp" alt="La Frase Misteriosa: anteprima del minigioco" loading="lazy" width="640" height="400"></div>
+        <div class="gBody">
+          <h3>La Frase Misteriosa</h3>
+          <p>I QR code nascosti svelano le parole di una frase misteriosa: scrivetela giusta per vincere.</p>
+          <div class="gTags"><span class="gTag">Fotocamera</span><span class="gTag">Logica</span></div>
+        </div>
+      </article>
+      <article class="gCard" data-type="skill" data-cats="Si Grida">
+        <div class="gImg"><img src="assets/giochi/rana.webp" alt="La Rana Salterina: anteprima del minigioco" loading="lazy" width="640" height="400"></div>
+        <div class="gBody">
+          <h3>La Rana Salterina</h3>
+          <p>Urlate nel microfono del telefono: ogni urlo fa fare un salto alla vostra rana. Chi arriva prima vince.</p>
+          <div class="gTags"><span class="gTag">Si Grida</span></div>
+        </div>
+      </article>
+      <article class="gCard" data-type="skill" data-cats="Logica">
+        <div class="gImg"><img src="assets/giochi/rdc.webp" alt="La Resa dei Conti: anteprima del minigioco" loading="lazy" width="640" height="400"></div>
+        <div class="gBody">
+          <h3>La Resa dei Conti</h3>
+          <p>Un gioco di conti da seguire sul maxischermo: chi fa i calcoli giusti e più in fretta incassa i punti.</p>
+          <div class="gTags"><span class="gTag">Logica</span></div>
+        </div>
+      </article>
+      <article class="gCard" data-type="skill" data-cats="Capone|Dita Veloci">
+        <div class="gImg"><img src="assets/giochi/scalata.webp" alt="La Scalata: anteprima del minigioco" loading="lazy" width="640" height="400"></div>
+        <div class="gBody">
+          <h3>La Scalata</h3>
+          <p>Il Capone si arrampica: tocca al momento giusto per fargli prendere gli appigli e salire più in alto possibile.</p>
+          <div class="gTags"><span class="gTag gCap">Capone</span><span class="gTag">Dita Veloci</span></div>
+        </div>
+      </article>
+      <article class="gCard" data-type="skill" data-cats="Logica">
+        <div class="gImg"><img src="assets/giochi/idr.webp" alt="L&#x27;Idraulico: anteprima del minigioco" loading="lazy" width="640" height="400"></div>
+        <div class="gBody">
+          <h3>L&#x27;Idraulico</h3>
+          <p>Sistemate il circuito dal telefono: chi lo completa per primo prende più punti.</p>
+          <div class="gTags"><span class="gTag">Logica</span></div>
+        </div>
+      </article>
+      <article class="gCard" data-type="skill" data-cats="Colpo d&#x27;Occhio">
+        <div class="gImg"><img src="assets/giochi/spesa.webp" alt="Lista della Spesa: anteprima del minigioco" loading="lazy" width="640" height="400"></div>
+        <div class="gBody">
+          <h3>Lista della Spesa</h3>
+          <p>Memorizza la lista della spesa mostrata per pochi secondi, poi ricostruiscila a memoria.</p>
+          <div class="gTags"><span class="gTag">Colpo d&#x27;Occhio</span></div>
+        </div>
+      </article>
+      <article class="gCard" data-type="skill" data-cats="Si Grida">
+        <div class="gImg"><img src="assets/giochi/staccionata.webp" alt="Maledetta Staccionata: anteprima del minigioco" loading="lazy" width="640" height="400"></div>
+        <div class="gBody">
+          <h3>Maledetta Staccionata</h3>
+          <p>Dipingete la staccionata con le urla: più forte gridate, più pennellate date. «Non si finisce mai di lavorare... maledetta staccionata!»</p>
+          <div class="gTags"><span class="gTag">Si Grida</span></div>
+        </div>
+      </article>
+      <article class="gCard" data-type="skill" data-cats="Colpo d&#x27;Occhio|Oscillometro">
+        <div class="gImg"><img src="assets/giochi/manoferma.webp" alt="Mani Ferme!: anteprima del minigioco" loading="lazy" width="640" height="400"></div>
+        <div class="gBody">
+          <h3>Mani Ferme!</h3>
+          <p>Tenete il telefono più fermo possibile: più state immobili, più punti guadagnate.</p>
+          <div class="gTags"><span class="gTag">Colpo d&#x27;Occhio</span><span class="gTag">Oscillometro</span></div>
+        </div>
+      </article>
+      <article class="gCard" data-type="skill" data-cats="Logica">
+        <div class="gImg"><img src="assets/giochi/mastermind.webp" alt="Mastermind: anteprima del minigioco" loading="lazy" width="640" height="400"></div>
+        <div class="gBody">
+          <h3>Mastermind</h3>
+          <p>Indovina la sequenza di colori nascosta: a ogni tentativo un indizio, fino a trovarla.</p>
+          <div class="gTags"><span class="gTag">Logica</span></div>
+        </div>
+      </article>
+      <article class="gCard" data-type="skill" data-cats="Colpo d&#x27;Occhio">
+        <div class="gImg"><img src="assets/giochi/memocoppie.webp" alt="Memo le Coppie: anteprima del minigioco" loading="lazy" width="640" height="400"></div>
+        <div class="gBody">
+          <h3>Memo le Coppie</h3>
+          <p>Ogni telefono ha la sua griglia di carte coperte: girate due carte alla volta e trovate tutte le coppie.</p>
+          <div class="gTags"><span class="gTag">Colpo d&#x27;Occhio</span></div>
+        </div>
+      </article>
+      <article class="gCard" data-type="skill" data-cats="Si Grida">
+        <div class="gImg"><img src="assets/giochi/merc.webp" alt="Mercatista per un Giorno: anteprima del minigioco" loading="lazy" width="640" height="400"></div>
+        <div class="gBody">
+          <h3>Mercatista per un Giorno</h3>
+          <p>Fate i mercatisti: gridate fortissimo nel microfono del telefono. Vince la voce più potente!</p>
+          <div class="gTags"><span class="gTag">Si Grida</span></div>
+        </div>
+      </article>
+      <article class="gCard" data-type="skill" data-cats="Colpo d&#x27;Occhio|Fotocamera">
+        <div class="gImg"><img src="assets/giochi/mimetizzati.webp" alt="Mimetizzati: anteprima del minigioco" loading="lazy" width="640" height="400"></div>
+        <div class="gBody">
+          <h3>Mimetizzati</h3>
+          <p>Fissate il vostro colore con la fotocamera, poi confondetevi con l&#x27;ambiente: vince chi si mimetizza meglio.</p>
+          <div class="gTags"><span class="gTag">Colpo d&#x27;Occhio</span><span class="gTag">Fotocamera</span></div>
+        </div>
+      </article>
+      <article class="gCard" data-type="skill" data-cats="Colpo d&#x27;Occhio|Oscillometro">
+        <div class="gImg"><img src="assets/giochi/bicchiere.webp" alt="Non Versare il Bicchiere: anteprima del minigioco" loading="lazy" width="640" height="400"></div>
+        <div class="gBody">
+          <h3>Non Versare il Bicchiere</h3>
+          <p>Inclinate il telefono per versare il liquido nel bicchiere, ma senza farlo traboccare.</p>
+          <div class="gTags"><span class="gTag">Colpo d&#x27;Occhio</span><span class="gTag">Oscillometro</span></div>
+        </div>
+      </article>
+      <article class="gCard" data-type="skill" data-cats="Dita Veloci">
+        <div class="gImg"><img src="assets/giochi/shapes.webp" alt="Occhio alle Forme: anteprima del minigioco" loading="lazy" width="640" height="400"></div>
+        <div class="gBody">
+          <h3>Occhio alle Forme</h3>
+          <p>Una forma da inseguire con il dito tra tante distrazioni: toccate quando pensate di averla centrata.</p>
+          <div class="gTags"><span class="gTag">Dita Veloci</span></div>
+        </div>
+      </article>
+      <article class="gCard" data-type="skill" data-cats="Logica">
+        <div class="gImg"><img src="assets/giochi/parcheggio.webp" alt="Parcheggio Perfetto!: anteprima del minigioco" loading="lazy" width="640" height="400"></div>
+        <div class="gBody">
+          <h3>Parcheggio Perfetto!</h3>
+          <p>Fate entrare i mezzi nel parcheggio dal telefono: incastri e manovre, e la classifica si forma in tempo reale.</p>
+          <div class="gTags"><span class="gTag">Logica</span></div>
+        </div>
+      </article>
+      <article class="gCard" data-type="skill" data-cats="Capone|Dita Veloci">
+        <div class="gImg"><img src="assets/giochi/monete.webp" alt="Pioggia di Monete: anteprima del minigioco" loading="lazy" width="640" height="400"></div>
+        <div class="gBody">
+          <h3>Pioggia di Monete</h3>
+          <p>Sta per piovere oro: muovi il Capone e raccogli quante più monete possibili prima che finisca il tempo.</p>
+          <div class="gTags"><span class="gTag gCap">Capone</span><span class="gTag">Dita Veloci</span></div>
+        </div>
+      </article>
+      <article class="gCard" data-type="skill" data-cats="Carte">
+        <div class="gImg"><img src="assets/giochi/poker.webp" alt="Poker: anteprima del minigioco" loading="lazy" width="640" height="400"></div>
+        <div class="gBody">
+          <h3>Poker</h3>
+          <p>Piazzate la puntata e giocate la mano di poker dal telefono: la classifica delle vincite sale in diretta.</p>
+          <div class="gTags"><span class="gTag">Carte</span></div>
+        </div>
+      </article>
+      <article class="gCard" data-type="skill" data-cats="Dita Veloci">
+        <div class="gImg"><img src="assets/giochi/popit.webp" alt="Pop It: anteprima del minigioco" loading="lazy" width="640" height="400"></div>
+        <div class="gBody">
+          <h3>Pop It</h3>
+          <p>Scoppiate più bolle possibile del Pop It prima che i punti scendano a zero.</p>
+          <div class="gTags"><span class="gTag">Dita Veloci</span></div>
+        </div>
+      </article>
+      <article class="gCard" data-type="skill" data-cats="Dita Veloci">
+        <div class="gImg"><img src="assets/giochi/swiss.webp" alt="Precisione Svizzera: anteprima del minigioco" loading="lazy" width="640" height="400"></div>
+        <div class="gBody">
+          <h3>Precisione Svizzera</h3>
+          <p>Il cronometro corre: fermatelo al momento esatto. Vince chi è più preciso, anche al centesimo.</p>
+          <div class="gTags"><span class="gTag">Dita Veloci</span></div>
+        </div>
+      </article>
+      <article class="gCard" data-type="skill" data-cats="Logica">
+        <div class="gImg"><img src="assets/giochi/puzzle.webp" alt="Puzzle: anteprima del minigioco" loading="lazy" width="640" height="400"></div>
+        <div class="gBody">
+          <h3>Puzzle</h3>
+          <p>Una foto ridotta in pezzi: ricomponetela dal telefono, vince chi finisce per primo.</p>
+          <div class="gTags"><span class="gTag">Logica</span></div>
+        </div>
+      </article>
+      <article class="gCard" data-type="skill" data-cats="Dita Veloci">
+        <div class="gImg"><img src="assets/giochi/radar.webp" alt="Radar: anteprima del minigioco" loading="lazy" width="640" height="400"></div>
+        <div class="gBody">
+          <h3>Radar</h3>
+          <p>La lancetta del radar gira: cliccate quando passa sul raggio rosa. Più il raggio è stretto, più punti si guadagnano.</p>
+          <div class="gTags"><span class="gTag">Dita Veloci</span></div>
+        </div>
+      </article>
+      <article class="gCard" data-type="skill" data-cats="Fotocamera">
+        <div class="gImg"><img src="assets/giochi/mosaico.webp" alt="Ricomponi l&#x27;immagine: anteprima del minigioco" loading="lazy" width="640" height="400"></div>
+        <div class="gBody">
+          <h3>Ricomponi l&#x27;immagine</h3>
+          <p>Ogni QR code trovato svela un pezzo dell&#x27;immagine: più pezzi ricomponi, più punti prendi.</p>
+          <div class="gTags"><span class="gTag">Fotocamera</span></div>
+        </div>
+      </article>
+      <article class="gCard" data-type="skill" data-cats="Dita Veloci">
+        <div class="gImg"><img src="assets/giochi/salumi.webp" alt="Salumi e Formaggi: anteprima del minigioco" loading="lazy" width="640" height="400"></div>
+        <div class="gBody">
+          <h3>Salumi e Formaggi</h3>
+          <p>Tagliate il salume o il formaggio al peso giusto: toccate quando pensate sia il momento di fermare il coltello.</p>
+          <div class="gTags"><span class="gTag">Dita Veloci</span></div>
+        </div>
+      </article>
+      <article class="gCard" data-type="skill" data-cats="Dita Veloci">
+        <div class="gImg"><img src="assets/giochi/talpa.webp" alt="Schiaccia la Talpa: anteprima del minigioco" loading="lazy" width="640" height="400"></div>
+        <div class="gBody">
+          <h3>Schiaccia la Talpa</h3>
+          <p>Le talpe sbucano dalle buche: ognuno le schiaccia dal proprio telefono, ma attenzione ai colpi a vuoto.</p>
+          <div class="gTags"><span class="gTag">Dita Veloci</span></div>
+        </div>
+      </article>
+      <article class="gCard" data-type="skill" data-cats="Carte">
+        <div class="gImg"><img src="assets/giochi/scopa.webp" alt="Scopa e Vinci: anteprima del minigioco" loading="lazy" width="640" height="400"></div>
+        <div class="gBody">
+          <h3>Scopa e Vinci</h3>
+          <p>La scopa con le carte napoletane: ognuno riceve 5 carte contro le 4 a terra e vince chi prende più carte.</p>
+          <div class="gTags"><span class="gTag">Carte</span></div>
+        </div>
+      </article>
+      <article class="gCard" data-type="skill" data-cats="Dita Veloci|Oscillometro">
+        <div class="gImg"><img src="assets/giochi/scuoti.webp" alt="Scuoti Forte!: anteprima del minigioco" loading="lazy" width="640" height="400"></div>
+        <div class="gBody">
+          <h3>Scuoti Forte!</h3>
+          <p>Scuotete il telefono più forte possibile: vince chi registra più scosse.</p>
+          <div class="gTags"><span class="gTag">Dita Veloci</span><span class="gTag">Oscillometro</span></div>
+        </div>
+      </article>
+      <article class="gCard" data-type="skill" data-cats="Logica">
+        <div class="gImg"><img src="assets/giochi/tfiscale.webp" alt="Sei Troppo Fiscale!: anteprima del minigioco" loading="lazy" width="640" height="400"></div>
+        <div class="gBody">
+          <h3>Sei Troppo Fiscale!</h3>
+          <p>Quanto costa questo prodotto? Scommetti sul prezzo giusto: vince chi ci va più vicino.</p>
+          <div class="gTags"><span class="gTag">Logica</span></div>
+        </div>
+      </article>
+      <article class="gCard" data-type="skill" data-cats="Colpo d&#x27;Occhio">
+        <div class="gImg"><img src="assets/giochi/simon.webp" alt="Simon: anteprima del minigioco" loading="lazy" width="640" height="400"></div>
+        <div class="gBody">
+          <h3>Simon</h3>
+          <p>Il Simon del Capone: guarda la sequenza di colori e luci, poi ripetila a memoria senza sbagliare.</p>
+          <div class="gTags"><span class="gTag">Colpo d&#x27;Occhio</span></div>
+        </div>
+      </article>
+      <article class="gCard" data-type="skill" data-cats="Colpo d&#x27;Occhio|Oscillometro">
+        <div class="gImg"><img src="assets/giochi/arancia.webp" alt="Spremi l&#x27;Arancia: anteprima del minigioco" loading="lazy" width="640" height="400"></div>
+        <div class="gBody">
+          <h3>Spremi l&#x27;Arancia</h3>
+          <p>Ruotate il polso per spremere più succo possibile dall&#x27;arancia in mano.</p>
+          <div class="gTags"><span class="gTag">Colpo d&#x27;Occhio</span><span class="gTag">Oscillometro</span></div>
+        </div>
+      </article>
+      <article class="gCard" data-type="skill" data-cats="Logica">
+        <div class="gImg"><img src="assets/giochi/stendi.webp" alt="Stendi i Panni: anteprima del minigioco" loading="lazy" width="640" height="400"></div>
+        <div class="gBody">
+          <h3>Stendi i Panni</h3>
+          <p>Scegliete i vestiti da stendere sul telefono: ognuno stende la propria cordina, la classifica si forma in tempo reale.</p>
+          <div class="gTags"><span class="gTag">Logica</span></div>
+        </div>
+      </article>
+      <article class="gCard" data-type="skill" data-cats="Capone|Dita Veloci">
+        <div class="gImg"><img src="assets/giochi/supercapone.webp" alt="Super Capone: anteprima del minigioco" loading="lazy" width="640" height="400"></div>
+        <div class="gBody">
+          <h3>Super Capone</h3>
+          <p>Il platform del Capone tra i templi di Agrigento: salta, raccogli e arriva in fondo al livello.</p>
+          <div class="gTags"><span class="gTag gCap">Capone</span><span class="gTag">Dita Veloci</span></div>
+        </div>
+      </article>
+      <article class="gCard" data-type="skill" data-cats="Dita Veloci">
+        <div class="gImg"><img src="assets/giochi/taptap.webp" alt="Tap Tap: anteprima del minigioco" loading="lazy" width="640" height="400"></div>
+        <div class="gBody">
+          <h3>Tap Tap</h3>
+          <p>Picchia il pulsante dal telefono più veloce che puoi: chi fa più tocchi vince.</p>
+          <div class="gTags"><span class="gTag">Dita Veloci</span></div>
+        </div>
+      </article>
+      <article class="gCard" data-type="skill" data-cats="Colpo d&#x27;Occhio|Oscillometro">
+        <div class="gImg"><img src="assets/giochi/equilibrio.webp" alt="Tieni l&#x27;Equilibrio: anteprima del minigioco" loading="lazy" width="640" height="400"></div>
+        <div class="gBody">
+          <h3>Tieni l&#x27;Equilibrio</h3>
+          <p>Inclinate il telefono per restare al centro del bersaglio: vince chi è più stabile.</p>
+          <div class="gTags"><span class="gTag">Colpo d&#x27;Occhio</span><span class="gTag">Oscillometro</span></div>
+        </div>
+      </article>
+      <article class="gCard" data-type="skill" data-cats="Dita Veloci">
+        <div class="gImg"><img src="assets/giochi/traffico.webp" alt="Traffico: anteprima del minigioco" loading="lazy" width="640" height="400"></div>
+        <div class="gBody">
+          <h3>Traffico</h3>
+          <p>Minigioco arcade nel traffico: guida dal telefono e schiva gli ostacoli per arrivare più lontano possibile.</p>
+          <div class="gTags"><span class="gTag">Dita Veloci</span></div>
+        </div>
+      </article>
+      <article class="gCard" data-type="skill" data-cats="Colpo d&#x27;Occhio|Fotocamera">
+        <div class="gImg"><img src="assets/giochi/trovacolore.webp" alt="Trova il Colore: anteprima del minigioco" loading="lazy" width="640" height="400"></div>
+        <div class="gBody">
+          <h3>Trova il Colore</h3>
+          <p>La regia mostra un colore: inquadrate con la fotocamera del telefono qualcosa di quel colore, prima degli altri.</p>
+          <div class="gTags"><span class="gTag">Colpo d&#x27;Occhio</span><span class="gTag">Fotocamera</span></div>
+        </div>
+      </article>
+      <article class="gCard" data-type="skill" data-cats="Carte|Colpo d&#x27;Occhio">
+        <div class="gImg"><img src="assets/giochi/memo.webp" alt="Trova la Carta: anteprima del minigioco" loading="lazy" width="640" height="400"></div>
+        <div class="gBody">
+          <h3>Trova la Carta</h3>
+          <p>Guardate bene le carte scoperte, poi si coprono: trovate la carta giusta.</p>
+          <div class="gTags"><span class="gTag">Carte</span><span class="gTag">Colpo d&#x27;Occhio</span></div>
+        </div>
+      </article>
+      <article class="gCard" data-type="skill" data-cats="Colpo d&#x27;Occhio">
+        <div class="gImg"><img src="assets/giochi/wordsearch.webp" alt="Trova la Parola: anteprima del minigioco" loading="lazy" width="640" height="400"></div>
+        <div class="gBody">
+          <h3>Trova la Parola</h3>
+          <p>Una parola nascosta in una griglia di lettere: cercatela dal telefono, in orizzontale, verticale o in diagonale.</p>
+          <div class="gTags"><span class="gTag">Colpo d&#x27;Occhio</span></div>
+        </div>
+      </article>
+      <article class="gCard" data-type="skill" data-cats="Colpo d&#x27;Occhio">
+        <div class="gImg"><img src="assets/giochi/finddiff.webp" alt="Trova le Differenze: anteprima del minigioco" loading="lazy" width="640" height="400"></div>
+        <div class="gBody">
+          <h3>Trova le Differenze</h3>
+          <p>Due foto quasi identiche con 5 differenze: tocca i punti che cambiano dal telefono.</p>
+          <div class="gTags"><span class="gTag">Colpo d&#x27;Occhio</span></div>
+        </div>
+      </article>
+      <article class="gCard" data-type="skill" data-cats="Colpo d&#x27;Occhio">
+        <div class="gImg"><img src="assets/giochi/panino.webp" alt="Un Panino al Camioncino: anteprima del minigioco" loading="lazy" width="640" height="400"></div>
+        <div class="gBody">
+          <h3>Un Panino al Camioncino</h3>
+          <p>Guarda bene il panino che ti sei fatto preparare, poi ricostruiscilo con gli ingredienti giusti, prima che passi il tempo.</p>
+          <div class="gTags"><span class="gTag">Colpo d&#x27;Occhio</span></div>
+        </div>
+      </article>
+      <article class="gCard" data-type="skill" data-cats="Logica">
+        <div class="gImg"><img src="assets/giochi/xox.webp" alt="XOX: anteprima del minigioco" loading="lazy" width="640" height="400"></div>
+        <div class="gBody">
+          <h3>XOX</h3>
+          <p>Il tris contro il computer, dal telefono: tu sei X, lui è O. Riesci a batterlo?</p>
+          <div class="gTags"><span class="gTag">Logica</span></div>
+        </div>
+      </article>
+      <article class="gCard" data-type="skill" data-cats="Dita Veloci">
+        <div class="gImg"><img src="assets/giochi/zanzare.webp" alt="Zanzare: anteprima del minigioco" loading="lazy" width="640" height="400"></div>
+        <div class="gBody">
+          <h3>Zanzare</h3>
+          <p>Le zanzare si radunano sulla mano: aspettate il momento giusto e toccate per schiacciarle.</p>
+          <div class="gTags"><span class="gTag">Dita Veloci</span></div>
+        </div>
+      </article>
     </div>
   </div>
 </section>
 
-<section id="individuali">
+<section id="fortuna" class="gSec" data-sec="luck">
   <div class="wrap">
     <div class="sectionHead">
-      <div class="tag">🎯 Giochi di fortuna</div>
-      <h2>Riflessi e precisione</h2>
-      <p>Chi risponde prima e meglio si prende la scena: format pensati per il singolo giocatore.</p>
+      <div class="tag">🍀 Giochi di fortuna</div>
+      <h2>Estrazioni, scommesse e colpi di fortuna</h2>
+      <p>Qui comanda la sorte: ruote, carte, dadi, pacchi e tante sorprese.</p>
     </div>
-    <div class="grid3">
-      <div class="card">
-        <div class="ic">👆</div>
-        <h3>Tap Tap</h3>
-        <p>Chi tocca lo schermo più volte nel tempo stabilito vince il round.</p>
-      </div>
-      <div class="card">
-        <div class="ic">⌚</div>
-        <h3>Precisione Svizzera</h3>
-        <p>Ferma il tempo esattamente al momento giusto: vince chi è più preciso.</p>
-      </div>
-      <div class="card">
-        <div class="ic">🎨</div>
-        <h3>Simon</h3>
-        <p>Ripeti la sequenza di colori: un errore e sei fuori.</p>
-      </div>
-      <div class="card">
-        <div class="ic">🎯</div>
-        <h3>Mastermind</h3>
-        <p>Indovina la combinazione segreta nel minor numero di tentativi.</p>
-      </div>
-      <div class="card">
-        <div class="ic">🎲</div>
-        <h3>Pari o Dispari</h3>
-        <p>Scegli pari o dispari e affida il resto alla sorte.</p>
-      </div>
-      <div class="card">
-        <div class="ic">🪙</div>
-        <h3>Testa o Croce</h3>
-        <p>La sfida più semplice e diretta: testa o croce?</p>
-      </div>
-      <div class="card">
-        <div class="ic">🔤➰</div>
-        <h3>Anagramma</h3>
-        <p>Riordina le lettere e trova la parola nel minor tempo possibile.</p>
-      </div>
-      <div class="card">
-        <div class="ic">💣</div>
-        <h3>Bomba a Orologeria</h3>
-        <p>Passatela prima che scoppi: chi la tiene in mano quando suona è fuori.</p>
-      </div>
-      <div class="card">
-        <div class="ic">✊✋✌️</div>
-        <h3>Morra Cinese</h3>
-        <p>Sfida diretta uno contro uno, con il pubblico che tifa.</p>
-      </div>
-      <div class="card">
-        <div class="ic">🔍</div>
-        <h3>Trova la Carta</h3>
-        <p>Segui la carta con gli occhi: dov'è finita dopo i mescolamenti?</p>
-      </div>
-      <div class="card">
-        <div class="ic">🃏</div>
-        <h3>Carta Alta, Carta Bassa</h3>
-        <p>Scommetti se la prossima carta sarà più alta o più bassa.</p>
-      </div>
-    </div>
-  </div>
-</section>
-
-<section id="premi">
-  <div class="wrap">
-    <div class="sectionHead">
-      <div class="tag">🎁 Giochi a premi</div>
-      <h2>Aste, ruote, estrazioni</h2>
-      <p>I momenti più attesi della serata, con un premio reale in palio.</p>
-    </div>
-    <div class="grid3">
-      <div class="card">
-        <div class="ic">🎡</div>
-        <h3>La Ruota Gira per Tutti</h3>
-        <p>Gira la ruota e scopri il premio in palio per il round.</p>
-      </div>
-      <div class="card">
-        <div class="ic">🎡</div>
-        <h3>Le Ruote della Fortuna</h3>
-        <p>Due ruote incrociate decidono chi vince e cosa vince.</p>
-      </div>
-      <div class="card">
-        <div class="ic">🔨</div>
-        <h3>Asta</h3>
-        <p>Rilanci in tempo reale dal telefono per aggiudicarsi il premio in palio.</p>
-      </div>
-      <div class="card">
-        <div class="ic">🤠</div>
-        <h3>Roulette Russa</h3>
-        <p>Versione scherzosa e a premi, tra tensione e risate.</p>
-      </div>
-      <div class="card">
-        <div class="ic">🎰</div>
-        <h3>Roulette (Casinò)</h3>
-        <p>La roulette classica, con puntate e numeri fortunati.</p>
-      </div>
-      <div class="card">
-        <div class="ic">🎫</div>
-        <h3>Il Biglietto d'Oro</h3>
-        <p>Un biglietto vincente nascosto tra tanti: chi lo trova porta a casa il premio.</p>
-      </div>
-      <div class="card">
-        <div class="ic">🌾</div>
-        <h3>La Pagliuzza</h3>
-        <p>Chi pesca la pagliuzza giusta si aggiudica il premio del round.</p>
-      </div>
-      <div class="card">
-        <div class="ic">🎰</div>
-        <h3>SUPERTRIS</h3>
-        <p>Le slot si fermano sui simboli: allinea la combinazione giusta per vincere.</p>
-      </div>
-      <div class="card">
-        <div class="ic">🃏</div>
-        <h3>Il Seme Vincente</h3>
-        <p>Indovina il seme della carta e porta a casa il premio.</p>
-      </div>
-      <div class="card">
-        <div class="ic">🎴</div>
-        <h3>Carta Rossa, Carta Nera</h3>
-        <p>Rossa o nera? Un'intuizione può valere un premio.</p>
-      </div>
-      <div class="card">
-        <div class="ic">🥃</div>
-        <h3>Bussolotti</h3>
-        <p>Sotto quale bussolotto si nasconde il premio? Segui bene con lo sguardo.</p>
-      </div>
-      <div class="card">
-        <div class="ic">🎲</div>
-        <h3>Il Dado del Destino</h3>
-        <p>Un lancio di dado decide chi si aggiudica il premio del round.</p>
-      </div>
-    </div>
-  </div>
-</section>
-
-<section id="altro">
-  <div class="wrap">
-    <div class="sectionHead">
-      <div class="tag mystery">❓ E molto altro</div>
-      <h2>Format speciali e a sorpresa</h2>
-      <p>Round particolari, a tema o fuori dagli schemi: quelli che fanno ricordare la serata.</p>
-    </div>
-    <div class="grid3">
-      <div class="card">
-        <div class="ic">🃏</div>
-        <h3>Memo le Coppie</h3>
-        <p>Trova tutte le coppie di carte uguali, allenando la memoria.</p>
-      </div>
-      <div class="card">
-        <div class="ic">🐎</div>
-        <h3>Pubbliche Offese</h3>
-        <p>Corsa di cavalli scherzosa, tra pronostici e colpi di scena.</p>
-      </div>
-      <div class="card">
-        <div class="ic">💶</div>
-        <h3>Sei Troppo Fiscale!</h3>
-        <p>Format a tema economico, tra bilanci e battute al fulmicotone.</p>
-      </div>
-      <div class="card">
-        <div class="ic">👠</div>
-        <h3>Cenerentola</h3>
-        <p>Trova la scarpetta giusta in questo format a tema fiabesco.</p>
-      </div>
-      <div class="card">
-        <div class="ic">🧮</div>
-        <h3>La Resa dei Conti</h3>
-        <p>Il momento in cui i punti si sommano e i giochi si fanno seri.</p>
-      </div>
-      <div class="card">
-        <div class="ic">🏁</div>
-        <h3>Il Punto della Situazione</h3>
-        <p>Una pausa nel format per fare il punto su classifica e sfide.</p>
-      </div>
-      <div class="card">
-        <div class="ic">🔧</div>
-        <h3>L'Idraulico</h3>
-        <p>Format a tema riparazioni, tra ingegno e improvvisazione.</p>
-      </div>
+    <div class="gGrid">
+      <article class="gCard" data-type="luck" data-cats="Scelta Fortunata">
+        <div class="gImg"><img src="assets/giochi/bacchette.webp" alt="A Colpi di Bacchette: anteprima del minigioco" loading="lazy" width="640" height="400"></div>
+        <div class="gBody">
+          <h3>A Colpi di Bacchette</h3>
+          <p>Duelli di bacchette su ogni telefono, da giocare muovendo lo smartphone: sfida gli avversari a colpi di incantesimi.</p>
+          <div class="gTags"><span class="gTag">Scelta Fortunata</span></div>
+        </div>
+      </article>
+      <article class="gCard" data-type="luck" data-cats="Scelta Fortunata">
+        <div class="gImg"><img src="assets/giochi/batti.webp" alt="Batti Cinque: anteprima del minigioco" loading="lazy" width="640" height="400"></div>
+        <div class="gBody">
+          <h3>Batti Cinque</h3>
+          <p>La mano passa di telefono in telefono: chi la batterà cinque volte per primo vince il maxi premio.</p>
+          <div class="gTags"><span class="gTag">Scelta Fortunata</span></div>
+        </div>
+      </article>
+      <article class="gCard" data-type="luck" data-cats="Carte">
+        <div class="gImg"><img src="assets/giochi/bingocarte.webp" alt="Bingo con le Carte: anteprima del minigioco" loading="lazy" width="640" height="400"></div>
+        <div class="gBody">
+          <h3>Bingo con le Carte</h3>
+          <p>Bingo con le carte: la regia sceglie le carte vincenti e chi le pesca porta a casa i premi.</p>
+          <div class="gTags"><span class="gTag">Carte</span></div>
+        </div>
+      </article>
+      <article class="gCard" data-type="luck" data-cats="Scelta Fortunata">
+        <div class="gImg"><img src="assets/giochi/bomba.webp" alt="Bomba a Orologeria: anteprima del minigioco" loading="lazy" width="640" height="400"></div>
+        <div class="gBody">
+          <h3>Bomba a Orologeria</h3>
+          <p>Taglia il filo giusto per vincere, ma attenzione: ce n&#x27;è uno che fa scoppiare la bomba!</p>
+          <div class="gTags"><span class="gTag">Scelta Fortunata</span></div>
+        </div>
+      </article>
+      <article class="gCard" data-type="luck" data-cats="Scelta Fortunata">
+        <div class="gImg"><img src="assets/giochi/rigori.webp" alt="Calci di Rigore: anteprima del minigioco" loading="lazy" width="640" height="400"></div>
+        <div class="gBody">
+          <h3>Calci di Rigore</h3>
+          <p>Calci di rigore: tocca un bersaglio per tirare. Nessun portiere, conta solo la fortuna!</p>
+          <div class="gTags"><span class="gTag">Scelta Fortunata</span></div>
+        </div>
+      </article>
+      <article class="gCard" data-type="luck" data-cats="Carte">
+        <div class="gImg"><img src="assets/giochi/hilo.webp" alt="Carta Alta, Carta Bassa: anteprima del minigioco" loading="lazy" width="640" height="400"></div>
+        <div class="gBody">
+          <h3>Carta Alta, Carta Bassa</h3>
+          <p>Carta alta o carta bassa? Scommettete sulla prossima carta che uscirà.</p>
+          <div class="gTags"><span class="gTag">Carte</span></div>
+        </div>
+      </article>
+      <article class="gCard" data-type="luck" data-cats="Carte">
+        <div class="gImg"><img src="assets/giochi/cards.webp" alt="Carta Rossa, Carta Nera: anteprima del minigioco" loading="lazy" width="640" height="400"></div>
+        <div class="gBody">
+          <h3>Carta Rossa, Carta Nera</h3>
+          <p>Carta rossa o carta nera? Scommettete dal telefono sul colore della prossima carta.</p>
+          <div class="gTags"><span class="gTag">Carte</span></div>
+        </div>
+      </article>
+      <article class="gCard" data-type="luck" data-cats="Scelta Fortunata">
+        <div class="gImg"><img src="assets/giochi/cenerentola.webp" alt="Cenerentola de Noi Artri: anteprima del minigioco" loading="lazy" width="640" height="400"></div>
+        <div class="gBody">
+          <h3>Cenerentola de Noi Artri</h3>
+          <p>Nove scatole, una sola nasconde la scarpetta con il maxi premio: scegliete con fiuto!</p>
+          <div class="gTags"><span class="gTag">Scelta Fortunata</span></div>
+        </div>
+      </article>
+      <article class="gCard" data-type="luck" data-cats="Estrazione Casuale|Oscillometro">
+        <div class="gImg"><img src="assets/giochi/dadimatti.webp" alt="Dadi Matti: anteprima del minigioco" loading="lazy" width="640" height="400"></div>
+        <div class="gBody">
+          <h3>Dadi Matti</h3>
+          <p>Scuotete il telefono per mescolare i dadi: il rumore dei dadi è vero e la fortuna decide.</p>
+          <div class="gTags"><span class="gTag">Estrazione Casuale</span><span class="gTag">Oscillometro</span></div>
+        </div>
+      </article>
+      <article class="gCard" data-type="luck" data-cats="Estrazione Casuale">
+        <div class="gImg"><img src="assets/giochi/gold.webp" alt="Il Biglietto d&#x27;Oro: anteprima del minigioco" loading="lazy" width="640" height="400"></div>
+        <div class="gBody">
+          <h3>Il Biglietto d&#x27;Oro</h3>
+          <p>Ognuno gratta il proprio biglietto dal telefono: scopri se è quello d&#x27;oro.</p>
+          <div class="gTags"><span class="gTag">Estrazione Casuale</span></div>
+        </div>
+      </article>
+      <article class="gCard" data-type="luck" data-cats="Dita Veloci">
+        <div class="gImg"><img src="assets/giochi/dado.webp" alt="Il Dado del Destino: anteprima del minigioco" loading="lazy" width="640" height="400"></div>
+        <div class="gBody">
+          <h3>Il Dado del Destino</h3>
+          <p>Gara di dadi dal telefono: tirate il dado e avanzate; la regia può fermare la corsa e premia chi è più avanti.</p>
+          <div class="gTags"><span class="gTag">Dita Veloci</span></div>
+        </div>
+      </article>
+      <article class="gCard" data-type="luck" data-cats="Scelta Fortunata">
+        <div class="gImg"><img src="assets/giochi/pacchi.webp" alt="Il Gioco dei Pacchi: anteprima del minigioco" loading="lazy" width="640" height="400"></div>
+        <div class="gBody">
+          <h3>Il Gioco dei Pacchi</h3>
+          <p>Il Gioco dei Pacchi: nove pacchi con punti o sorprese, ma qualcuno può togliere punti!</p>
+          <div class="gTags"><span class="gTag">Scelta Fortunata</span></div>
+        </div>
+      </article>
+      <article class="gCard" data-type="luck" data-cats="Carte">
+        <div class="gImg"><img src="assets/giochi/seed.webp" alt="Il Seme Vincente: anteprima del minigioco" loading="lazy" width="640" height="400"></div>
+        <div class="gBody">
+          <h3>Il Seme Vincente</h3>
+          <p>Scegliete un seme dal telefono: se è quello della carta estratta, avete vinto.</p>
+          <div class="gTags"><span class="gTag">Carte</span></div>
+        </div>
+      </article>
+      <article class="gCard" data-type="luck" data-cats="Scelta Fortunata">
+        <div class="gImg"><img src="assets/giochi/maj.webp" alt="La Maggioranza Vince: anteprima del minigioco" loading="lazy" width="640" height="400"></div>
+        <div class="gBody">
+          <h3>La Maggioranza Vince</h3>
+          <p>Scegli un colore: se fai parte della maggioranza vinci!</p>
+          <div class="gTags"><span class="gTag">Scelta Fortunata</span></div>
+        </div>
+      </article>
+      <article class="gCard" data-type="luck" data-cats="Scelta Fortunata">
+        <div class="gImg"><img src="assets/giochi/pagliuzza.webp" alt="La Pagliuzza: anteprima del minigioco" loading="lazy" width="640" height="400"></div>
+        <div class="gBody">
+          <h3>La Pagliuzza</h3>
+          <p>Scegli una pagliuzza: prendi la più lunga per vincere il premio, la più corta e paghi pegno!</p>
+          <div class="gTags"><span class="gTag">Scelta Fortunata</span></div>
+        </div>
+      </article>
+      <article class="gCard" data-type="luck" data-cats="Estrazione Casuale">
+        <div class="gImg"><img src="assets/giochi/ruota.webp" alt="La Ruota Gira per Tutti: anteprima del minigioco" loading="lazy" width="640" height="400"></div>
+        <div class="gBody">
+          <h3>La Ruota Gira per Tutti</h3>
+          <p>Si incrociano due ruote: la prima estrae chi vince, la seconda cosa vince.</p>
+          <div class="gTags"><span class="gTag">Estrazione Casuale</span></div>
+        </div>
+      </article>
+      <article class="gCard" data-type="luck" data-cats="Estrazione Casuale">
+        <div class="gImg"><img src="assets/giochi/scossa.webp" alt="La Scossa: anteprima del minigioco" loading="lazy" width="640" height="400"></div>
+        <div class="gBody">
+          <h3>La Scossa</h3>
+          <p>Tracciate con il dito il percorso, dallo start alla fine, direttamente dal telefono: un tracciato preciso e sangue freddo.</p>
+          <div class="gTags"><span class="gTag">Estrazione Casuale</span></div>
+        </div>
+      </article>
+      <article class="gCard" data-type="luck" data-cats="Scelta Fortunata">
+        <div class="gImg"><img src="assets/giochi/wheels.webp" alt="Le Ruote della Fortuna: anteprima del minigioco" loading="lazy" width="640" height="400"></div>
+        <div class="gBody">
+          <h3>Le Ruote della Fortuna</h3>
+          <p>Dieci spicchi per ogni ruota: toccate la ruota su cui puntare, poi si fermano una alla volta.</p>
+          <div class="gTags"><span class="gTag">Scelta Fortunata</span></div>
+        </div>
+      </article>
+      <article class="gCard" data-type="luck" data-cats="Estrazione Casuale">
+        <div class="gImg"><img src="assets/giochi/marg.webp" alt="M&#x27;ama non m&#x27;ama: anteprima del minigioco" loading="lazy" width="640" height="400"></div>
+        <div class="gBody">
+          <h3>M&#x27;ama non m&#x27;ama</h3>
+          <p>M&#x27;ama non m&#x27;ama: sfoglia i petali della tua margherita e scopri se hai vinto.</p>
+          <div class="gTags"><span class="gTag">Estrazione Casuale</span></div>
+        </div>
+      </article>
+      <article class="gCard" data-type="luck" data-cats="Scelta Fortunata">
+        <div class="gImg"><img src="assets/giochi/morra.webp" alt="Morra Cinese: anteprima del minigioco" loading="lazy" width="640" height="400"></div>
+        <div class="gBody">
+          <h3>Morra Cinese</h3>
+          <p>Sfida il computer alla morra cinese dal telefono: sasso, carta o forbice.</p>
+          <div class="gTags"><span class="gTag">Scelta Fortunata</span></div>
+        </div>
+      </article>
+      <article class="gCard" data-type="luck" data-cats="Scelta Fortunata">
+        <div class="gImg"><img src="assets/giochi/dice.webp" alt="Pari o Dispari: anteprima del minigioco" loading="lazy" width="640" height="400"></div>
+        <div class="gBody">
+          <h3>Pari o Dispari</h3>
+          <p>Pari o dispari? Scommettete sulla somma dei due dadi.</p>
+          <div class="gTags"><span class="gTag">Scelta Fortunata</span></div>
+        </div>
+      </article>
+      <article class="gCard" data-type="luck" data-cats="Estrazione Casuale">
+        <div class="gImg"><img src="assets/giochi/patata.webp" alt="Patata Bollente: anteprima del minigioco" loading="lazy" width="640" height="400"></div>
+        <div class="gBody">
+          <h3>Patata Bollente</h3>
+          <p>La bomba passa di mano in mano: chi ce l&#x27;avrà in mano quando scoppia?</p>
+          <div class="gTags"><span class="gTag">Estrazione Casuale</span></div>
+        </div>
+      </article>
+      <article class="gCard" data-type="luck" data-cats="Si Grida">
+        <div class="gImg"><img src="assets/giochi/horses.webp" alt="Pubbliche Offese: anteprima del minigioco" loading="lazy" width="640" height="400"></div>
+        <div class="gBody">
+          <h3>Pubbliche Offese</h3>
+          <p>Scommettete sul cavallo vincente e poi gridate forte il suo nome per fargli vincere la corsa.</p>
+          <div class="gTags"><span class="gTag">Si Grida</span></div>
+        </div>
+      </article>
+      <article class="gCard" data-type="luck" data-cats="Scelta Fortunata">
+        <div class="gImg"><img src="assets/giochi/quidditch.webp" alt="Quidditch: anteprima del minigioco" loading="lazy" width="640" height="400"></div>
+        <div class="gBody">
+          <h3>Quidditch</h3>
+          <p>La pluffa passa di giocatore in giocatore: al quinto tocco spunta il boccino, e chi lo prende vince il maxi premio.</p>
+          <div class="gTags"><span class="gTag">Scelta Fortunata</span></div>
+        </div>
+      </article>
+      <article class="gCard" data-type="luck" data-cats="Scelta Fortunata">
+        <div class="gImg"><img src="assets/giochi/casino.webp" alt="Roulette (Casinò): anteprima del minigioco" loading="lazy" width="640" height="400"></div>
+        <div class="gBody">
+          <h3>Roulette (Casinò)</h3>
+          <p>La roulette del casinò: puntate su colore, pari/dispari o un numero secco.</p>
+          <div class="gTags"><span class="gTag">Scelta Fortunata</span></div>
+        </div>
+      </article>
+      <article class="gCard" data-type="luck" data-cats="Scelta Fortunata">
+        <div class="gImg"><img src="assets/giochi/roulette.webp" alt="Roulette Russa: anteprima del minigioco" loading="lazy" width="640" height="400"></div>
+        <div class="gBody">
+          <h3>Roulette Russa</h3>
+          <p>Roulette russa dal proprio telefono: quanti colpi vuoi rischiare? Più rischi, più puoi vincere.</p>
+          <div class="gTags"><span class="gTag">Scelta Fortunata</span></div>
+        </div>
+      </article>
+      <article class="gCard" data-type="luck" data-cats="Estrazione Casuale">
+        <div class="gImg"><img src="assets/giochi/slotmachine.webp" alt="Slot Machine: anteprima del minigioco" loading="lazy" width="640" height="400"></div>
+        <div class="gBody">
+          <h3>Slot Machine</h3>
+          <p>Premete il pulsante rosso della slot dal telefono: tre tentativi a testa per allineare i simboli.</p>
+          <div class="gTags"><span class="gTag">Estrazione Casuale</span></div>
+        </div>
+      </article>
+      <article class="gCard" data-type="luck" data-cats="Estrazione Casuale">
+        <div class="gImg"><img src="assets/giochi/supertris.webp" alt="SUPERTRIS: anteprima del minigioco" loading="lazy" width="640" height="400"></div>
+        <div class="gBody">
+          <h3>SUPERTRIS</h3>
+          <p>Ognuno gratta la propria cartella dal telefono e scopre se ha vinto.</p>
+          <div class="gTags"><span class="gTag">Estrazione Casuale</span></div>
+        </div>
+      </article>
+      <article class="gCard" data-type="luck" data-cats="Capone|Scelta Fortunata">
+        <div class="gImg"><img src="assets/giochi/toc.webp" alt="Testa o Croce: anteprima del minigioco" loading="lazy" width="640" height="400"></div>
+        <div class="gBody">
+          <h3>Testa o Croce</h3>
+          <p>Testa o croce: dieci secondi per scommettere dal telefono, poi la moneta gira e si scopre l&#x27;esito.</p>
+          <div class="gTags"><span class="gTag gCap">Capone</span><span class="gTag">Scelta Fortunata</span></div>
+        </div>
+      </article>
+      <article class="gCard" data-type="luck" data-cats="Estrazione Casuale">
+        <div class="gImg"><img src="assets/giochi/tombola.webp" alt="Tombola: anteprima del minigioco" loading="lazy" width="640" height="400"></div>
+        <div class="gBody">
+          <h3>Tombola</h3>
+          <p>La tombola classica, in versione digitale: una cartella per ognuno e numeri estratti sul maxischermo.</p>
+          <div class="gTags"><span class="gTag">Estrazione Casuale</span></div>
+        </div>
+      </article>
+      <article class="gCard" data-type="luck" data-cats="Capone|Estrazione Casuale">
+        <div class="gImg"><img src="assets/giochi/telefonata.webp" alt="Una Telefonata che ti Premia: anteprima del minigioco" loading="lazy" width="640" height="400"></div>
+        <div class="gBody">
+          <h3>Una Telefonata che ti Premia</h3>
+          <p>Rintraccia Il Capone Quiz™ al telefono: una telefonata che ti premia.</p>
+          <div class="gTags"><span class="gTag gCap">Capone</span><span class="gTag">Estrazione Casuale</span></div>
+        </div>
+      </article>
     </div>
   </div>
 </section>
 
 <section>
   <div class="wrap" style="text-align:center;">
-    <p style="color:var(--muted); font-size:14px; max-width:720px; margin:0 auto 30px;">Con il piano <b style="color:var(--white)">Basic</b> scegli tu 5 minigiochi dal catalogo. Con il piano <b style="color:var(--gold)">Full</b> hai accesso a tutto il catalogo. Con il piano <b style="color:var(--cyan)">Annuale</b>: 15 minigiochi inclusi da subito e almeno un nuovo minigioco al mese, che resta per sempre incluso nel tuo abbonamento.</p>
+    <p class="gNote">Le immagini sono anteprime illustrative pensate per dare l'idea di ogni minigioco: l'aspetto reale in gioco può variare.</p>
+    <p style="color:var(--muted); font-size:14px; max-width:720px; margin:0 auto 30px;">Con il piano <b style="color:var(--white)">Basic</b> scegli tu 5 minigiochi dal catalogo. Con il piano <b style="color:var(--gold)">Full</b> ne scegli 20. Con il piano <b style="color:var(--cyan)">Annuale</b>: 20 minigiochi a scelta dal vasto catalogo e almeno un nuovo minigioco al mese, che resta per sempre incluso nel tuo abbonamento.</p>
     <a class="btn btnGhost" href="index.html#minigiochi">← Torna al sito</a>
   </div>
 </section>
+
+<script>
+(function(){
+  var type='all', cats=[];
+  var cards=[].slice.call(document.querySelectorAll('.gCard'));
+  var secs=[].slice.call(document.querySelectorAll('.gSec'));
+  var out=document.getElementById('fCount');
+  function apply(){
+    var n=0;
+    cards.forEach(function(c){
+      var ok=(type==='all'||c.dataset.type===type);
+      if(ok&&cats.length){var cc=c.dataset.cats.split('|'); ok=cats.some(function(x){return cc.indexOf(x)>-1;});}
+      c.hidden=!ok; if(ok)n++;
+    });
+    secs.forEach(function(s){ s.hidden=!s.querySelector('.gCard:not([hidden])'); });
+    out.textContent=n+(n===1?' minigioco':' minigiochi')+' mostrati';
+  }
+  document.querySelectorAll('.fChip[data-type]').forEach(function(b){
+    b.addEventListener('click',function(){
+      type=b.dataset.type;
+      document.querySelectorAll('.fChip[data-type]').forEach(function(x){x.classList.toggle('on',x===b);});
+      apply();
+    });
+  });
+  document.querySelectorAll('.fChip[data-cat]').forEach(function(b){
+    b.addEventListener('click',function(){
+      var c=b.dataset.cat, i=cats.indexOf(c);
+      if(i>-1)cats.splice(i,1); else cats.push(c);
+      b.classList.toggle('on',i===-1);
+      apply();
+    });
+  });
+  apply();
+})();
+</script>
 
 <footer>
   <div class="wrap">

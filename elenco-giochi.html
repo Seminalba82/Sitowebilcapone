@@ -399,6 +399,30 @@
   @media(min-width:900px){ .nameList{columns:3;} }
   .nameList li{break-inside:avoid; padding:10px 14px; margin-bottom:8px; background:var(--panel); border:1px solid var(--border); border-left:3px solid var(--cyan);
     border-radius:3px; font-family:'Chakra Petch',sans-serif; font-weight:600; font-size:15px; color:var(--white);}
+
+  /* ---------- LINK E LISTINO MINIGIOCHI ---------- */
+  .mgInline{color:var(--cyan); text-decoration:underline; font-weight:700;}
+  .mgLink{display:block; text-align:center; margin-top:16px; color:var(--cyan); font-family:'Chakra Petch',sans-serif; font-weight:700; font-size:13px; letter-spacing:.4px;
+    text-decoration:none; border:1px dashed rgba(0,246,255,.45); padding:10px 12px; transition:background .2s ease;}
+  .mgLink:hover{background:rgba(0,246,255,.1);}
+  .priceCard .mgLink + .btn{margin-top:12px;}
+  .mgPrices{margin:34px auto 0; max-width:880px; text-align:center;}
+  .mgPrices h3{font-family:'Chakra Petch',sans-serif; text-transform:uppercase; letter-spacing:.6px; font-size:clamp(19px,3.4vw,26px); color:var(--white);}
+  .mgpLead{color:var(--muted); font-size:14.5px; max-width:680px; margin:10px auto 0;}
+  .mgpLead b{color:var(--white);}
+  .mgpGrid{display:grid; grid-template-columns:1fr; gap:14px; margin-top:22px; text-align:left;}
+  @media(min-width:760px){ .mgpGrid{grid-template-columns:repeat(3,1fr);} }
+  .mgpCard{background:rgba(4,3,9,.55); border:1px solid rgba(0,246,255,.25); border-radius:4px; padding:18px 18px 16px; position:relative;}
+  .mgpCard.feat{border:2px solid var(--gold); background:linear-gradient(180deg, rgba(234,255,43,.1), rgba(4,3,9,.55));}
+  .mgpName{font-family:'Chakra Petch',sans-serif; font-weight:800; letter-spacing:1.5px; font-size:13px; text-transform:uppercase; color:var(--cyan);}
+  .mgpCard.feat .mgpName{color:var(--gold);}
+  .mgpPick{font-family:'Orbitron',sans-serif; font-weight:900; font-size:22px; color:var(--white); margin:8px 0 2px; line-height:1.15;}
+  .mgpPick small{display:block; font-family:'Outfit',sans-serif; font-weight:600; font-size:12.5px; color:var(--muted); margin-top:4px;}
+  .mgpRow{display:flex; justify-content:space-between; align-items:baseline; gap:10px; padding:9px 0; border-top:1px solid rgba(255,255,255,.08); font-size:13.5px; color:var(--muted);}
+  .mgpRow:first-of-type{margin-top:10px;}
+  .mgpOld{text-decoration:line-through; color:var(--muted); margin-right:6px; font-size:12.5px;}
+  .mgpNew{font-family:'Orbitron',sans-serif; font-weight:900; color:var(--gold); font-size:18px;}
+  .mgpLock{margin-top:16px; font-family:'Chakra Petch',sans-serif; font-size:12px; letter-spacing:.4px; color:var(--lime);}
 </style>
 </head>
 <body>
@@ -518,6 +542,36 @@
         <li>XOX</li>
         <li>Zanzare</li>
     </ul>
+    <div style="margin-top:44px;">
+      <div class="mgPrices" style="margin-top:0;">
+        <h3>🎟️ Quanti minigiochi puoi scegliere</h3>
+        <p class="mgpLead">Con il pacchetto <b>Basic</b> ne scegli <b>5</b>, con il <b>Full</b> ne scegli <b>20</b>, con l'<b>Annuale</b> ne scegli <b>20</b> e ogni mese ne arriva uno nuovo. Approfitta delle offerte a prezzo bloccato!</p>
+        <div class="mgpGrid">
+          <div class="mgpCard">
+            <div class="mgpName">Basic</div>
+            <div class="mgpPick">5 minigiochi<small>a scelta dal catalogo</small></div>
+            <div class="mgpRow"><span>Giornaliero</span><span><span class="mgpOld">35€</span><span class="mgpNew">30€</span></span></div>
+            <div class="mgpRow"><span>Mensile</span><span><span class="mgpOld">130€</span><span class="mgpNew">100€</span></span></div>
+          </div>
+          <div class="mgpCard">
+            <div class="mgpName">Full</div>
+            <div class="mgpPick">20 minigiochi<small>a scelta dal catalogo</small></div>
+            <div class="mgpRow"><span>Giornaliero</span><span><span class="mgpOld">60€</span><span class="mgpNew">50€</span></span></div>
+            <div class="mgpRow"><span>Mensile</span><span><span class="mgpOld">180€</span><span class="mgpNew">150€</span></span></div>
+          </div>
+          <div class="mgpCard feat">
+            <div class="mgpName">★ Annuale</div>
+            <div class="mgpPick">20 minigiochi<small>a scelta + 1 nuovo al mese, inclusi per sempre</small></div>
+            <div class="mgpRow"><span>Tutto l'anno</span><span><span class="mgpOld">500€</span><span class="mgpNew">450€</span></span></div>
+            <div class="mgpRow"><span>🎁 In omaggio</span><span>una chiave extra</span></div>
+          </div>
+        </div>
+        <div class="mgpLock">🔒 Prezzi bloccati: giornaliero e mensile fino al 20 novembre 2026, annuale fino al 31 dicembre 2026</div>
+        <div style="display:flex; flex-wrap:wrap; gap:14px; justify-content:center; margin-top:22px;">
+        <a class="btn btnGold" href="index.html#prezzi">💰 Vai al listino completo</a>
+        </div>
+      </div>
+</div>
     <div style="text-align:center; margin-top:34px;">
       <a class="btn btnGhost" href="index.html#minigiochi">← Torna al sito</a>
     </div>

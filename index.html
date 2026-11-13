@@ -405,12 +405,13 @@
   .scCustom p{color:var(--muted); font-size:14.5px; max-width:620px; margin:0 auto 18px;}
 
   /* ===== SALA GIOCHI (anteprima) ===== */
-  .sgGrid{display:grid; grid-template-columns:repeat(2,1fr); gap:14px; margin:0 auto; max-width:900px;}
-  @media(min-width:760px){ .sgGrid{grid-template-columns:repeat(4,1fr); gap:18px;} }
+  .sgGrid{display:flex; flex-wrap:wrap; justify-content:center; gap:14px; margin:0 auto; max-width:1000px;}
+  .sgTile{width:calc(50% - 7px);}
+  @media(min-width:760px){ .sgGrid{gap:18px;} .sgTile{width:calc(33.333% - 12px);} }
   .sgTile{position:relative; display:flex; flex-direction:column; text-decoration:none; color:var(--white); border:1px solid rgba(0,246,255,.22); background:var(--panel); overflow:hidden;
     clip-path:polygon(0 0,calc(100% - 14px) 0,100% 14px,100% 100%,14px 100%,0 calc(100% - 14px)); transition:transform .2s ease, border-color .2s ease, box-shadow .2s ease;}
   .sgTile:hover{transform:translateY(-5px); border-color:var(--gold); box-shadow:0 12px 30px rgba(0,0,0,.45), 0 0 30px rgba(234,255,43,.2);}
-  .sgArt{aspect-ratio:1/1; display:flex; align-items:center; justify-content:center; font-size:56px; overflow:hidden; position:relative;}
+  .sgArt{aspect-ratio:16/9; display:flex; align-items:center; justify-content:center; font-size:56px; overflow:hidden; position:relative;}
   .sgArt img{width:100%; height:100%; object-fit:cover; display:block;}
   .sgArt.a1{background:linear-gradient(160deg,#ff9d1f,#b23a00 60%,#3a0f00);}
   .sgArt.a3{background:linear-gradient(160deg,#2f8fe8,#1b4f9c 55%,#0c1f47);}
@@ -669,13 +670,14 @@
     <div class="sectionHead">
       <div class="tag">Novità · Gratis dal browser</div>
       <h2>La sala giochi di Alberto Seminerio</h2>
-      <p>Quattro giochi arcade creati da Alberto Seminerio, tutti gratuiti: scegli il tuo e scala la classifica mondiale!</p>
+      <p>Cinque giochi arcade creati da Alberto Seminerio, tutti gratuiti: scegli il tuo e scala la classifica mondiale!</p>
     </div>
     <div class="sgGrid">
-      <a class="sgTile" href="https://giochi.ilcaponequiz.win/" target="_blank" rel="noopener"><span class="sgNew">NOVITÀ</span><div class="sgArt a1">🏃🕳️</div><div class="sgName">Girgenti Roads™</div></a>
-      <a class="sgTile" href="https://giochi.ilcaponequiz.win/" target="_blank" rel="noopener"><div class="sgArt"><img src="supercapone-promo.jpg" alt="SUPER CAPONE" loading="lazy"></div><div class="sgName">Super Capone™</div></a>
-      <a class="sgTile" href="https://giochi.ilcaponequiz.win/" target="_blank" rel="noopener"><div class="sgArt a3">🦽🏁</div><div class="sgName">Formula Anziani™</div></a>
-      <a class="sgTile" href="https://giochi.ilcaponequiz.win/" target="_blank" rel="noopener"><div class="sgArt a4">🥪🍟</div><div class="sgName">Il Capone, salsa e maionese™</div></a>
+      <a class="sgTile" href="https://giochi.ilcaponequiz.win/" target="_blank" rel="noopener"><span class="sgNew">NOVITÀ</span><div class="sgArt"><img src="sala-munnizza.jpg" alt="Munnizza, il gioco 3D sulla raccolta differenziata con il Capone" loading="lazy"></div><div class="sgName">Munnizza</div></a>
+      <a class="sgTile" href="https://giochi.ilcaponequiz.win/" target="_blank" rel="noopener"><div class="sgArt"><img src="sala-girgenti-roads.jpg" alt="Girgenti Roads, il runner 3D per le strade di Agrigento" loading="lazy"></div><div class="sgName">Girgenti Roads™</div></a>
+      <a class="sgTile" href="https://giochi.ilcaponequiz.win/" target="_blank" rel="noopener"><div class="sgArt"><img src="sala-supercapone.jpg" alt="Super Capone, il platform arcade tra i templi di Agrigento" loading="lazy"></div><div class="sgName">Super Capone™</div></a>
+      <a class="sgTile" href="https://giochi.ilcaponequiz.win/" target="_blank" rel="noopener"><div class="sgArt"><img src="sala-formula-anziani.jpg" alt="Formula Anziani, la corsa in sedia a rotelle per le strade di Agrigento" loading="lazy"></div><div class="sgName">Formula Anziani™</div></a>
+      <a class="sgTile" href="https://giochi.ilcaponequiz.win/" target="_blank" rel="noopener"><div class="sgArt"><img src="sala-salsa-e-maionese.jpg" alt="Il Capone, salsa e maionese, il furgone dei panini" loading="lazy"></div><div class="sgName">Il Capone, salsa e maionese™</div></a>
     </div>
     <div class="sgCta">
       <a class="btn btnGold" href="https://giochi.ilcaponequiz.win/" target="_blank" rel="noopener">🕹️ ENTRA NELLA SALA GIOCHI</a>
